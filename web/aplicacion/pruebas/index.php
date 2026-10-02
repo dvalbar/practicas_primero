@@ -13,8 +13,7 @@ finCuerpo();
 
 
 //vista
-function cabecera()
-{}
+function cabecera() {}
 
 //vista
 function cuerpo()
@@ -23,6 +22,7 @@ function cuerpo()
     <br><br>
     Elemento de pruebas.
     <br><br>
-    <a href="./basicas.php">Funcionamiento básico</a>
+    <a href="./basicas.php">Funcionamiento básico</a><br>
+    <a href="./pasopar.php">Comunicación vista</a>
 <?php
 }
