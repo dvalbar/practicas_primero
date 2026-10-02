@@ -70,6 +70,7 @@ function inicioCuerpo($cabecera)
                 <ul>
                     <li><a href="/index.php">Inicio</a></li>
                     <li><a href="/aplicacion/pruebas/pasopar.php">Ejemplos Basicos</a></li> <!-- Esto se añade a todas las paginas porque es la plantilla -->
+                    <li><a href="/aplicacion/relacion1/index.php">Relación 1</a></li>
                 </ul>
 
             </div>
