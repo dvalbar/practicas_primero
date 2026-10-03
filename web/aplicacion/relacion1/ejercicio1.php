@@ -44,7 +44,7 @@ function cuerpo($misNumeros) // Añadir aqui las variables
     variables inicializadas con valores en binario, octal y hexadecimal. Mostrar el valor de esas variables
     tanto en decimal como en la base en la que se han definido.
     Hacer este ejercicio directamente en la vista (definiciones de las variables y visualización de las
-    mismas)<br>";
+    mismas)<br>" . PHP_EOL;
 
     echo "<h3>Variables</h3>" . PHP_EOL;
     echo "Número decimal = " . $misNumeros[0] . PHP_EOL;
