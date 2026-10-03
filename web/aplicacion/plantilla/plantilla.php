@@ -82,10 +82,11 @@ function inicioCuerpo($cabecera, $barraUbi)
                 for ($i = 0; $i < count($barraUbi); $i++) {
                     if ($i == count($barraUbi) - 1) {
                         echo $barraUbi[$i]["nombre"];
-                    } else {
-                ?>
+                    }
+                    else {
+                        ?>
                         <a href="<?php echo $barraUbi[$i]["enlace"] ?>"><?php echo $barraUbi[$i]["nombre"] ?></a> →
-                <?php
+                        <?php
                     }
                 }
                 ?>

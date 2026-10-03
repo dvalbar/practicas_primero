@@ -106,5 +106,23 @@ body {
 }
 
 #barraMenu li {
-    padding-right: 4%;
+    padding-right: 5%;
+}
+
+#barraMenu a {
+    padding: 5px;
+}
+
+#barraMenu a:hover {
+    background-color: rgb(144, 188, 226);
+    padding: 5px;
+}
+
+#barraUbi a {
+    padding: 5px;
+}
+
+#barraUbi a:hover {
+    background-color: rgb(144, 188, 226);
+    padding: 5px;
 }

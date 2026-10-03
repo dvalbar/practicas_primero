@@ -34,7 +34,7 @@ function cuerpo()
 {
 ?>
     <br><br>
-    <p>Inicio del proyecto.</p>
+    <h3>Inicio del proyecto.</h3>
 <?php
 }
 
