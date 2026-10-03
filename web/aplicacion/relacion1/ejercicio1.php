@@ -1,26 +1,34 @@
 <?php
 include_once(dirname(__FILE__) . "/../../cabecera.php");
 //controlador
+$barraUbi =
+    [
+        [
+            "nombre" => "Inicio",
+            "enlace" => "/index.php"
+        ],
+        [
+            "nombre" => "Relacion 1",
+            "enlace" => "/aplicacion/relacion1/index.php"
+        ],
+        [
+            "nombre" => "Ejercicio 1",
+            "enlace" => "/aplicacion/relacion1/ejercicio1.php"
+        ]
+    ];
 
 //dibuja la plantilla de la vista
 inicioCabecera("Ejercicio 1");
 cabecera();
 finCabecera();
-inicioCuerpo("EJERCICIO 1");
+inicioCuerpo("EJERCICIO 1", $barraUbi);
 cuerpo();  //llamo a la vista
 finCuerpo();
 // **********************************************************
 
 
 //vista
-function cabecera()
-{
-    // Fin del PHP
-?>
-    <!-- Esto va en el HEAD -->
-<?php
-    // Inicio del PHP
-}
+function cabecera() {}
 
 //vista
 function cuerpo() // Añadir aqui las variables
@@ -35,7 +43,6 @@ variables inicializadas con valores en binario, octal y hexadecimal. Mostrar el 
 tanto en decimal como en la base en la que se han definido.
 Hacer este ejercicio directamente en la vista (definiciones de las variables y visualización de las
 mismas)";
-
 }
 
 // Aqui escribiremos las funciones

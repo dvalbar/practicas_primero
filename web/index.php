@@ -1,25 +1,31 @@
 <?php
 include_once(dirname(__FILE__) . "/cabecera.php");
 //controlador
-
+$barraUbi =
+    [
+        [
+            "nombre" => "Inicio",
+            "enlace" => "/index.php"
+        ]
+    ];
 
 //dibuja la plantilla de la vista
-inicioCabecera("Mi aplicacion");
+inicioCabecera("PROYECTO DAVID");
 cabecera();
 finCabecera();
-inicioCuerpo("2DAW APLICACION index.html");
+inicioCuerpo("INICIO", $barraUbi);
 cuerpo();  //llamo a la vista
 finCuerpo();
 // **********************************************************
 
 
 //vista
-function cabecera() 
-{   
+function cabecera()
+{
     // Fin del PHP
-    ?>
+?>
     <!-- Esto va en el HEAD -->
-    <?php
+<?php
     // Inicio del PHP
 }
 
@@ -28,7 +34,7 @@ function cuerpo()
 {
 ?>
     <br><br>
-    <a href="./aplicacion/pruebas/index.php">Acceso a pruebas.</a>
+    <p>Inicio del proyecto.</p>
 <?php
 }
 

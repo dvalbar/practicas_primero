@@ -1,11 +1,11 @@
 <?php
 
-function paginaError($mensaje)
+function paginaError($mensaje, $barraUbi)
 {
     header("HTTP/1.0 404 $mensaje");
     inicioCabecera("PRACTICA");
     finCabecera();
-    inicioCuerpo("ERROR");
+    inicioCuerpo("ERROR", $barraUbi);
     echo "<br />\n";
     echo $mensaje;
     echo "<br />\n";
@@ -50,7 +50,7 @@ function finCabecera()
 <?php
 }
 
-function inicioCuerpo($cabecera)
+function inicioCuerpo($cabecera, $barraUbi)
 {
     global $acceso;
 
@@ -66,13 +66,29 @@ function inicioCuerpo($cabecera)
             <div id="barraLogin">
 
             </div>
+
             <div id="barraMenu">
                 <ul>
                     <li><a href="/index.php">Inicio</a></li>
-                    <li><a href="/aplicacion/pruebas/pasopar.php">Ejemplos Basicos</a></li> <!-- Esto se añade a todas las paginas porque es la plantilla -->
+                    <li><a href="/aplicacion/pruebas/index.php">Pruebas</a></li> <!-- Esto se añade a todas las paginas porque es la plantilla -->
                     <li><a href="/aplicacion/relacion1/index.php">Relación 1</a></li>
                 </ul>
 
+            </div>
+
+            <h4>Barra Ubicación</h4>
+            <div id="barraUbi">
+                <?php
+                for ($i = 0; $i < count($barraUbi); $i++) {
+                    if ($i == count($barraUbi) - 1) {
+                        echo $barraUbi[$i]["nombre"];
+                    } else {
+                ?>
+                        <a href="<?php echo $barraUbi[$i]["enlace"] ?>"><?php echo $barraUbi[$i]["nombre"] ?></a> →
+                <?php
+                    }
+                }
+                ?>
             </div>
 
             <div>

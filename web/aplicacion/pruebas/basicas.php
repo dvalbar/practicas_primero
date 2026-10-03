@@ -5,12 +5,27 @@ const NUM1 = 56;
 define("NUMERO", 25);
 
 //controlador
+$barraUbi =
+    [
+        [
+            "nombre" => "Inicio",
+            "enlace" => "/index.php"
+        ],
+        [
+            "nombre" => "Pruebas",
+            "enlace" => "/aplicacion/pruebas/index.php"
+        ],
+        [
+            "nombre" => "Pruebas básicas",
+            "enlace" => "/aplicacion/pruebas/basicas.php"
+        ]
+    ];
 
 //dibuja la plantilla de la vista
-inicioCabecera("APLICACION PRIMER TRIMESTRE");
+inicioCabecera("FUNCIONAMIENTO BÁSICO");
 cabecera();
 finCabecera();
-inicioCuerpo("Pruebas básicas");
+inicioCuerpo("Funcionamiento básico", $barraUbi);
 cuerpo(); //llamo a la vista
 finCuerpo();
 // **********************************************************
@@ -89,7 +104,6 @@ function cuerpo()
     if ($var) {
         $cadena = "var no false";
     }
-
 
     $var = 1 + true;
     $var = 1 + 1.5;
@@ -187,9 +201,6 @@ function cuerpo()
     }
 
     ?>
-
-
-
 
 <?php
 }
