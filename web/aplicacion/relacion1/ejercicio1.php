@@ -53,8 +53,8 @@ function cuerpo($misNumeros) // Añadir aqui las variables
     echo "<br>Número en base 4 = " . $misNumeros[3] . PHP_EOL;
 
     echo "<h3>Variables binario, octal y hexadecimal</h3>" . PHP_EOL;
-    echo "Número binario = " . $misNumeros[5] . PHP_EOL;
-    echo "<br>Número binario (en decimal) = " . base_convert($misNumeros[5], 10, 2) . PHP_EOL;
+    echo "Número binario = " . base_convert($misNumeros[5], 10, 2) . PHP_EOL;
+    echo "<br>Número binario (en decimal) = " . $misNumeros[5] . PHP_EOL;
     echo "<br>Número octal = " . base_convert($misNumeros[6], 10, 8) . PHP_EOL;
     echo "<br>Número octal (en decimal) = " . $misNumeros[6] . PHP_EOL;
     echo "<br>Número hexadecimal = " . base_convert($misNumeros[7], 10, 16) . PHP_EOL;
@@ -62,12 +62,12 @@ function cuerpo($misNumeros) // Añadir aqui las variables
 
     echo "<h3>Funciones</h3>" . PHP_EOL;
     echo "Función round({$misNumeros[0]}): " . round($misNumeros[0]) . PHP_EOL;
-    echo "<br>Función floor(): " . floor($misNumeros[0]) . PHP_EOL;
-    echo "<br>Función pow(): " . pow($misNumeros[0], 2) . PHP_EOL;
-    echo "<br>Función sqrt(): " . sqrt($misNumeros[0]) . PHP_EOL;
-    echo "<br>Función de entero a hexadecimal (dechex()): " . dechex($misNumeros[2]) . PHP_EOL;
-    echo "<br>Función de base 4 a base 8 (base_convert()): " . base_convert($misNumeros[3], 4, 8) . PHP_EOL;
-    echo "<br>Función abs(): " . abs($misNumeros[4]) . PHP_EOL;
+    echo "<br>Función floor({$misNumeros[0]}): " . floor($misNumeros[0]) . PHP_EOL;
+    echo "<br>Función pow({$misNumeros[0]}, 2): " . pow($misNumeros[0], 2) . PHP_EOL;
+    echo "<br>Función sqrt({$misNumeros[0]}): " . sqrt($misNumeros[0]) . PHP_EOL;
+    echo "<br>Función de entero a hexadecimal (dechex({$misNumeros[2]})): " . dechex($misNumeros[2]) . PHP_EOL;
+    echo "<br>Función de base 4 a base 8 (base_convert({$misNumeros[3]}, 4, 8)): " . base_convert($misNumeros[3], 4, 8) . PHP_EOL;
+    echo "<br>Función abs({$misNumeros[4]}): " . abs($misNumeros[4]) . PHP_EOL;
     echo "<br>Función pi(): " . pi() . PHP_EOL;
 }
 
