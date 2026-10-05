@@ -17,39 +17,48 @@ $barraUbi =
         ]
     ];
 
+// Constante FILAS con el número de filas que queremos mostrar
+const FILAS = 9;
+$filas = FILAS;
+
+$miArray = [$filas];
+
 //dibuja la plantilla de la vista
 inicioCabecera("Ejercicio 4");
 cabecera();
 finCabecera();
-inicioCuerpo("EJERCICIO 4",$barraUbi);
-cuerpo();  //llamo a la vista
+inicioCuerpo("EJERCICIO 4", $barraUbi);
+cuerpo($filas, $miArray);  //llamo a la vista
 finCuerpo();
 // **********************************************************
 
 
 //vista
-function cabecera()
-{
-    
-}
+function cabecera() {}
 
 //vista
-function cuerpo() // Añadir aqui las variables
+function cuerpo($filas, $miArray) // Añadir aqui las variables
 {
 ?>
     <br><br>
 <?php
     echo "4- Generar un array con los siguientes valores mostrándolos posteriormente con foreach. El array se
-debe generar usando bucles for.
-1
-2 2
-3 3 3
-4 4 4 4
-5 5 5 5 5
-Declarar la constante FILAS que se rellenará con el número de filas que se deben crear. Repetir
+debe generar usando bucles for.<br>
+<br>1
+<br>2 2
+<br>3 3 3
+<br>4 4 4 4
+<br>5 5 5 5 5<br>
+<br>Declarar la constante FILAS que se rellenará con el número de filas que se deben crear. Repetir
 lo anterior usando FILAS para crear el array y visualizarlo.
-Los datos se definirán en el controlador y se visualizarán en la vista.";
+<br>Los datos se definirán en el controlador y se visualizarán en la vista." . PHP_EOL;
 
+    for ($i = 0; $i <= $filas; $i++) {
+        echo "<br>" . PHP_EOL;
+        for ($j = 0; $j < $i; $j++) {
+            echo $i . " " . PHP_EOL;
+        }
+    }
 }
 
 // Aqui escribiremos las funciones
