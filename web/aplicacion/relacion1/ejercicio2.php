@@ -68,7 +68,7 @@ vista (nunca como variables globales)<br>" . PHP_EOL;
     // Bucle while() usando mt_rand() sin parámetros
     $i = 0;
     while ($i < $lanzamientos) {
-        // El resto de cualquier num entre 6 es siempre un valor entre 0 y 5
+        // El resto de cualquier número dividido entre 6 da un número entre 0 y 5, como necesito número entre 1 y 6 solo necesito sumarle 1
         switch ((mt_rand() % 6) + 1) {
             case 1:
                 $numDados[0]++;

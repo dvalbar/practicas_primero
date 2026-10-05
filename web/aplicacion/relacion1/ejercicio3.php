@@ -17,15 +17,70 @@ $barraUbi =
         ]
     ];
 
-$miArray = array();
-$segundoArray = array(1, 34, "nueva");
+// --------------- ARRAY 1 ---------------
+$miArray1 = array();
+$miSegundoArray1 = array(1, 34, "nueva");
+
+// Rellenamos la posicion 1, 16 y 54 con cualquier cosa
+$miArray1[1] = 10;
+$miArray1[16] = 20;
+$miArray1[54] = 30;
+
+// Añadimos al final del array el número 34
+array_push($miArray1, 34);
+
+// Añadimos a la posición 1, 2 y 3 del array nuevos valores
+$miArray1["uno"] = "cadena";
+$miArray1["dos"] = true;
+$miArray1["tres"] = 1.345;
+
+// Añadimos al final un nuevo array
+$miArray1["ultima"] = $miSegundoArray1;
+
+// --------------- ARRAY 2 ---------------
+$miArray2 = array(
+    // Rellenamos la posicion 1, 16 y 54 con cualquier cosa
+    1 => 10,
+    16 => 20,
+    54 => 30,
+
+    // Añadimos al final del array el número 34
+    34,
+
+    // Añadimos a la posición 1, 2 y 3 del array nuevos valores
+    "uno" => "cadena",
+    "dos" => true,
+    "tres" => 1.345,
+
+    // Añadimos al final un nuevo array
+    "ultima" => $miSegundoArray2 = array(1, 34, "nueva")
+);
+
+// --------------- ARRAY 3 ---------------
+$miArray3 = [
+    // Rellenamos la posicion 1, 16 y 54 con cualquier cosa
+    1 => 10,
+    16 => 20,
+    54 => 30,
+
+    // Añadimos al final del array el número 34
+    34,
+
+    // Añadimos a la posición 1, 2 y 3 del array nuevos valores
+    "uno" => "cadena",
+    "dos" => true,
+    "tres" => 1.345,
+
+    // Añadimos al final un nuevo array
+    "ultima" => $miSegundoArray3 = array(1, 34, "nueva")
+];
 
 //dibuja la plantilla de la vista
 inicioCabecera("Ejercicio 3");
 cabecera();
 finCabecera();
 inicioCuerpo("EJERCICIO 3", $barraUbi);
-cuerpo($miArray, $segundoArray);  //llamo a la vista
+cuerpo($miArray1, $miSegundoArray1, $miArray2, $miSegundoArray2, $miArray3, $miSegundoArray3);  //llamo a la vista
 finCuerpo();
 // **********************************************************
 
@@ -34,7 +89,7 @@ finCuerpo();
 function cabecera() {}
 
 //vista
-function cuerpo($miArray, $segundoArray) // Añadir aqui las variables
+function cuerpo($miArray1, $miSegundoArray1, $miArray2, $miSegundoArray2, $miArray3, $miSegundoArray3) // Añadir aqui las variables
 {
 ?>
     <br><br>
@@ -51,33 +106,14 @@ function cuerpo($miArray, $segundoArray) // Añadir aqui las variables
     <br>- Recorrer los tres arrays usando foreach mostrando todos los valores de los arrays creados
     <br><br>Los arrays se definirán en el controlador y se visualizarán en la vista.<br>" . PHP_EOL;
 
-    // Rellenamos la posicion 1, 16 y 54 con cualquier cosa
-    echo "<h3>Rellenamos la posición 1, 16, 54</h3>" . PHP_EOL;
-    $miArray[1] = 10;
-    $miArray[16] = 20;
-    $miArray[54] = 30;
+    echo "<h3>Array 1</h3>" . PHP_EOL;
+    mostrarArray($miArray1, $miSegundoArray1);
 
-    mostrarArray($miArray, $segundoArray);
+    echo "<h3>Array 2</h3>" . PHP_EOL;
+    mostrarArray($miArray2, $miSegundoArray2);
 
-    // Añadimos al final del array el número 34
-    echo "<h3>Añadimos 34 al final del array</h3>" . PHP_EOL;
-    array_push($miArray, 34);
-
-    mostrarArray($miArray, $segundoArray);
-
-    // Añadimos a la posición 1, 2 y 3 del array nuevos valores
-    echo "<h3>Añadir 'cadena', true, 1.345 en las posiciones 'uno', 'dos' y 'tres'</h3>" . PHP_EOL;
-    $miArray["uno"] = "cadena";
-    $miArray["dos"] = true;
-    $miArray["tres"] = 1.345;
-
-    mostrarArray($miArray, $segundoArray);
-
-    // Añadimos al final un nuevo array
-    echo "<h3>Rellenar la posición “ultima” con el array (1,34,”nueva”)</h3>" . PHP_EOL;
-    $miArray["ultima"] = $segundoArray;
-
-    mostrarArray($miArray, $segundoArray);
+    echo "<h3>Array 3</h3>" . PHP_EOL;
+    mostrarArray($miArray3, $miSegundoArray3);
 }
 
 // Aqui escribiremos las funciones
@@ -87,16 +123,16 @@ function cuerpo($miArray, $segundoArray) // Añadir aqui las variables
 /**
  * Función que muestra el array en la interfaz con su indice y valor
  *
- * @param [array] $miArray
+ * @param [array] $miArray1
  * @return void
  */
-function mostrarArray($miArray, $segundoArray)
+function mostrarArray($miArray, $miSegundoArray)
 {
     foreach ($miArray as $indice => $valor) {
         if ($indice == "ultima") {
             echo "[" . $indice . "] = " . PHP_EOL;
-            for ($i = 0; $i < count($segundoArray); $i++) {
-                echo "[" . $i . "] = " . $segundoArray[$i] . " " . PHP_EOL;
+            for ($i = 0; $i < count($miSegundoArray); $i++) {
+                echo "[" . $i . "] = " . $miSegundoArray[$i] . " " . PHP_EOL;
             }
         }
         else {
