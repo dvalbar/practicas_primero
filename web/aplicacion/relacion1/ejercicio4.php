@@ -18,17 +18,23 @@ $barraUbi =
     ];
 
 // Constante FILAS con el número de filas que queremos mostrar
-const FILAS = 9;
+const FILAS = 5;
 $filas = FILAS;
 
-$miArray = [1,2,3,4,5];
+$miArray = array(array(), array());
+
+for ($i = 0; $i <= $filas; $i++) {
+    for ($j = 0; $j < $i; $j++) {
+        $miArray[$i][$j] = $i;
+    }
+}
 
 //dibuja la plantilla de la vista
 inicioCabecera("Ejercicio 4");
 cabecera();
 finCabecera();
 inicioCuerpo("EJERCICIO 4", $barraUbi);
-cuerpo($filas, $miArray);  //llamo a la vista
+cuerpo($miArray);  //llamo a la vista
 finCuerpo();
 // **********************************************************
 
@@ -37,7 +43,7 @@ finCuerpo();
 function cabecera() {}
 
 //vista
-function cuerpo($filas, $miArray) // Añadir aqui las variables
+function cuerpo($miArray) // Añadir aqui las variables
 {
 ?>
     <br><br>
@@ -53,10 +59,10 @@ debe generar usando bucles for.<br>
 lo anterior usando FILAS para crear el array y visualizarlo.
 <br>Los datos se definirán en el controlador y se visualizarán en la vista." . PHP_EOL;
 
-    for ($i = 0; $i <= $filas; $i++) {
-        echo "<br>" . PHP_EOL;
-        for ($j = 0; $j < $i; $j++) {
-            echo $i . " " . PHP_EOL;
+    foreach ($miArray as $fila) {
+        echo "<br>";
+        foreach ($fila as $valor) {
+            echo $valor . " ";
         }
     }
 }
