@@ -47,16 +47,18 @@ para gestión de fecha. Se repetirán todos los ejercicios usando la clase DateT
 <br><br>Se definirán las fechas y se visualizarán directamente en la vista. ( no se definirán en el
 controlador)";
 
+    date_default_timezone_set("Europe/Madrid");
+
     echo "<h3>Funciones Fechas</h3>";
 
     //  Mostrar la fecha actual en el formato “d/m/Y”
-    echo "Fecha actual en el formato 'd/m/Y' = " . date("d/m/Y") . "<br>";
+    echo "Fecha actual en el formato 'd/m/Y' = " . date("d/m/Y") . "<br><br>";
 
     // Mostrar la fecha actual en el formato “dia d, mes mmmm, año yyyy, dia de la semana dd”
-    // echo "Fecha actual en el formato 'dia d, mes mmm, año yyy, dia de la semana dd' = " . date("") . "<br>";
+    echo "Fecha actual en el formato 'dia d, mes mmm, año yyy, dia de la semana dd' = " . date("") . "<br><br>";
 
     // Mostrar la hora actual en el formato “hh:mm:ss”
-    echo "Hora actual en formato 'hh:mm:ss' = " . date("H:i:s") . "<br>";
+    echo "Hora actual en formato 'hh:mm:ss' = " . date("H:i:s") . "<br><br>";
 
     // Mostrar los tres apartados anteriores para la fecha 29/3/2024 a 12:45.
     echo "<h4>Mostrar los tres apartados anteriores para la fecha 29/3/2024</h4>";
