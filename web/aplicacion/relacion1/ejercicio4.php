@@ -21,7 +21,7 @@ $barraUbi =
 const FILAS = 9;
 $filas = FILAS;
 
-$miArray = [$filas];
+$miArray = [1,2,3,4,5];
 
 //dibuja la plantilla de la vista
 inicioCabecera("Ejercicio 4");
