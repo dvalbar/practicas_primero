@@ -5,7 +5,6 @@ $barraUbi =
     [
         [
             "nombre" => "Inicio",
-            "enlace" => "/index.php"
         ]
     ];
 

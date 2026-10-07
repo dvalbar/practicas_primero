@@ -5,7 +5,7 @@ function paginaError($mensaje, $barraUbi)
     header("HTTP/1.0 404 $mensaje");
     inicioCabecera("PRACTICA");
     finCabecera();
-    inicioCuerpo("ERROR", $barraUbi);
+    inicioCuerpo("ERROR");
     echo "<br />\n";
     echo $mensaje;
     echo "<br />\n";
@@ -50,7 +50,7 @@ function finCabecera()
 <?php
 }
 
-function inicioCuerpo($cabecera, $barraUbi)
+function inicioCuerpo(string $cabecera, array $barraUbi = []) // $barraUbi es un array
 {
     global $acceso;
 
@@ -79,14 +79,19 @@ function inicioCuerpo($cabecera, $barraUbi)
             <h4>Barra Ubicación</h4>
             <div id="barraUbi">
                 <?php
-                for ($i = 0; $i < count($barraUbi); $i++) {
-                    if ($i == count($barraUbi) - 1) {
-                        echo $barraUbi[$i]["nombre"];
+                foreach ($barraUbi as $value) {
+                    if (isset($value["enlace"])) {
+                        echo "<a href='" . $value["enlace"] . "'>";
                     }
-                    else {
-                        ?>
-                        <a href="<?php echo $barraUbi[$i]["enlace"] ?>"><?php echo $barraUbi[$i]["nombre"] ?></a> →
-                        <?php
+                    echo $value["nombre"];
+                    if (isset($value["enlace"])) {
+                        echo "</a>";
+                    }
+
+                    if (isset($value["adicional"])) {
+                        echo $value["adicional"];
+                    } else {
+                        echo "&nbsp;&nbsp;";
                     }
                 }
                 ?>

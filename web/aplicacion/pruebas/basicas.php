@@ -17,7 +17,6 @@ $barraUbi =
         ],
         [
             "nombre" => "Pruebas básicas",
-            "enlace" => "/aplicacion/pruebas/basicas.php"
         ]
     ];
 

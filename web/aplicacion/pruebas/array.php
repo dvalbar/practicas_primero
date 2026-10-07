@@ -13,7 +13,6 @@ $barraUbi =
         ],
         [
             "nombre" => "Prueba arrays",
-            "enlace" => "/aplicacion/pruebas/array.php"
         ]
     ];
 

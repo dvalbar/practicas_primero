@@ -13,7 +13,6 @@ $barraUbi =
         ],
         [
             "nombre" => "Ejercicio 2",
-            "enlace" => "/aplicacion/relacion1/ejercicio2.php"
         ]
     ];
 

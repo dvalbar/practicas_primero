@@ -9,7 +9,6 @@ $barraUbi =
         ],
         [
             "nombre" => "Pruebas",
-            "enlace" => "/pruebas/index.php"
         ]
     ];
 
@@ -31,7 +30,7 @@ function cuerpo()
 {
 ?>
     <br><br>
-    <h3>Páginas de pruebas</h3>
+    <h3>Páginas de pruebas.</h3>
     <a href="./basicas.php">Funcionamiento básico</a><br>
     <a href="./pasopar.php">Paso parámetros</a><br>
     <a href="./array.php">Prueba arrays</a>

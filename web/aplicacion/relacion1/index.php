@@ -9,7 +9,6 @@ $barraUbi =
         ],
         [
             "nombre" => "Relacion 1",
-            "enlace" => "/aplicacion/relacion1/index.php"
         ]
     ];
 

@@ -13,7 +13,6 @@ $barraUbi =
         ],
         [
             "nombre" => "Paso parámetros",
-            "enlace" => "/aplicacion/pruebas/basicas.php"
         ]
     ];
 
