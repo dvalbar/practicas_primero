@@ -16,12 +16,21 @@ $barraUbi =
         ]
     ];
 
-// Cambiar la zona horaria a la de España
-date_default_timezone_set("Europe/Madrid");
-
 $diasSemana = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
-$meses = [1 => "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", 
-"agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+$meses = [
+    1 => "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre"
+];
 
 
 //dibuja la plantilla de la vista
@@ -100,19 +109,45 @@ controlador)";
 
     echo "<h3>DateTime</h3>";
 
-    //  Mostrar la fecha actual en el formato “d/m/Y”
+    $fechaHoy = new DateTime();
+    $fechaAnterior = new DateTime("29-03-2024 12:45");
 
+    $fechaRestada = new DateTime();
+    $fechaRestada->sub(new DateInterval("P12DT4H"));
+
+    //  Mostrar la fecha actual en el formato “d/m/Y”
+    echo $fechaHoy->format("d/m/Y") . "<br><br>";
 
     // Mostrar la fecha actual en el formato “dia d, mes mmmm, año yyyy, dia de la semana dd”
-
+    echo "Día " . $fechaHoy->format("j") . ", mes " .
+        $meses[$fechaHoy->format("n")] . ", año " . $fechaHoy->format("Y") . ", día de la semana " . $diasSemana[$fechaHoy->format("w")] . "<br><br>";
 
     // Mostrar la hora actual en el formato “hh:mm:ss”
+    echo $fechaHoy->format("H:i:s") . "<br>";
 
-
+    echo "<h4>Mostrar los tres apartados anteriores para la fecha actual menos 12 días y 4 horas</h4>";
     // Mostrar los tres apartados anteriores para la fecha 29/3/2024 a 12:45.
+    //  Mostrar la fecha actual en el formato “d/m/Y”
+    echo $fechaAnterior->format("d/m/Y") . "<br><br>";
 
+    // Mostrar la fecha actual en el formato “dia d, mes mmmm, año yyyy, dia de la semana dd”
+    echo "Día " . $fechaAnterior->format("j") . ", mes " .
+        $meses[$fechaAnterior->format("n")] . ", año " . $fechaAnterior->format("Y") . ", día de la semana " . $diasSemana[$fechaAnterior->format("w")] . "<br><br>";
+
+    // Mostrar la hora actual en el formato “hh:mm:ss”
+    echo $fechaAnterior->format("H:i:s") . "<br><br>";
 
     // Mostrar los tres apartados anteriores para la fecha actual menos 12 días y 4 horas
+    echo "<h4>Mostrar los tres apartados anteriores para la fecha actual menos 12 días y 4 horas</h4>";
+    //  Mostrar la fecha actual en el formato “d/m/Y”
+    echo $fechaRestada->format("d/m/Y") . "<br><br>";
+
+    // Mostrar la fecha actual en el formato “dia d, mes mmmm, año yyyy, dia de la semana dd”
+    echo "Día " . $fechaRestada->format("j") . ", mes " .
+        $meses[$fechaRestada->format("n")] . ", año " . $fechaRestada->format("Y") . ", día de la semana " . $diasSemana[$fechaRestada->format("w")] . "<br><br>";
+
+    // Mostrar la hora actual en el formato “hh:mm:ss”
+    echo $fechaRestada->format("H:i:s") . "<br><br>";
 }
 
 // Aqui escribiremos las funciones

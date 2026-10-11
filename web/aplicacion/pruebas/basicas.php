@@ -199,6 +199,19 @@ function cuerpo()
             break;
     }
 
+    //FECHAS
+
+    $hoy = new DateTime();
+    $cadena = $hoy->format("d/m/Y H:i:s");
+
+    echo $cadena;
+
+    //le sumo 2 días, 15 horas, 30 minutos
+    $hoy->add(new DateInterval("P2DT15H30M"));
+    $cadena = $hoy->format("d/m/Y H:i:s");
+
+    echo "<br>" . $cadena;
+
     ?>
 
 <?php
