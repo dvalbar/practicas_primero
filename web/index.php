@@ -1,27 +1,40 @@
 <?php
 include_once(dirname(__FILE__) . "/cabecera.php");
 //controlador
-
-$usuario=getenv("MYSQL_USER");
+$barraUbi =
+    [
+        [
+            "nombre" => "Inicio",
+        ]
+    ];
 
 //dibuja la plantilla de la vista
-inicioCabecera("APLICACION PRIMER TRIMESTRE");
+inicioCabecera("PROYECTO DAVID");
 cabecera();
 finCabecera();
-inicioCuerpo("2DAW APLICACION");
+inicioCuerpo("INICIO", $barraUbi);
 cuerpo();  //llamo a la vista
 finCuerpo();
 // **********************************************************
 
+
 //vista
-function cabecera() 
-{}
+function cabecera()
+{
+    // Fin del PHP
+?>
+    <!-- Esto va en el HEAD -->
+<?php
+    // Inicio del PHP
+}
 
 //vista
 function cuerpo()
 {
 ?>
     <br><br>
-    Hola, estás en Index.php. David Valverde Barea.
+    <h3>Inicio del proyecto.</h3>
 <?php
 }
+
+// Aqui escribiremos las funciones
