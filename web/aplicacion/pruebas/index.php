@@ -33,6 +33,7 @@ function cuerpo()
     <h3>Páginas de pruebas.</h3>
     <a href="./basicas.php">Funcionamiento básico</a><br>
     <a href="./pasopar.php">Paso parámetros</a><br>
-    <a href="./array.php">Prueba arrays</a>
+    <a href="./array.php">Prueba arrays</a><br>
+    <a href="./cadenas.php">Prueba cadenas</a>
 <?php
 }
