@@ -34,6 +34,7 @@ function cuerpo()
     <a href="./basicas.php">Funcionamiento básico</a><br>
     <a href="./pasopar.php">Paso parámetros</a><br>
     <a href="./array.php">Prueba arrays</a><br>
-    <a href="./cadenas.php">Prueba cadenas</a>
+    <a href="./cadenas.php">Prueba cadenas</a><br>
+    <a href="./expresionesRegulares.php">Prueba expresiones regulares</a>
 <?php
 }
