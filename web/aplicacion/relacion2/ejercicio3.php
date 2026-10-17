@@ -51,7 +51,7 @@ minúsculas, letras mayúsculas y números)<br>
 a) A partir de un array en el que están todos los caracteres posibles que cumplen la
 condición. (tienes que rellenar el array con todos los caracteres validos)<br>
 b) A partir del código ASCII (se puede indicar un rango mayor y eliminar aquellos
-caracteres que no lo cumplan).<br><br>" . PHP_EOL;
+caracteres que no lo cumplan).<br><br>".PHP_EOL;
 
     for ($i = 0; $i < 20; $i++) {
         $numAleatorio = mt_rand(0, count($caracteres)-1);

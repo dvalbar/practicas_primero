@@ -54,12 +54,12 @@ function cuerpo($misCadenas) // Añadir aqui las variables
     echo "1.- Escribe distintas cadenas usando “, ‘, HEREDOC y NOWDOC incluyendo variables,
 etiquetas html y caracteres especiales como ‘, “, á, é, ñ. Muestra las cadenas y comprueba que
 el código fuente es legible (no se tiene una sola línea con todo seguido). Haz que se muestren
-las etiquetas html (no se ejecuten)<br><br>";
+las etiquetas html (no se ejecuten)<br><br>".PHP_EOL;
 
-    echo $misCadenas["cadena1"]."<br>";
-    echo $misCadenas["cadena2"]."<br>";
-    echo $misCadenas["cadena3"]."<br>";
-    echo $misCadenas["cadena4"]."<br>";
+    echo $misCadenas["cadena1"]."<br>".PHP_EOL;
+    echo $misCadenas["cadena2"]."<br>".PHP_EOL;
+    echo $misCadenas["cadena3"]."<br>".PHP_EOL;
+    echo $misCadenas["cadena4"]."<br>".PHP_EOL;
 }
 
 // Aqui escribiremos las funciones

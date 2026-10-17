@@ -60,7 +60,7 @@ function inicioCuerpo(string $cabecera, array $barraUbi = []) // $barraUbi es un
         <div id="documento">
 
             <header>
-                <a href="../../index.php"><img class="logo" src="../../imagenes/24x24/logo2.jpg" alt=""></a>
+                <a href="../../index.php"><img class="logo" src="../../imagenes/logo.png" alt=""></a>
                 <h1 id="titulo"><?php echo $cabecera; ?></h1>
             </header>
 

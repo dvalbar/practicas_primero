@@ -43,7 +43,7 @@ function cuerpo($num1, $num2) // Añadir aqui las variables
 Mostrarlas de forma que resulte 'el primer valor -0000000000017,5-, el segundo valor -
 379.987,24-' (usar number format para obtener el formateo de los números, los números se
 muestran con 15 caracteres en total, el primero relleno con 0 y el segundo con espacios-debe
-aparecer el espacio))<br><br>";
+aparecer el espacio))<br><br>".PHP_EOL;
 
     $primer_formato = number_format($num1, 1, ',', '.');
     $primer_resultado = str_pad($primer_formato, 15, "0", STR_PAD_LEFT);
@@ -51,7 +51,7 @@ aparecer el espacio))<br><br>";
     $segundo_formato = number_format($num2, 2, ',', '.');
     $segundo_resultado = str_pad($segundo_formato, 15, " ", STR_PAD_LEFT);
 
-    echo "El primer valor -" . $primer_resultado . "-, el segundo valor -" . $segundo_resultado . "-";
+    echo "El primer valor -" . $primer_resultado . "-, el segundo valor -" . $segundo_resultado . "-".PHP_EOL;
 }
 
 // Aqui escribiremos las funciones
