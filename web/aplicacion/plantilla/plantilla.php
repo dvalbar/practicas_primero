@@ -60,6 +60,7 @@ function inicioCuerpo(string $cabecera, array $barraUbi = []) // $barraUbi es un
         <div id="documento">
 
             <header>
+                <a href="../../index.php"><img class="logo" src="../../imagenes/logo.png" alt=""></a>
                 <h1 id="titulo"><?php echo $cabecera; ?></h1>
             </header>
 
@@ -72,6 +73,7 @@ function inicioCuerpo(string $cabecera, array $barraUbi = []) // $barraUbi es un
                     <li><a href="/index.php">Inicio</a></li>
                     <li><a href="/aplicacion/pruebas/index.php">Pruebas</a></li> <!-- Esto se añade a todas las paginas porque es la plantilla -->
                     <li><a href="/aplicacion/relacion1/index.php">Relación 1</a></li>
+                    <li><a href="/aplicacion/relacion2/index.php">Relación 2</a></li>
                 </ul>
 
             </div>

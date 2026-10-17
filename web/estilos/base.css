@@ -130,3 +130,7 @@ body {
     background-color: rgb(144, 188, 226);
     padding: 5px;
 }
+
+.logo {
+    border-radius: 50%;
+}
