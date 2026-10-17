@@ -35,7 +35,14 @@ function cuerpo() // Añadir aqui las variables
 ?>
     <br><br>
 <?php
-    
+    echo "3.- Genera una cadena aleatoria de 20 caracteres (los caracteres permitidos son letras
+minúsculas, letras mayúsculas y números)<br>
+a) A partir de un array en el que están todos los caracteres posibles que cumplen la
+condición. (tienes que rellenar el array con todos los caracteres validos)<br>
+b) A partir del código ASCII (se puede indicar un rango mayor y eliminar aquellos
+caracteres que no lo cumplan)." . PHP_EOL;
+
+
 }
 
 // Aqui escribiremos las funciones
