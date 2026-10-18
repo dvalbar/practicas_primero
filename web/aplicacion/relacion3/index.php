@@ -1,5 +1,7 @@
 <?php
 include_once(dirname(__FILE__) . "/../../cabecera.php");
+include_once(dirname(__FILE__) . "/libreria.php");
+
 //controlador
 $barraUbi =
     [
@@ -30,8 +32,9 @@ function cuerpo() // Añadir aqui las variables
 ?>
     <br><br>
     <h3>Funciones de la relación 3.</h3>
-
 <?php
+
+    cuentaVeces();
 
 }
 
