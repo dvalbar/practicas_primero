@@ -35,6 +35,7 @@ function cuerpo()
     <a href="./pasopar.php">Paso parámetros</a><br>
     <a href="./array.php">Prueba arrays</a><br>
     <a href="./cadenas.php">Prueba cadenas</a><br>
-    <a href="./expresionesRegulares.php">Prueba expresiones regulares</a>
+    <a href="./expresionesRegulares.php">Prueba expresiones regulares</a><br>
+    <a href="./index_funciones.php">Prueba funciones</a><br>
 <?php
 }

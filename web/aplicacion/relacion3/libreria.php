@@ -21,6 +21,8 @@ dar error si se indica como posición“2daw”o “primera”) -->
 
 <?php 
 
+    // Poner comentarios a cada funcion con /** */
+
     function cuentaVeces() {
         
     }
