@@ -11,18 +11,46 @@ el error. -->
 
 <!-- FUNCIONES -->
 
-<!-- 1.- Función cuentaVeces(). A esta función se le pasan cuatro parámetros: un array, una cadena y dos
-números. La función se encargará de añadir en el array el primer número a la posición asociativa
+<!-- 1.- Función cuentaVeces().
+A esta función se le pasan cuatro parámetros: un array, una cadena y dos números.
+
+La función se encargará de añadir en el array el primer número a la posición asociativa
 indicada por la cadena. Hay que tener en cuenta que el array debe quedar actualizado cuando se
-salga de la función. Además, cada vez que se llama a la función, se devuelve en el segundo número
+salga de la función.
+
+Además, cada vez que se llama a la función, se devuelve en el segundo número
 un valor que corresponde con el número de llamada actual (1 para la primera, 2 para la segunda
-llamada, etc). Se devolverá true si todo ha ido bien y false si se ha detectado algún error. (se debe
-dar error si se indica como posición“2daw”o “primera”) -->
+llamada, etc). Se devolverá true si todo ha ido bien y false si se ha detectado algún error.
+(se debe dar error si se indica como posición“2daw”o “primera”) -->
 
-<?php 
+<?php
 
-    // Poner comentarios a cada funcion con /** */
+/**
+ * Función que introduce en el array el num1 en la posicion asociativa de la cadena
+ * Tambien guarda el num de llamadas que se le hacen a la funcion
+ * 
+ * Devuelve true si esta todo correcto y false si encuentra algun error
+ *
+ * @param array $miArray
+ * @param string $miCadena
+ * @param integer $num1
+ * @param integer $num2
+ * @return true|false
+ */
+function cuentaVeces(array &$miArray, string $miCadena, int $num1, int &$num2): bool
+{
+    static $cont = 0;
+    $cont++;
+    $num2 = $cont;
 
-    function cuentaVeces() {
-        
+    if ($miCadena === "2daw" || $miCadena === "primera") {
+        return false; // Error
+    } else {
+        $miArray = [
+            $miCadena => $num1
+        ];
+
+
+        return true;
     }
+}

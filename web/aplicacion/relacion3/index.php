@@ -1,6 +1,6 @@
 <?php
 include_once(dirname(__FILE__) . "/../../cabecera.php");
-include_once ("libreria.php");
+include_once("libreria.php");
 
 //controlador
 $barraUbi =
@@ -14,12 +14,15 @@ $barraUbi =
         ]
     ];
 
+$contadorCuentaVeces = 0;
+$arrayCuentaVeces = [];
+
 //dibuja la plantilla de la vista
 inicioCabecera("RELACIÓN 3");
 cabecera();
 finCabecera();
 inicioCuerpo("RELACIÓN 3", $barraUbi);
-cuerpo();  //llamo a la vista
+cuerpo($contadorCuentaVeces, $arrayCuentaVeces);  //llamo a la vista
 finCuerpo();
 // **********************************************************
 
@@ -27,15 +30,30 @@ finCuerpo();
 function cabecera() {}
 
 //vista
-function cuerpo() // Añadir aqui las variables
+function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las variables
 {
 ?>
     <br><br>
     <h3>Funciones de la relación 3.</h3>
 <?php
 
+    echo "<h4>Función cuentaVeces()</h4>";
 
+    echo cuentaVeces($arrayCuentaVeces, "posicion1", 4, $contadorCuentaVeces) . "<br>";
 
+    echo "Número de veces que se ha llamado a la función: " . $contadorCuentaVeces . "<br>";
+
+    echo cuentaVeces($arrayCuentaVeces, "posicion2", 6, $contadorCuentaVeces) . "<br>";
+
+    echo "Número de veces que se ha llamado a la función: " . $contadorCuentaVeces . "<br>";
+
+    echo cuentaVeces($arrayCuentaVeces, "posicion2", 6, $contadorCuentaVeces) . "<br>";
+
+    echo "Número de veces que se ha llamado a la función: " . $contadorCuentaVeces . "<br>";
+
+    echo cuentaVeces($arrayCuentaVeces, "2daw", 4, $contadorCuentaVeces) . "<br>";
+
+    echo "Número de veces que se ha llamado a la función: " . $contadorCuentaVeces . "<br>";
 }
 
 // Aqui escribiremos las funciones
