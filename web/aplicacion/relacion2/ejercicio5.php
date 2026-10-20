@@ -56,7 +56,7 @@ función preg_match.<br><br>" . PHP_EOL;
 
     $resultado = [];
 
-    // etiqueta
+    // Etiqueta
     $expresion = '/<.+?>/';
 
     echo "<br>Número de etiquetas en el texto: " . preg_match_all($expresion, $cadena, $resultado, PREG_OFFSET_CAPTURE) . "<br><br>" . PHP_EOL;
@@ -65,7 +65,7 @@ función preg_match.<br><br>" . PHP_EOL;
         echo "Posición: " . $value[1] . " Etiqueta: " . htmlspecialchars($value[0]) . "<br>" . PHP_EOL;
     }
 
-    // numero
+    // Número
     $expresion = "/\d+\.\d+|\d+/";
 
     echo "<br>Número de números en el texto: " . preg_match_all($expresion, $cadena, $resultado, PREG_OFFSET_CAPTURE) . "<br><br>" . PHP_EOL;
@@ -74,8 +74,8 @@ función preg_match.<br><br>" . PHP_EOL;
         echo "Posición: " . $value[1] . " Número: " . htmlspecialchars($value[0]) . "<br>" . PHP_EOL;
     }
 
-    // dirección de email
-    $expresion = "/[a-z0-9]+@[a-z0-9]+\.[a-z0-9]+/";
+    // Dirección de email
+    $expresion = "/[\w.-]+@[\w.-]+\.[a-zA-z]{2,6}/"; // Expresión regular email
 
     echo "<br>Número de correos en el texto: " . preg_match_all($expresion, $cadena, $resultado, PREG_OFFSET_CAPTURE) . "<br><br>" . PHP_EOL;
 
