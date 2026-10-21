@@ -39,21 +39,25 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
 
     echo "<h4>Función cuentaVeces()</h4>";
 
-    echo cuentaVeces($arrayCuentaVeces, "posicion1", 4, $contadorCuentaVeces) . "<br>";
+    cuentaVeces($arrayCuentaVeces, "posicion1", 4, $contadorCuentaVeces) . "<br>";
 
     echo "Número de veces que se ha llamado a la función: " . $contadorCuentaVeces . "<br>";
 
-    echo cuentaVeces($arrayCuentaVeces, "posicion2", 6, $contadorCuentaVeces) . "<br>";
+    cuentaVeces($arrayCuentaVeces, "posicion2", 6, $contadorCuentaVeces) . "<br>";
 
     echo "Número de veces que se ha llamado a la función: " . $contadorCuentaVeces . "<br>";
 
-    echo cuentaVeces($arrayCuentaVeces, "posicion2", 6, $contadorCuentaVeces) . "<br>";
+    cuentaVeces($arrayCuentaVeces, "posicion3", 5, $contadorCuentaVeces) . "<br>";
 
     echo "Número de veces que se ha llamado a la función: " . $contadorCuentaVeces . "<br>";
 
-    echo cuentaVeces($arrayCuentaVeces, "2daw", 4, $contadorCuentaVeces) . "<br>";
+    cuentaVeces($arrayCuentaVeces, "2daw", 4, $contadorCuentaVeces) . "<br>";
 
-    echo "Número de veces que se ha llamado a la función: " . $contadorCuentaVeces . "<br>";
+    echo "Número de veces que se ha llamado a la función: " . $contadorCuentaVeces . "<br><br>";
+
+    foreach ($arrayCuentaVeces as $key => $value) {
+        echo "[".$key."] => ".$value."<br>";
+    }
 }
 
 // Aqui escribiremos las funciones
