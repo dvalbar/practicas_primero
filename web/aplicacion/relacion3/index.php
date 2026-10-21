@@ -80,14 +80,14 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
     echo operaciones(100, 2, 5, 7, 3, 4) . "<br>" . PHP_EOL;
     echo operaciones(1, 2, 5, 7, 3, 4) . "<br>" . PHP_EOL;
 
-    // Ejercicio 3
+    // Ejercicio 4
     echo "<br><h4>Función devuelve()</h4>" . PHP_EOL;
     $valor = 7;
-    echo devuelve($valor,4) . "<br>" . PHP_EOL;
+    echo devuelve($valor, 4) . "<br>" . PHP_EOL;
     echo $valor . "<br><br>" . PHP_EOL;
 
     // - Los tres parámetros
-    echo devuelve($valor,4,5) . "<br>" . PHP_EOL;
+    echo devuelve($valor, 4, 5) . "<br>" . PHP_EOL;
     echo $valor . "<br><br>" . PHP_EOL;
 
     // - El primer parámetro únicamente
@@ -95,13 +95,26 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
     echo $valor . "<br><br>" . PHP_EOL;
 
     // - El primer y el segundo parámetro
-    echo devuelve($valor,4) . "<br>" . PHP_EOL;
+    echo devuelve($valor, 4) . "<br>" . PHP_EOL;
     echo $valor . "<br><br>" . PHP_EOL;
 
     // - El primer y el tercer parámetro (ojo, el segundo parámetro no se indica)
     echo devuelve($valor, num3: 5) . "<br>" . PHP_EOL;
     echo $valor . "<br><br>" . PHP_EOL;
 
+    // Ejercicio 5
+    echo "<br><h4>Función hacerOperacion()</h4>" . PHP_EOL;
+    echo hacerOperacion("suma", 1, 9) . "<br>" . PHP_EOL;
+    echo hacerOperacion("resta", 1, 9) . "<br>" . PHP_EOL;
+    echo hacerOperacion("multiplicacion", 1, 9) . "<br>" . PHP_EOL;
+
+    if (hacerOperacion("multiplicacion", 1, 9) === false)
+        echo hacerOperacion("division", 1, 9) . "<br>" . PHP_EOL;
+    else
+        echo "Error: cadena no válida<br>" . PHP_EOL;
+
+    // Ejercicio 6
+    echo "<br><h4>Función llamadaAFuncion()</h4>" . PHP_EOL;
 }
 
 // Aqui escribiremos las funciones

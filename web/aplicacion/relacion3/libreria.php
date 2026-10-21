@@ -169,8 +169,87 @@ function operaciones(int $tipoOperacion, int $op1, int $op2, ...$resto): int
 // - El primer y el segundo parámetro
 // - El primer y el tercer parámetro (ojo, el segundo parámetro no se indica)
 
-function devuelve(int &$num1, int $num2=5, int $num3=10): int {
+/**
+ * Función a la recibe como parámetros tres números (int) y devuelve la suma de los tres valores
+ * en el primer parámetro y como resultado la multiplicacion de los tres valores.
+ * Los dos últimos parámetros tendrán definidos valor por defecto.
+ *
+ * @param integer $num1
+ * @param integer $num2
+ * @param integer $num3
+ * @return integer
+ */
+function devuelve(int &$num1, int $num2 = 5, int $num3 = 10): int
+{
     $resultado = $num1 * $num2 * $num3;
     $num1 += $num2 + $num3;
     return $resultado;
+}
+
+// 5.- Se tienen las funciones suma, resta y multiplicacion que reciben cada una dos parámetros
+// numéricos (entero) y que devuelven el resultado de la operación que indica su nombre sobre los
+// parámetros.
+
+// Tenemos la Función hacerOperacion() que recibe tres parámetros.
+// El primero es una cadena que puede ser suma, resta o multiplicacion. Los otros dos son los operandos.
+// Esta función se encargará de devolver el resultado de ejecutar la “cadena” con los operandos usando una
+// variablefunción para llamar a la operación.
+//
+// Hay que comprobar indicando una operación correcta (devuelve false si la operación no es válida).
+//
+// hacerOperacion(“resta”,3,1) //devuelve 3-1. No se llama directamente a la función resta, se tiene una variable función para ello
+
+function suma(int $num1, int $num2): int
+{
+    return $num1 + $num2;
+}
+
+function resta(int $num1, int $num2): int
+{
+    return $num1 - $num2;
+}
+
+function multiplicacion(int $num1, int $num2): int
+{
+    return $num1 * $num2;
+}
+
+/**
+ * Función que recibe tres parámetros. Una cadena que puede ser "suma", "resta" o "multiplicacion", los otros dos son los operandos. Esta
+ * funcion devuelve el resultado de ejecutar la "cadena" con los operandos usando una variable-función para llamar a la operación
+ *
+ * @param string $cadena
+ * @param integer $num1
+ * @param integer $num2
+ * @return string|false
+ */
+function hacerOperacion(string $cadena, int $num1, int $num2): string|false
+{
+    $resultado = "";
+    switch ($cadena) {
+        case "suma":
+            $resultado = $cadena($num1, $num2);
+            break;
+        case "resta":
+            $resultado = $cadena($num1, $num2);
+            break;
+        case "multiplicacion":
+            $resultado = $cadena($num1, $num2);
+            break;
+        default:
+            $resultado = false; // Error
+            break;
+    }
+    return $resultado;
+}
+
+// 6.- Crear la función llamadaAFuncion que recibe tres operandos (entero, entero y callable) y que
+// devuelve un entero que es el resultado de llamar al parámetro callback con los otros parámetros.
+// Llamar a la función llamadaAFuncion 3 veces pasando como parámetro de callback funciones de
+// flecha distintas que tu definas
+// llamadaAFuncion(1,2,fn($a,$b)=>$a+$b)
+// Repetir las llamadas, definiendo las 3 funciones como anónimas (se asignan a variables)
+
+function llamadaAFuncion() {
+
 }
