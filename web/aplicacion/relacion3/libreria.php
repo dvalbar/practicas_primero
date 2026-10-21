@@ -37,7 +37,8 @@ llamada, etc). Se devolverá true si todo ha ido bien y false si se ha detectado
  * @param integer $num2
  * @return true|false
  */
-function cuentaVeces(array &$miArray, string $miCadena, int $num1, int &$num2): bool {
+function cuentaVeces(array &$miArray, string $miCadena, int $num1, int &$num2): bool
+{
 
     static $cont = 0;
     $cont++;
@@ -68,7 +69,8 @@ function cuentaVeces(array &$miArray, string $miCadena, int $num1, int &$num2): 
  * @param integer $num -> Valor por defecto = 10
  * @return string|false
  */
-function generarCadena(int $num = 10): string | false {
+function generarCadena(int $num = 10): string | false
+{
 
     $caracteres = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
         'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
@@ -79,7 +81,7 @@ function generarCadena(int $num = 10): string | false {
     if ($num <= 0) {
         return false; // Error
     } else {
-        for ($i = 0; $i <= $num; $i++) {
+        for ($i = 0; $i < $num; $i++) {
             $cadena .= $caracteres[mt_rand(0, count($caracteres) - 1)];
         }
         return $cadena;
@@ -97,23 +99,55 @@ function generarCadena(int $num = 10): string | false {
 // En cualquier otro caso se suman los operandos que ocupan las posiciones pares y se restan
 // los de las posiciones impares (el primer operando es 1).
 
-
-function operaciones(int $tipoOperacion, int $op1, int $op2):int {
+/**
+ * Función que recibe al menos 3 parametros. El primero es el tipo de la operacion y el resto son números
+ * 
+ * 1. Suma todos los operandos
+ * 2. Al primer operando se restan el resto
+ * 3. Multiplicación de todos los operandos.
+ * 
+ * Si se elige otra opción que no sean estas tres, se suman los operandos que ocupan las posiciones pares y se restan
+ * los de las posiciones impares
+ *
+ * @param integer $tipoOperacion
+ * @param integer $op1
+ * @param integer $op2
+ * @param array ...$resto
+ * @return integer
+ */
+function operaciones(int $tipoOperacion, int $op1, int $op2, ...$resto): int
+{
 
     $resultado = 0;
 
     switch ($tipoOperacion) {
         case 1:
-            $resultado+=$op1+$op2;
+            $resultado = $op1 + $op2;
+            foreach ($resto as $value) {
+                $resultado += $value;
+            }
             break;
         case 2:
-
+            $resultado = $op1 - $op2;
+            foreach ($resto as $value) {
+                $resultado -= $value;
+            }
             break;
         case 3:
-
+            $resultado = $op1 * $op2;
+            foreach ($resto as $value) {
+                $resultado *= $value;
+            }
             break;
         default:
-            
+            $resultado = -$op1 + $op2;
+            foreach ($resto as $key => $value) {
+                if ($key % 2 !== 0) {
+                    $resultado += $value;
+                } else {
+                    $resultado -= $value;
+                }
+            }
             break;
     }
 

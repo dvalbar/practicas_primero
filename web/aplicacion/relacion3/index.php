@@ -71,6 +71,14 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
 
     // Ejercicio 3
     echo "<br><h4>Función operaciones()</h4>" . PHP_EOL;
+    echo operaciones(1, 50, 10, 5, 2) . "<br>" . PHP_EOL;
+    echo operaciones(2, 50, 10, 5, 2) . "<br>" . PHP_EOL;
+    echo operaciones(3, 50, 10, 5, 2) . "<br>" . PHP_EOL;
+    echo operaciones(4, 50, 10, 5, 2) . "<br>" . PHP_EOL;
+
+    echo operaciones(1, 2, 5, 7, 3, 4) . "<br>" . PHP_EOL;
+    echo operaciones(100, 2, 5, 7, 3, 4) . "<br>" . PHP_EOL;
+    echo operaciones(1, 2, 5, 7, 3, 4) . "<br>" . PHP_EOL;
 
 }
 
