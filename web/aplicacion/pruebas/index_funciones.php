@@ -51,6 +51,29 @@ $numero=$$otra;
 $otra="suma";
 $numero=$otra(1,2,3,4);
 
+// funciones anonimas
+$func = function (float $a, float $b, float ...$resto): float {
+    $res = $a + $b;
+    foreach ($resto as $num)
+        $res += $num;
+    return $res;
+};
+
+$numero = $func(1,2,3,4);
+
+// ----------------------------
+// Comparativa funcion anonima vs funcion flecha
+
+// funcion anonima
+$s=function (int $a,int $b) {
+    return $a+$b;
+};
+// funcion flecha
+$s=fn(int $a, int $b)=>$a+$b;
+
+
+$numero=$s(3,20);
+
 //dibuja la plantilla de la vista
 inicioCabecera("FUNCIONES");
 cabecera();
