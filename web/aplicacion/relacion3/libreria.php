@@ -153,3 +153,24 @@ function operaciones(int $tipoOperacion, int $op1, int $op2, ...$resto): int
 
     return $resultado;
 }
+
+// 4.- Función devuelve().
+// Esta función recibe como parámetros tres números (enteros) y devuelve la
+// suma de los tres valores en el primer parámetro y como resultado de la función el producto de los
+// tres valores. Los dos últimos parámetros tendrán definidos valor por defecto (el que queráis).
+//
+// $valor=7;
+// devuelve($valor,4) //$valor valdrá 7+4+10 y se devuelve 7*4*10 (10 es el valor por defecto que
+// le he puesto al tercer parámetro.
+//
+// Hacer varias llamadas a la función indicando:
+// - Los tres parámetros
+// - El primer parámetro únicamente
+// - El primer y el segundo parámetro
+// - El primer y el tercer parámetro (ojo, el segundo parámetro no se indica)
+
+function devuelve(int &$num1, int $num2=5, int $num3=10): int {
+    $resultado = $num1 * $num2 * $num3;
+    $num1 += $num2 + $num3;
+    return $resultado;
+}

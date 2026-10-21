@@ -80,6 +80,28 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
     echo operaciones(100, 2, 5, 7, 3, 4) . "<br>" . PHP_EOL;
     echo operaciones(1, 2, 5, 7, 3, 4) . "<br>" . PHP_EOL;
 
+    // Ejercicio 3
+    echo "<br><h4>Función devuelve()</h4>" . PHP_EOL;
+    $valor = 7;
+    echo devuelve($valor,4) . "<br>" . PHP_EOL;
+    echo $valor . "<br><br>" . PHP_EOL;
+
+    // - Los tres parámetros
+    echo devuelve($valor,4,5) . "<br>" . PHP_EOL;
+    echo $valor . "<br><br>" . PHP_EOL;
+
+    // - El primer parámetro únicamente
+    echo devuelve($valor) . "<br>" . PHP_EOL;
+    echo $valor . "<br><br>" . PHP_EOL;
+
+    // - El primer y el segundo parámetro
+    echo devuelve($valor,4) . "<br>" . PHP_EOL;
+    echo $valor . "<br><br>" . PHP_EOL;
+
+    // - El primer y el tercer parámetro (ojo, el segundo parámetro no se indica)
+    echo devuelve($valor, num3: 5) . "<br>" . PHP_EOL;
+    echo $valor . "<br><br>" . PHP_EOL;
+
 }
 
 // Aqui escribiremos las funciones
