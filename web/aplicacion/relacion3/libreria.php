@@ -37,8 +37,8 @@ llamada, etc). Se devolverá true si todo ha ido bien y false si se ha detectado
  * @param integer $num2
  * @return true|false
  */
-function cuentaVeces(array &$miArray, string $miCadena, int $num1, int &$num2): bool
-{
+function cuentaVeces(array &$miArray, string $miCadena, int $num1, int &$num2): bool {
+
     static $cont = 0;
     $cont++;
     $num2 = $cont;
@@ -52,4 +52,70 @@ function cuentaVeces(array &$miArray, string $miCadena, int $num1, int &$num2): 
 
         return true;
     }
+}
+
+// 2.- Función generarCadena().
+// A esta función se le pasa un parámetro con valor por defecto 10 y se
+// encarga de devolver una cadena de longitud la indicada cuyos caracteres son generados de forma
+// aleatoria (caracteres válidos: letras mayúsculas, minúsculas y números). Devolverá false 
+// si se ha indicado un número negativo o igual a 0.
+
+/**
+ * Función a la que se le pasa un número mayor a 0 y crea una cadena con caracteres aleatorios 
+ * con la longitud del número que se le ha pasado. Devolverá false si el número es negativo o 0. Si no se 
+ * le indica ningún número, tomará como valor por defecto 10.
+ *
+ * @param integer $num -> Valor por defecto = 10
+ * @return string|false
+ */
+function generarCadena(int $num = 10): string | false {
+
+    $caracteres = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+        'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+        '0','1','2','3','4','5','6','7','8','9'
+    ];
+    $cadena = "";
+
+    if ($num <= 0) {
+        return false; // Error
+    } else {
+        for ($i = 0; $i <= $num; $i++) {
+            $cadena .= $caracteres[mt_rand(0, count($caracteres) - 1)];
+        }
+        return $cadena;
+    }
+}
+
+// 3.- Función operaciones().
+// Esta función recibe al menos tres parámetros. El primero (entero) es el
+// tipo de operación. Los demás son valores numéricos (los operandos). El tipo de operación puede ser
+//
+// 1, suma todos los operandos
+// 2, al primer operando se restan el resto
+// 3, multiplicación de todos los operandos.
+//
+// En cualquier otro caso se suman los operandos que ocupan las posiciones pares y se restan
+// los de las posiciones impares (el primer operando es 1).
+
+
+function operaciones(int $tipoOperacion, int $op1, int $op2):int {
+
+    $resultado = 0;
+
+    switch ($tipoOperacion) {
+        case 1:
+            $resultado+=$op1+$op2;
+            break;
+        case 2:
+
+            break;
+        case 3:
+
+            break;
+        default:
+            
+            break;
+    }
+
+    return $resultado;
 }
