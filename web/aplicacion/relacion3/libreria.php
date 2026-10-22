@@ -245,11 +245,24 @@ function hacerOperacion(string $cadena, int $num1, int $num2): string|false
 
 // 6.- Crear la función llamadaAFuncion que recibe tres operandos (entero, entero y callable) y que
 // devuelve un entero que es el resultado de llamar al parámetro callback con los otros parámetros.
+
 // Llamar a la función llamadaAFuncion 3 veces pasando como parámetro de callback funciones de
 // flecha distintas que tu definas
+
 // llamadaAFuncion(1,2,fn($a,$b)=>$a+$b)
+
 // Repetir las llamadas, definiendo las 3 funciones como anónimas (se asignan a variables)
 
-function llamadaAFuncion() {
-
+/**
+ * Función a la que se le pasan dos números entero y un operando callable que devuelve
+ * un número entero que es el resultado de llamar al parámetro callback con los otros parámetros.
+ *
+ * @param integer $num1
+ * @param integer $num2
+ * @param callable $funcion
+ * @return integer
+ */
+function llamadaAFuncion(int $num1, int $num2, callable $funcion): int {
+    return $funcion($num1,$num2);
 }
+

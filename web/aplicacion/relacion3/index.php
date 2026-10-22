@@ -115,6 +115,34 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
 
     // Ejercicio 6
     echo "<br><h4>Función llamadaAFuncion()</h4>" . PHP_EOL;
+
+    // Llamar a la función llamadaAFuncion 3 veces pasando como parámetro de callback funciones de
+    // flecha distintas que tu definas
+
+    echo llamadaAFuncion(1, 2, fn($a, $b) => $a + $b) . "<br>" . PHP_EOL;
+    echo llamadaAFuncion(1, 2, fn($a, $b) => $a - $b) . "<br>" . PHP_EOL;
+    echo llamadaAFuncion(1, 2, fn($a, $b) => $a * $b) . "<br><br>" . PHP_EOL;
+
+
+    // Repetir las llamadas, definiendo las 3 funciones como anónimas (se asignan a variables)
+    $operacion1 = function (int $a, int $b): int {
+        return $a + $b;
+    };
+
+    $operacion2 = function (int $a, int $b): int {
+        return $a - $b;
+    };
+
+    $operacion3 = function (int $a, int $b): int {
+        return $a * $b;
+    };
+
+    echo llamadaAFuncion(1, 2, $operacion1) . "<br>" . PHP_EOL;
+    echo llamadaAFuncion(1, 2, $operacion2) . "<br>" . PHP_EOL;
+    echo llamadaAFuncion(1, 2, $operacion3) . "<br>" . PHP_EOL;
+
+    // Ejercicio 7
+    echo "<br><h4>Función ordenar()</h4>" . PHP_EOL;
 }
 
 // Aqui escribiremos las funciones
