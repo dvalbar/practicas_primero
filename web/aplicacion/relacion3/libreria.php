@@ -71,7 +71,6 @@ function cuentaVeces(array &$miArray, string $miCadena, int $num1, int &$num2): 
  */
 function generarCadena(int $num = 10): string | false
 {
-
     $caracteres = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
         'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
         '0','1','2','3','4','5','6','7','8','9'
@@ -262,7 +261,27 @@ function hacerOperacion(string $cadena, int $num1, int $num2): string|false
  * @param callable $funcion
  * @return integer
  */
-function llamadaAFuncion(int $num1, int $num2, callable $funcion): int {
-    return $funcion($num1,$num2);
+function llamadaAFuncion(int $num1, int $num2, callable $funcion): int
+{
+    return $funcion($num1, $num2);
 }
 
+// 7.- Función ordenar(): A esta función se le pasa un array y lo ordena mediante una llamada a usort,
+// al que se indicará como función callback una función anónima que ordenará en orden descendente
+// según el número de caracteres de cada elemento.
+//
+// $vector=array((“uno”,“grande”,“caminos”,”a”)
+// Ordenar($vector);//el vector debe quedar (“caminos”,”grande”,”uno”,”a”)
+
+/**
+ * Función que ordena un array en orden descendente según el
+ * número de caracteres de cada elemento
+ *
+ * @param array $array
+ * @return void
+ */
+function ordenar(array &$array): void
+{
+    $funcion = fn($a, $b): int => mb_strlen($a) < mb_strlen($b);
+    usort($array, $funcion);
+}

@@ -143,6 +143,20 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
 
     // Ejercicio 7
     echo "<br><h4>Función ordenar()</h4>" . PHP_EOL;
+
+    $vector = array("uno", "grande", "caminos", "a");
+
+    foreach ($vector as $value) {
+        echo $value . ", ";
+    }
+
+    echo "<br><br>" . PHP_EOL;
+    ordenar($vector); //el vector debe quedar (“caminos”,”grande”,”uno”,”a”)
+
+    // Mostrar array
+    foreach ($vector as $value) {
+        echo $value . ", ";
+    }
 }
 
 // Aqui escribiremos las funciones
