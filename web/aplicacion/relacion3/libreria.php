@@ -169,7 +169,7 @@ function operaciones(int $tipoOperacion, int $op1, int $op2, ...$resto): int
 // - El primer y el tercer parámetro (ojo, el segundo parámetro no se indica)
 
 /**
- * Función a la recibe como parámetros tres números (int) y devuelve la suma de los tres valores
+ * Función que recibe como parámetros tres números (int) y devuelve la suma de los tres valores
  * en el primer parámetro y como resultado la multiplicacion de los tres valores.
  * Los dos últimos parámetros tendrán definidos valor por defecto.
  *

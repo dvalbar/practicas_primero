@@ -1,6 +1,6 @@
 <?php
 include_once(dirname(__FILE__) . "/../../cabecera.php");
-include_once("libreria.php");
+include_once("libreria.php"); // Importar libreria.php (Libreria de funciones)
 
 //controlador
 $barraUbi =
@@ -37,6 +37,7 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
     <h3>Funciones de la relación 3.</h3>
 <?php
 
+    // ==============================================================================================================
     // Ejercicio 1
     echo "<h4>Función cuentaVeces()</h4>" . PHP_EOL;
 
@@ -60,6 +61,7 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
         echo "[" . $key . "] => " . $value . "<br>";
     }
 
+    // ==============================================================================================================
     // Ejercicio 2
     echo "<br><h4>Función generarCadena()</h4>" . PHP_EOL;
     echo generarCadena(5) . "<br>" . PHP_EOL;
@@ -69,6 +71,7 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
     else
         echo generarCadena(-3) . PHP_EOL;
 
+    // ==============================================================================================================
     // Ejercicio 3
     echo "<br><h4>Función operaciones()</h4>" . PHP_EOL;
     echo operaciones(1, 50, 10, 5, 2) . "<br>" . PHP_EOL;
@@ -80,6 +83,7 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
     echo operaciones(100, 2, 5, 7, 3, 4) . "<br>" . PHP_EOL;
     echo operaciones(1, 2, 5, 7, 3, 4) . "<br>" . PHP_EOL;
 
+    // ==============================================================================================================
     // Ejercicio 4
     echo "<br><h4>Función devuelve()</h4>" . PHP_EOL;
     $valor = 7;
@@ -102,6 +106,7 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
     echo devuelve($valor, num3: 5) . "<br>" . PHP_EOL;
     echo $valor . "<br><br>" . PHP_EOL;
 
+    // ==============================================================================================================
     // Ejercicio 5
     echo "<br><h4>Función hacerOperacion()</h4>" . PHP_EOL;
     echo hacerOperacion("suma", 1, 9) . "<br>" . PHP_EOL;
@@ -113,6 +118,7 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
     else
         echo "Error: cadena no válida<br>" . PHP_EOL;
 
+    // ==============================================================================================================
     // Ejercicio 6
     echo "<br><h4>Función llamadaAFuncion()</h4>" . PHP_EOL;
 
@@ -122,7 +128,6 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
     echo llamadaAFuncion(1, 2, fn($a, $b) => $a + $b) . "<br>" . PHP_EOL;
     echo llamadaAFuncion(1, 2, fn($a, $b) => $a - $b) . "<br>" . PHP_EOL;
     echo llamadaAFuncion(1, 2, fn($a, $b) => $a * $b) . "<br><br>" . PHP_EOL;
-
 
     // Repetir las llamadas, definiendo las 3 funciones como anónimas (se asignan a variables)
     $operacion1 = function (int $a, int $b): int {
@@ -141,6 +146,7 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
     echo llamadaAFuncion(1, 2, $operacion2) . "<br>" . PHP_EOL;
     echo llamadaAFuncion(1, 2, $operacion3) . "<br>" . PHP_EOL;
 
+    // ==============================================================================================================
     // Ejercicio 7
     echo "<br><h4>Función ordenar()</h4>" . PHP_EOL;
 
