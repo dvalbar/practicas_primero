@@ -48,10 +48,11 @@ aparecer el espacio))<br><br>".PHP_EOL;
     $primer_formato = number_format($num1, 1, ',', '.');
     $primer_resultado = str_pad($primer_formato, 15, "0", STR_PAD_LEFT);
 
-    $segundo_formato = number_format($num2, 2, ',', '.');
-    $segundo_resultado = str_pad($segundo_formato, 15, " ", STR_PAD_LEFT);
+    $numero = number_format($num2, 2, ",", ".");
 
-    echo "El primer valor -" . $primer_resultado . "-, el segundo valor -" . $segundo_resultado . "-".PHP_EOL;
+    // Formateo rellenando con espacios en blanco html (&nbsp;)
+    echo "El primer valor -" . $primer_resultado;
+    echo '- el segundo valor -' . str_repeat('&nbsp;', 15 - mb_strlen($numero)) . $numero . '-' . PHP_EOL;
 }
 
 // Aqui escribiremos las funciones
