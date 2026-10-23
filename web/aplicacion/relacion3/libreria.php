@@ -1,15 +1,23 @@
 <!-- NOTA: Cuando se crea una librería:
 - Las funciones que realizan operaciones no muestran texto ni devuelven cadena con el
 texto formateado, es la aplicación principal quien se encarga de mostrar los resultados.
+
 - Se comprueban argumentos. En caso de error se devuelve false. En la aplicación
 principal se comprueba si la llamada a una función es correcta o errónea.
+
 - Se documentan las funciones indicando parámetros y operación: usar /**. Además se
 indican comentarios en todo lo que se deba aclarar de su funcionamiento.
+
 - En todas las funciones se le indicará el tipo de los parámetros/valor de retorno.
+
 - Cuando la función pueda devolver error, se hará la llamada comprobando si se ha producido o no
 el error. -->
 
+
+
+<!-- ========================================================================================= -->
 <!-- FUNCIONES -->
+<!-- ========================================================================================= -->
 
 <!-- 1.- Función cuentaVeces().
 A esta función se le pasan cuatro parámetros: un array, una cadena y dos números.
@@ -31,15 +39,14 @@ llamada, etc). Se devolverá true si todo ha ido bien y false si se ha detectado
  * 
  * Devuelve true si esta todo correcto y false si encuentra algun error
  *
- * @param array $miArray
- * @param string $miCadena
- * @param integer $num1
- * @param integer $num2
- * @return true|false
+ * @param array $miArray Array de almacenamiento que se actualiza por referencia.
+ * @param string $miCadena Clave asociativa de destino (no válida si es "2daw" o "primera").
+ * @param integer $num1 Valor numérico que se va a guardar en la clave especificada.
+ * @param integer $num2 Variable por referencia que almacena el número total de ejecuciones.
+ * @return bool Devuelve true si la asignación es correcta o false si la clave no está permitida.
  */
 function cuentaVeces(array &$miArray, string $miCadena, int $num1, int &$num2): bool
 {
-
     static $cont = 0;
     $cont++;
     $num2 = $cont;
@@ -66,14 +73,74 @@ function cuentaVeces(array &$miArray, string $miCadena, int $num1, int &$num2): 
  * con la longitud del número que se le ha pasado. Devolverá false si el número es negativo o 0. Si no se 
  * le indica ningún número, tomará como valor por defecto 10.
  *
- * @param integer $num -> Valor por defecto = 10
- * @return string|false
+ * @param integer $num Longitud de la cadena aleatoria a generar (Valor por defecto = 10).
+ * @return string|false Devuelve la cadena alfanumérica generada o false si el tamaño es menor o igual a 0.
  */
 function generarCadena(int $num = 10): string | false
 {
-    $caracteres = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-        'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-        '0','1','2','3','4','5','6','7','8','9'
+    $caracteres = [
+        'a',
+        'b',
+        'c',
+        'd',
+        'e',
+        'f',
+        'g',
+        'h',
+        'i',
+        'j',
+        'k',
+        'l',
+        'm',
+        'n',
+        'o',
+        'p',
+        'q',
+        'r',
+        's',
+        't',
+        'u',
+        'v',
+        'w',
+        'x',
+        'y',
+        'z',
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H',
+        'I',
+        'J',
+        'K',
+        'L',
+        'M',
+        'N',
+        'O',
+        'P',
+        'Q',
+        'R',
+        'S',
+        'T',
+        'U',
+        'V',
+        'W',
+        'X',
+        'Y',
+        'Z',
+        '0',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9'
     ];
     $cadena = "";
 
@@ -108,11 +175,11 @@ function generarCadena(int $num = 10): string | false
  * Si se elige otra opción que no sean estas tres, se suman los operandos que ocupan las posiciones pares y se restan
  * los de las posiciones impares
  *
- * @param integer $tipoOperacion
- * @param integer $op1
- * @param integer $op2
- * @param array ...$resto
- * @return integer
+ * @param integer $tipoOperacion Identificador numérico del tipo de cálculo matemático a realizar.
+ * @param integer $op1 Primer operando obligatorio del cálculo.
+ * @param integer $op2 Segundo operando obligatorio del cálculo.
+ * @param array ...$resto Lista variable de operandos numéricos adicionales.
+ * @return integer Devuelve el resultado final entero de la operación matemática procesada.
  */
 function operaciones(int $tipoOperacion, int $op1, int $op2, ...$resto): int
 {
@@ -173,10 +240,10 @@ function operaciones(int $tipoOperacion, int $op1, int $op2, ...$resto): int
  * en el primer parámetro y como resultado la multiplicacion de los tres valores.
  * Los dos últimos parámetros tendrán definidos valor por defecto.
  *
- * @param integer $num1
- * @param integer $num2
- * @param integer $num3
- * @return integer
+ * @param integer $num1 Primer número pasado por referencia que acumulará la suma de los tres valores.
+ * @param integer $num2 Segundo operando utilizado para el cálculo (Valor por defecto = 5).
+ * @param integer $num3 Tercer operando utilizado para el cálculo (Valor por defecto = 10).
+ * @return integer Devuelve la multiplicación acumulada de los tres parámetros iniciales.
  */
 function devuelve(int &$num1, int $num2 = 5, int $num3 = 10): int
 {
@@ -198,16 +265,37 @@ function devuelve(int &$num1, int $num2 = 5, int $num3 = 10): int
 //
 // hacerOperacion(“resta”,3,1) //devuelve 3-1. No se llama directamente a la función resta, se tiene una variable función para ello
 
+/**
+ * Función que suma dos números
+ *
+ * @param integer $num1 Primer operando
+ * @param integer $num2 Segundo operando
+ * @return integer Devuelve la suma de los operandos
+ */
 function suma(int $num1, int $num2): int
 {
     return $num1 + $num2;
 }
 
+/**
+ * Función que resta dos números
+ *
+ * @param integer $num1 Primer operando
+ * @param integer $num2 Segundo operando
+ * @return integer Devuelve la resta de los operandos
+ */
 function resta(int $num1, int $num2): int
 {
     return $num1 - $num2;
 }
 
+/**
+ * Función que multiplica dos números
+ *
+ * @param integer $num1 Primer operando
+ * @param integer $num2 Segundo operando
+ * @return integer Devuelve la multiplicación de los operandos
+ */
 function multiplicacion(int $num1, int $num2): int
 {
     return $num1 * $num2;
@@ -217,10 +305,10 @@ function multiplicacion(int $num1, int $num2): int
  * Función que recibe tres parámetros. Una cadena que puede ser "suma", "resta" o "multiplicacion", los otros dos son los operandos. Esta
  * funcion devuelve el resultado de ejecutar la "cadena" con los operandos usando una variable-función para llamar a la operación
  *
- * @param string $cadena
- * @param integer $num1
- * @param integer $num2
- * @return string|false
+ * @param string $cadena Nombre de la función dinámica que se va a invocar ("suma", "resta" o "multiplicacion").
+ * @param integer $num1 Primer número entero para la operación aritmética.
+ * @param integer $num2 Segundo número entero para la operación aritmética.
+ * @return string|false Devuelve el resultado de la función variable en formato cadena o false si la operación no es válida.
  */
 function hacerOperacion(string $cadena, int $num1, int $num2): string|false
 {
@@ -256,10 +344,10 @@ function hacerOperacion(string $cadena, int $num1, int $num2): string|false
  * Función a la que se le pasan dos números entero y un operando callable que devuelve
  * un número entero que es el resultado de llamar al parámetro callback con los otros parámetros.
  *
- * @param integer $num1
- * @param integer $num2
- * @param callable $funcion
- * @return integer
+ * @param integer $num1 Primer valor numérico entero que se enviará al callback.
+ * @param integer $num2 Segundo valor numérico entero que se enviará al callback.
+ * @param callable $funcion Función anónima o de flecha encargada de procesar los dos números.
+ * @return integer Devuelve la resolución entera producida por la ejecución del parámetro callback.
  */
 function llamadaAFuncion(int $num1, int $num2, callable $funcion): int
 {
@@ -277,11 +365,11 @@ function llamadaAFuncion(int $num1, int $num2, callable $funcion): int
  * Función que ordena un array en orden descendente según el
  * número de caracteres de cada elemento
  *
- * @param array $array
- * @return void
+ * @param array $array Estructura de datos array pasada por referencia que va a ser reordenada.
+ * @return void No retorna ningún valor dado que el array de entrada se modifica directamente.
  */
 function ordenar(array &$array): void
 {
-    $funcion = fn($a, $b): int => mb_strlen($a) < mb_strlen($b);
+    $funcion = fn($a, $b): int => mb_strlen($b) <=> mb_strlen($a);
     usort($array, $funcion);
 }

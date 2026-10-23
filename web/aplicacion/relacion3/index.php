@@ -64,12 +64,24 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
     // ==============================================================================================================
     // Ejercicio 2
     echo "<br><h4>Función generarCadena()</h4>" . PHP_EOL;
-    echo generarCadena(5) . "<br>" . PHP_EOL;
-    echo generarCadena() . "<br>" . PHP_EOL;
-    if (generarCadena(-3) === false)
+
+    if (generarCadena(5) === false) {
         echo "La cadena no puede tener longitud negativa<br>" . PHP_EOL;
-    else
-        echo generarCadena(-3) . PHP_EOL;
+    } else {
+        echo generarCadena(5) . "<br>" . PHP_EOL;
+    }
+
+    if (generarCadena() === false) {
+        echo "La cadena no puede tener longitud negativa<br>" . PHP_EOL;
+    } else {
+        echo generarCadena() . "<br>" . PHP_EOL;
+    }
+
+    if (generarCadena(-3) === false) {
+        echo "La cadena no puede tener longitud negativa<br>" . PHP_EOL;
+    } else {
+        echo generarCadena(-3) . "<br>" . PHP_EOL;
+    }
 
     // ==============================================================================================================
     // Ejercicio 3
@@ -104,19 +116,39 @@ function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las var
 
     // - El primer y el tercer parámetro (ojo, el segundo parámetro no se indica)
     echo devuelve($valor, num3: 5) . "<br>" . PHP_EOL;
-    echo $valor . "<br><br>" . PHP_EOL;
+    echo $valor . "<br>" . PHP_EOL;
 
     // ==============================================================================================================
     // Ejercicio 5
     echo "<br><h4>Función hacerOperacion()</h4>" . PHP_EOL;
-    echo hacerOperacion("suma", 1, 9) . "<br>" . PHP_EOL;
-    echo hacerOperacion("resta", 1, 9) . "<br>" . PHP_EOL;
-    echo hacerOperacion("multiplicacion", 1, 9) . "<br>" . PHP_EOL;
 
-    if (hacerOperacion("multiplicacion", 1, 9) === false)
-        echo hacerOperacion("division", 1, 9) . "<br>" . PHP_EOL;
-    else
+    // Suma
+    if (hacerOperacion("suma", 1, 9) === false) {
         echo "Error: cadena no válida<br>" . PHP_EOL;
+    } else {
+        echo hacerOperacion("suma", 1, 9) . "<br>" . PHP_EOL;
+    }
+
+    // Resta
+    if (hacerOperacion("resta", 1, 9) === false) {
+        echo "Error: cadena no válida<br>" . PHP_EOL;
+    } else {
+        echo hacerOperacion("resta", 1, 9) . "<br>" . PHP_EOL;
+    }
+
+    // Multiplicacion
+    if (hacerOperacion("multiplicacion", 1, 9) === false) {
+        echo "Error: cadena no válida<br>" . PHP_EOL;
+    } else {
+        echo hacerOperacion("multiplicacion", 1, 9) . "<br>" . PHP_EOL;
+    }
+
+    // Division (Error)
+    if (hacerOperacion("division", 1, 9) === false) {
+        echo "Error: cadena no válida<br>" . PHP_EOL;
+    } else {
+        echo hacerOperacion("division", 1, 9) . "<br>" . PHP_EOL;
+    }
 
     // ==============================================================================================================
     // Ejercicio 6
