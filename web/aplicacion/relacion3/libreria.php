@@ -52,7 +52,7 @@ function cuentaVeces(array &$miArray, string $miCadena, int $num1, int &$num2): 
     $num2 = $cont;
     static $arrayMetodo = [];
 
-    if ($miCadena === "2daw" || $miCadena === "primera") {
+    if ($miCadena === "2daw" || $miCadena === "primera" || $miCadena === "") {
         return false; // Error
     } else {
         $arrayMetodo[$miCadena] = $num1;
