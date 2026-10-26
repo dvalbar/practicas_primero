@@ -106,7 +106,8 @@ body {
 }
 
 #barraMenu li {
-    padding-right: 5%;
+    padding-right: 3%;
+    list-style-type: none;
 }
 
 #barraMenu a {
