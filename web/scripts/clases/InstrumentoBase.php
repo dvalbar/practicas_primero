@@ -73,9 +73,13 @@ class InstrumentoBase
         return "Instrumento con descripción {$this->_descripcion}, instancia 9999 de un total de 999. Tiene {$this->_edad} años. La clase es ".__CLASS__;
     }
 
-    //     - public function __set(string $nombre, mixed $valor):void Se ejecuta al escribir datos
+    // - public function __set(string $nombre, mixed $valor):void Se ejecuta al escribir datos
     // sobre propiedades inaccesibles. Es llamado de forma automática cuando se actualiza el
     // valor de una propiedad que no es visible.
+    public function __set(string $nombre, mixed $valor):void {
+        throw new Exception('No existe la propiedad ' . $nombre);
+    }
+
     // - Public function __get(string$nombre):mixed Se utiliza para consultar datos a partir de
     // propiedades inaccesibles. Se llama de forma automática cuando se lee el valor de una
     // propiedad que no es visible.

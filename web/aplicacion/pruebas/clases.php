@@ -51,6 +51,42 @@ $segunda=Unica::crear(300);
 // CLASE INSTITUTO
 $ins = new Instituto();
 
+// Sobrecarga
+$clase1 = new ClaseNormal();
+$clase2 = new ClaseNormal();
+
+$clase1->cadena="Hola mundo.";
+
+$cad="";
+if (isset($clase1->cadena)) {
+    $cad=$clase1->cadena;
+}
+
+if (isset($clase2->cadena)) {
+    $cad = $clase2->cadena;
+}
+
+// Clase sin sobrecarga
+$clase1 = new ClaseSinSobrecarga();
+// $clase1->cadena="Adios mundo.";
+$clase1->numero=100;
+$cad=$clase1->cadena;
+if (isset($clase1->cadena)) {
+    $cad=$clase1->cadena;
+};
+
+// Clase con sobrecarga
+$clase1 = new ClaseConSobrecarga();
+
+$val=$clase1->moreno;
+$val=$clase1->marcha;
+$val=$clase1->numero;
+// $val=$clase1->hora; Error
+
+$clase1->marcha=$val;
+$clase1-> número=$val+10;
+$clase1->hora->$val;
+
 //dibuja la plantilla de la vista
 inicioCabecera("CLASES");
 cabecera();

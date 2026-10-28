@@ -82,21 +82,34 @@ function inicioCuerpo(string $cabecera, array $barraUbi = []) // $barraUbi es un
             <h4>Barra Ubicación</h4>
             <div id="barraUbi">
                 <?php
-                foreach ($barraUbi as $value) {
-                    if (isset($value["enlace"])) {
-                        echo "<a href='" . $value["enlace"] . "'>";
-                    }
-                    echo $value["nombre"];
-                    if (isset($value["enlace"])) {
-                        echo "</a>";
-                    }
+                if (isset($barraUbi)) {
+                    $primero = true;
 
-                    if (isset($value["adicional"])) {
-                        echo $value["adicional"];
-                    } else {
-                        echo "&nbsp;&nbsp;";
+                    foreach ($barraUbi as $value) {
+                        if (isset($value["nombre"])) {
+                            if (!$primero) {
+                                if (isset($value["adicional"])) {
+                                    echo $value["adicional"];
+                                } else {
+                                    echo "&nbsp;>>&nbsp;";
+                                }
+                            }
+
+                            if (isset($value["enlace"]) && $value["enlace"]) {
+                                echo "<a href='" . $value["enlace"] . "'>";
+                            }
+
+                            echo $value["nombre"];
+
+                            if (isset($value["enlace"]) && $value["enlace"]) {
+                                echo "</a>";
+                            }
+
+                            $primero = false;
+                        }
                     }
                 }
+
                 ?>
             </div>
 
