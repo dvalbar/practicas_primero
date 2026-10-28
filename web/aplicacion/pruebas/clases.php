@@ -87,6 +87,22 @@ $clase1->marcha=$val;
 $clase1-> número=$val+10;
 $clase1->hora->$val;
 
+// ============================================================================================
+// CLASE DINAMICA
+// Uso de clase dinamica que guarda las nuevas propiedades en un array privado
+$clase1 = new ClaseDinamica;
+$clase2 = new ClaseDinamica;
+
+$clase1->nombre="vicente";
+
+$cadena=$clase1->nombre;
+
+$clase1->varPublica=20;
+if (isset($clase2->nombre))
+    $cadena=$clase2->nombre;
+
+unset($clase1->nombre);
+
 //dibuja la plantilla de la vista
 inicioCabecera("CLASES");
 cabecera();
