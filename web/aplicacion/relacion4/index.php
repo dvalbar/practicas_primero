@@ -35,7 +35,18 @@ function cuerpo($miInstrumento1) // Añadir aqui las variables
     <h3>Clases de la relación 4.</h3>
 <?php
     echo "<h4>Clase InstrumentoBase</h4>" . PHP_EOL;
+
+    // No tiene sobrecarga
+    // $miInstrumento1->nombre = "hola";
+    // echo $miInstrumento1->_edad;
+    // if (isset($miInstrumento1->_edad)) {
+    //     echo "Hola";
+    // }
+    // unset($miInstrumento1->_edad);
+
+    // toString
     echo $miInstrumento1;
+
 
     echo "<h4>Interfaz IFabricable</h4>" . PHP_EOL;
 
