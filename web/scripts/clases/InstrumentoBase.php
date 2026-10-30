@@ -1,7 +1,7 @@
 <!-- 1.- Crear la clase abstracta IntrumentoBase con el siguiente comportamiento. Definirla inicialmente
 como no abstracta para probar su funcionamiento. Una vez probado se pasará a abstracta: -->
 <?php
-class InstrumentoBase
+abstract class InstrumentoBase
 {
     // - Tiene el atributo descripción de tipo cadena. La descripción se puede fijar mediante el
     // constructor o mediante métodos get/set públicos (ej para propiedad cadena, métodos
@@ -16,7 +16,7 @@ class InstrumentoBase
     // defecto, se define un parámetro en el constructor con el valor por defecto y se asigna en el
     // constructor. Así garantizas que cuando se llame al constructor, si no se indica ningún valor,
     // se asigne el de por defecto.
-    private int $_edad = 10; // Aquí he hecho pruebas al ponerlo public
+    protected int $_edad = 10; // Aquí he hecho pruebas al ponerlo public
 
     // - Se tiene una variable de clase protegida que controla cuantos elementos se han creado y una
     // propiedad de instancia para indicar cuál es el orden de creación de la instancia. Cada vez
@@ -27,13 +27,12 @@ class InstrumentoBase
     private int $_ordenCreacion;
 
     // Constructor
-    public function __construct(string $_descripcion, int $_edad = 10)
+    public function __construct(string $descripcion, int $edad = 10)
     {
-        $this->_descripcion = $_descripcion;
-        $this->_edad = $_edad;
+        $this->_descripcion = $descripcion;
+        $this->_edad = $edad;
         self::$_elementosCreados++;
         $this->_ordenCreacion = self::$_elementosCreados;
-
     }
 
     /**
@@ -61,8 +60,8 @@ class InstrumentoBase
 
     // - Se definen dos métodos abstractos: sonido (devuelve una frase que representa el sonido) y
     // afinar (devuelve una cadena con los pasos necesarios para afinar el instrumento)
-    // public abstract function sonido(): string;
-    // public abstract function afinar(): string;
+    abstract public function sonido(): string;
+    abstract public function afinar(): string;
 
     // - Se define el método envejecer, que aumenta la edad del instrumento en un año.
     public function envejecer(int $edadInstrumento): void
@@ -75,7 +74,9 @@ class InstrumentoBase
     // mediante get_class. (999 representa un numero, XXX representa una cadena)
     public function __toString(): string
     {
-        return "Instrumento con descripción {$this->_descripcion}, instancia 9999 de un total de 999. Tiene {$this->_edad} años. La clase es ".get_class($this);
+        return "Instrumento con descripción " . $this->getDescripcion() . ", 
+        instancia " . $this->_ordenCreacion . " de un total de " . self::$_elementosCreados . ". 
+        Tiene {$this->_edad} años. La clase es " . get_class($this);
     }
 
     // - No tiene la sobrecarga de propiedades por defecto. 
@@ -107,8 +108,7 @@ class InstrumentoBase
     // - public function __unset(string $nombre):void Se invoca cuando se usa unset() sobre
     // propiedades inaccesibles.
     public function __unset(string $name): void
-    {
-        ;
+    {;
         // throw new \Exception('Not implemented');
     }
 }
