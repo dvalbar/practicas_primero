@@ -38,5 +38,6 @@ function cuerpo()
     <a href="./expresionesRegulares.php">Prueba expresiones regulares</a><br>
     <a href="./index_funciones.php">Prueba funciones</a><br>
     <a href="./clases.php">Prueba clases</a><br>
+    <a href="./pagformulario.php">Prueba formularios</a><br>
 <?php
 }
