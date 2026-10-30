@@ -42,7 +42,7 @@ function cabecera() {}
 function cuerpo($misObjetos) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
     <h3>Clases de la relación 4.</h3>
 <?php
     echo "<h4>Clase InstrumentoBase (Abstracta)</h4>" . PHP_EOL;
@@ -81,8 +81,8 @@ function cuerpo($misObjetos) // Añadir aqui las variables
     echo $misObjetos["miInstrumentoViento1"] . "<br><br>" . PHP_EOL;
     echo "Material del instrumento: " . $misObjetos["miInstrumentoViento1"]->getMaterial() . "<br><br>" . PHP_EOL;
 
-    echo "Afinación: " . $misObjetos["miInstrumentoViento1"]->afinar() . "<br><br>" . PHP_EOL;
-    echo "Sonido del instrumento: " . $misObjetos["miInstrumentoViento1"]->sonido() . "<br><br>" . PHP_EOL;
+    echo "Afinación:<br>" . $misObjetos["miInstrumentoViento1"]->afinar() . "<br><br>" . PHP_EOL;
+    echo "Sonido del instrumento:<br>" . $misObjetos["miInstrumentoViento1"]->sonido() . "<br><br>" . PHP_EOL;
 
     echo $misObjetos["miInstrumentoViento2"] . "<br>" . PHP_EOL;
 

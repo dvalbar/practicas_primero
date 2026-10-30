@@ -120,7 +120,7 @@ function cabecera() {}
 function cuerpo()
 {
 ?>
-    <br><br>
+    <br>
 
 <?php
 }

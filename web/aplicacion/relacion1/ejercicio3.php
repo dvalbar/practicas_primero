@@ -91,7 +91,7 @@ function cabecera() {}
 function cuerpo($miArray1, $miSegundoArray1, $miArray2, $miSegundoArray2, $miArray3, $miSegundoArray3) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
 <?php
     echo "3.- Se quiere:
     <br>a) Crear una variable de tipo array.

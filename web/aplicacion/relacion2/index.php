@@ -29,7 +29,7 @@ function cabecera() {}
 function cuerpo() // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
     <h3>Ejercicios de la relación 2.</h3>
     <a href="/aplicacion/relacion2/ejercicio1.php">Ejercicio 1</a><br>
     <a href="/aplicacion/relacion2/ejercicio2.php">Ejercicio 2</a><br>

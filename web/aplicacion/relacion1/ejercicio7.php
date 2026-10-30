@@ -50,7 +50,7 @@ function cabecera() {}
 function cuerpo($diasSemana, $meses) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
 <?php
     echo "7.- Mostrar el funcionamiento de las fechas. Se harán todos los apartados usando la serie de funciones
 para gestión de fecha. Se repetirán todos los ejercicios usando la clase DateTime.

@@ -35,7 +35,7 @@ function cabecera() {}
 function cuerpo($misNumeros) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
 <?php
     echo "1.- Mostrar el funcionamiento de diversas funciones Matemáticas (round, floor, pow, sqrt, entero a
     hexadecimal, de base 4 a base 8 y al menos dos funciones mas distintas de las anteriores) (buscar la

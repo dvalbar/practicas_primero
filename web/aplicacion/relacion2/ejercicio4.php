@@ -36,7 +36,7 @@ function cabecera() {}
 function cuerpo($num1, $num2) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
 <?php
 
     echo "4.- Tengo unas variables con valores 17.5 (float), 379987.24 (float)

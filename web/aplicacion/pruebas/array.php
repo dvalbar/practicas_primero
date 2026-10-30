@@ -39,7 +39,7 @@ function cabecera()
 function cuerpo()
 {
 ?>
-    <br><br>
+    <br>
 <?php
 
     $miArray[3] = 23;

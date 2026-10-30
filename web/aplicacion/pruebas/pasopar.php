@@ -52,7 +52,7 @@ function cabecera()
 function cuerpo($bas, $or)
 {
 ?>
-    <br><br>
+    <br>
     <!-- <a href="./aplicacion/pruebas/index.php">Acceso a pruebas.</a> -->
 <?php
     echo "Mi nombre es {$bas["nombre"]} de {$bas["edad"]} años<br>" . PHP_EOL;

@@ -90,7 +90,7 @@ function cabecera() {}
 //vista
 function cuerpo($numEjemplo) {
 ?>
-    <br><br>
+    <br>
     <?php
 
     echo "<h3>Funciones de ejemplo</h3><br>" . PHP_EOL;

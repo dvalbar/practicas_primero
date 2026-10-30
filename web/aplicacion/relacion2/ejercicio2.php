@@ -36,7 +36,7 @@ function cabecera() {}
 function cuerpo($cadena, $espacioEnBlanco) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
 <?php
     echo "2.- Dada la cadena \"Está la niña en casa\" se pide:<br>
 - Mostrar cada carácter en una línea separada y con tantos espacios en blanco como me

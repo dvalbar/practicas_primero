@@ -40,7 +40,7 @@ function cabecera() {}
 function cuerpo($vector) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
 <?php
     echo "5.- Rellenar un array con el siguiente contenido.
 <br>\$vector=array();
