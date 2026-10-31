@@ -3,7 +3,8 @@
 // 3.- Definir la clase InstrumentoViento que hereda de InstrumentoBase con el siguiente
 // comportamiento:
 
-class InstrumentoViento extends InstrumentoBase {
+class InstrumentoViento extends InstrumentoBase
+{
     // - Tiene el atributo material con valor por defecto madera. Este atributo no es accesible
     // directamente desde el exterior aunque si desde las clases derivadas. No se tienen métodos
     protected string $_material = "madera";
@@ -33,7 +34,7 @@ class InstrumentoViento extends InstrumentoBase {
     public final function afinar(): string
     {
         return
-        "1. Calienta: Toca 5 minutos.<br>
+            "1. Calienta: Toca 5 minutos.<br>
         2. Sopla: Toca normal frente al afinador.<br>
         3. Ajusta:<br>
 	        &nbsp;&nbsp;&nbsp;• Si está alto / agudo: Saca la boquilla o bomba (alarga).<br>

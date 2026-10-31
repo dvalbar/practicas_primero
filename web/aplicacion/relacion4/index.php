@@ -15,14 +15,48 @@ $barraUbi =
 // Clase Abstracta
 // $miInstrumento1 = new InstrumentoBase("Piano", 5);
 // $miInstrumento2 = new InstrumentoBase("Bajo", 7);
+
+// Clase InstrumentoViento
 $miInstrumentoViento1 = new InstrumentoViento();
 $miInstrumentoViento2 = new InstrumentoViento(4, "latón");
+
+// Clase Flauta
+
+$miArray = [
+    "material" => "plástico",
+    "edad" => 6
+];
+
+$miArrayMal = [
+    "marca" => "Hohner",
+    "edad" => 14
+];
+
+// $miFlauta1 = new Flauta("plástico",6); // Constructor privado, no se puede
+$miFlauta1 = Flauta::crearDesdeArray($miArray);
+$miFlauta2 = Flauta::crearDesdeArray($miArrayMal);
+$miFlauta3 = Flauta::crearDesdeArray(Flauta::$_miArray);
+
+$flautaClonada = clone $miFlauta3;
+
+// EstadoCivil
+$arrayEstadosCiviles = EstadoCivil::casos();
+
+$estadoAleatorio = mt_rand(0,count($arrayEstadosCiviles)-1);
+
+// Persona
+$miPersona1 = Persona::registrarPersona("David","03/04/2006","Mi calle","Cuevas de San Marcos",$arrayEstadosCiviles[$estadoAleatorio]);
 
 $misObjetos = [
     // "miInstrumento1" => $miInstrumento1,
     // "miInstrumento2" => $miInstrumento2,
     "miInstrumentoViento1" => $miInstrumentoViento1,
     "miInstrumentoViento2" => $miInstrumentoViento2,
+    "miFlauta1" => $miFlauta1,
+    "miFlauta2" => $miFlauta2,
+    "miFlauta3" => $miFlauta3,
+    "flautaClonada" => $flautaClonada,
+    "miPersona1" => $miPersona1,
 ];
 
 //dibuja la plantilla de la vista
@@ -88,7 +122,15 @@ function cuerpo($misObjetos) // Añadir aqui las variables
 
     echo "<h4>Clase Flauta</h4>" . PHP_EOL;
 
+    echo $misObjetos["miFlauta1"] . "<br><br>" . PHP_EOL;
+    echo $misObjetos["miFlauta2"] . "<br><br>" . PHP_EOL;
+    echo $misObjetos["miFlauta3"] . "<br><br>" . PHP_EOL;
+
+    echo $misObjetos["flautaClonada"] . "<br>" . PHP_EOL;
+
     echo "<h4>Clase Persona</h4>" . PHP_EOL;
+
+    echo $misObjetos["miPersona1"] . "<br><br>" . PHP_EOL;
 
     echo "<h4>Clase SerieFibonacci</h4>" . PHP_EOL;
 

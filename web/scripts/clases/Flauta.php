@@ -6,18 +6,18 @@
 final class Flauta extends InstrumentoViento implements IFabricable
 {
 
-public static array $_miArray = [
-    "material"=>"madera",
-    "edad"=>15
-];
+    public static array $_miArray = [
+        "material" => "madera",
+        "edad" => 15
+    ];
 
     // - El constructor se hará privado
-    private function __construct()
+    private function __construct(string $material, int $edad)
     {
-        parent::__construct($_miArray["materia"]);
+        parent::__construct($edad, $material);
 
-        $this->_material = self::$_miArray["material"];
-        $this->_edad = self::$_miArray["edad"];    
+        // $this->_material = self::$_miArray["material"];
+        // $this->_edad = self::$_miArray["edad"];
     }
 
     // Métodos de la interfaz IFabricable
@@ -35,13 +35,24 @@ public static array $_miArray = [
     // con posiciones asociativas “material” y “edad” (pueden no aparecer por lo que se tienen en
     // cuenta valores por defecto) y que devuelve una instancia de Flauta con los valores
     // indicados.
-    public static function crearDesdeArray(Array $miArray): static {
-        $obj = new static($miArray["material"], $miArray["edad"]);
-        return $obj;
+    public static function crearDesdeArray(array $miArray): static
+    {
+        if (isset($miArray["material"]) && isset($miArray["edad"])) {
+            $obj = new static($miArray["material"], $miArray["edad"]);
+            return $obj;
+        } else {
+            $obj = new static(self::$_miArray["material"], self::$_miArray["edad"]);
+            return $obj;
+        }
     }
 
     // - Definir el método de clonación para la clase flauta de forma que el nuevo objeto tenga los
     // mismos valores, salvo la edad que será 0 y el número de instancia (propiedad) /número de
     // instancias (propiedad de clase), ya que realmente he creado una nueva instancia.
-
+    public function __clone()
+    {
+        $this->_edad = 0;
+        self::$_elementosCreados++;
+        $this->_ordenCreacion = self::$_elementosCreados;
+    }
 }

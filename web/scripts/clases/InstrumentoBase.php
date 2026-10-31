@@ -24,7 +24,7 @@ abstract class InstrumentoBase
     // instrumento actual y se incrementa el valor de la variable de clase.
     protected static int $_elementosCreados = 0;
 
-    private int $_ordenCreacion;
+    protected int $_ordenCreacion;
 
     // Constructor
     public function __construct(string $descripcion, int $edad = 10)
