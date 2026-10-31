@@ -12,6 +12,7 @@ if (MODO_TRABAJO == "produccion")
 else
     error_reporting(E_ALL);
 
+// Clases
 spl_autoload_register(function ($clase) {
     $ruta = RUTABASE . "/scripts/clases/";
     $fichero = $ruta . "$clase.php";

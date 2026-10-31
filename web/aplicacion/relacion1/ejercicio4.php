@@ -45,7 +45,7 @@ function cabecera() {}
 function cuerpo($miArray) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
 <?php
     echo "4- Generar un array con los siguientes valores mostrándolos posteriormente con foreach. El array se
 debe generar usando bucles for.<br>

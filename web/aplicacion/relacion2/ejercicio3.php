@@ -44,7 +44,7 @@ function cabecera() {}
 function cuerpo($caracteres, $caracteresAscii) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
 <?php
     echo "3.- Genera una cadena aleatoria de 20 caracteres (los caracteres permitidos son letras
 minúsculas, letras mayúsculas y números)<br>

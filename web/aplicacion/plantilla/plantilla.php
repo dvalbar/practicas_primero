@@ -70,11 +70,11 @@ function inicioCuerpo(string $cabecera, array $barraUbi = []) // $barraUbi es un
 
             <div id="barraMenu">
                 <ul>
-                    <li><a href="/index.php">Inicio</a></li>
                     <li><a href="/aplicacion/pruebas/index.php">Pruebas</a></li> <!-- Esto se añade a todas las paginas porque es la plantilla -->
                     <li><a href="/aplicacion/relacion1/index.php">Relación 1</a></li>
                     <li><a href="/aplicacion/relacion2/index.php">Relación 2</a></li>
                     <li><a href="/aplicacion/relacion3/index.php">Relación 3</a></li>
+                    <li><a href="/aplicacion/relacion4/index.php">Relación 4</a></li>
                 </ul>
 
             </div>
@@ -82,21 +82,34 @@ function inicioCuerpo(string $cabecera, array $barraUbi = []) // $barraUbi es un
             <h4>Barra Ubicación</h4>
             <div id="barraUbi">
                 <?php
-                foreach ($barraUbi as $value) {
-                    if (isset($value["enlace"])) {
-                        echo "<a href='" . $value["enlace"] . "'>";
-                    }
-                    echo $value["nombre"];
-                    if (isset($value["enlace"])) {
-                        echo "</a>";
-                    }
+                if (isset($barraUbi)) {
+                    $primero = true;
 
-                    if (isset($value["adicional"])) {
-                        echo $value["adicional"];
-                    } else {
-                        echo "&nbsp;&nbsp;";
+                    foreach ($barraUbi as $value) {
+                        if (isset($value["nombre"])) {
+                            if (!$primero) {
+                                if (isset($value["adicional"])) {
+                                    echo $value["adicional"];
+                                } else {
+                                    echo "&nbsp;>>&nbsp;";
+                                }
+                            }
+
+                            if (isset($value["enlace"]) && $value["enlace"]) {
+                                echo "<a href='" . $value["enlace"] . "'>";
+                            }
+
+                            echo $value["nombre"];
+
+                            if (isset($value["enlace"]) && $value["enlace"]) {
+                                echo "</a>";
+                            }
+
+                            $primero = false;
+                        }
                     }
                 }
+
                 ?>
             </div>
 

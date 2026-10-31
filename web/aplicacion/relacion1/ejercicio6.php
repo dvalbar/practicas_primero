@@ -39,7 +39,7 @@ function cabecera() {}
 function cuerpo($vector) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
 <?php
     echo "6.- Con el array \$vector=array('primera' =>12.56, 24=>true, 67 =>23.76);<br><br>
 - Simular el funcionamiento de foreach (\$array as \$indice => \$valor) usando las funciones de

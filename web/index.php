@@ -32,7 +32,7 @@ function cabecera()
 function cuerpo()
 {
 ?>
-    <br><br>
+    <br>
     <h3>Inicio del proyecto.</h3>
 <?php
 }

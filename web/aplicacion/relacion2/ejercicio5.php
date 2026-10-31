@@ -41,7 +41,7 @@ function cabecera() {}
 function cuerpo($cadena) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
 <?php
 
     echo "5.- Crea una cadena que ocupe varias líneas (usa nowdoc o heredoc). En líneas distintas debe

@@ -37,7 +37,7 @@ function cabecera() {}
 function cuerpo()
 {
 ?>
-    <br><br> Esto es HTML. <!-- Esto es un comentario en HTML -->
+    <br> Esto es HTML. <!-- Esto es un comentario en HTML -->
     <?php
     $var1 = 25;
     $cadena = "Esto es una cadena";

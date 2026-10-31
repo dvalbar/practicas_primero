@@ -29,7 +29,7 @@ function cabecera() {}
 function cuerpo()
 {
 ?>
-    <br><br>
+    <br>
     <h3>Páginas de pruebas.</h3>
     <a href="./basicas.php">Funcionamiento básico</a><br>
     <a href="./pasopar.php">Paso parámetros</a><br>
@@ -37,5 +37,7 @@ function cuerpo()
     <a href="./cadenas.php">Prueba cadenas</a><br>
     <a href="./expresionesRegulares.php">Prueba expresiones regulares</a><br>
     <a href="./index_funciones.php">Prueba funciones</a><br>
+    <a href="./clases.php">Prueba clases</a><br>
+    <a href="./pagformulario.php">Prueba formularios</a><br>
 <?php
 }

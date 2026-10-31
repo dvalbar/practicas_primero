@@ -58,7 +58,7 @@ function cabecera() {}
 function cuerpo($misCadenas) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
 <?php
     echo "1.- Escribe distintas cadenas usando “, ‘, HEREDOC y NOWDOC incluyendo variables,
 etiquetas html y caracteres especiales como ‘, “, á, é, ñ. Muestra las cadenas y comprueba que

@@ -33,7 +33,7 @@ function cabecera() {}
 function cuerpo($contadorCuentaVeces, $arrayCuentaVeces) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
     <h3>Funciones de la relación 3.</h3>
 <?php
 

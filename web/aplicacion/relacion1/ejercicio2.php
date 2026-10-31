@@ -45,7 +45,7 @@ function cabecera() {}
 function cuerpo($lanzamientos, $numDados) // Añadir aqui las variables
 {
 ?>
-    <br><br>
+    <br>
 <?php
     echo "2.- Simular el lanzamiento de un dado (6 veces) (usar un bucle for, mt_rand con parametros). Además
 contar el número de veces que aparece cada lado si se hicieran N lanzamientos al estilo (N lo

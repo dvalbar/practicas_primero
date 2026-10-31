@@ -39,7 +39,7 @@ function cabecera()
 function cuerpo()
 {
 ?>
-    <br><br>
+    <br>
 
     El niñ&ntilde;o me ha escrito una carta.
     Qué&eacute; &lt;&gt; bonita
