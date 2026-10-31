@@ -39,6 +39,7 @@ abstract class InstrumentoBase
     // propiedad de instancia para indicar cuál es el orden de creación de la instancia. Cada vez
     // que se crea un instrumento se le asigna a la instancia el número de orden de creación del
     // instrumento actual y se incrementa el valor de la variable de clase.
+
     /**
      * Variable de clase: número total de instrumentos creados.
      */
@@ -49,7 +50,10 @@ abstract class InstrumentoBase
      */
     protected int $_ordenCreacion;
 
+    // ============
     // Constructor
+    // ============
+
     /**
      * Constructor: asigna la descripción y la edad, e incrementa el
      * contador de instrumentos creados para fijar el orden de esta instancia.
@@ -72,7 +76,7 @@ abstract class InstrumentoBase
     /**
      * Devuelve la descripción del instrumento.
      *
-     * @return string
+     * @return string Devuelve la descripción
      */
     public function getDescripcion(): string
     {
@@ -84,6 +88,7 @@ abstract class InstrumentoBase
      * Cambia la descripción del instrumento.
      *
      * @param string $nuevaDescripcion Nueva descripción.
+     * @return void No devuelve nada
      */
     public function setDescripcion(string $nuevaDescripcion): void
     {
@@ -93,7 +98,7 @@ abstract class InstrumentoBase
     /**
      * Devuelve la edad del instrumento.
      *
-     * @return int
+     * @return int Devuelve la edad
      */
     public function getEdad(): int
     {
@@ -105,6 +110,7 @@ abstract class InstrumentoBase
      * Cambia la edad del instrumento.
      *
      * @param int $nuevaEdad Nueva edad en años.
+     * @param void No devuelve nada
      */
     public function setEdad(int $nuevaEdad): void
     {
@@ -113,11 +119,12 @@ abstract class InstrumentoBase
 
     // - Se definen dos métodos abstractos: sonido (devuelve una frase que representa el sonido) y
     // afinar (devuelve una cadena con los pasos necesarios para afinar el instrumento)
+
     /**
      * Método abstracto: devuelve una frase que representa el sonido
      * del instrumento. Lo implementan las clases hijas.
      *
-     * @return string
+     * @return string Devuelve el sonido del instrumento
      */
     abstract public function sonido(): string;
 
@@ -125,15 +132,17 @@ abstract class InstrumentoBase
      * Método abstracto: devuelve una cadena con los pasos necesarios
      * para afinar el instrumento. Lo implementan las clases hijas.
      *
-     * @return string
+     * @return string Devuelve los pasos para afinar el insrumento
      */
     abstract public function afinar(): string;
 
     // - Se define el método envejecer, que aumenta la edad del instrumento en un año.
+
     /**
      * Aumenta en un año la edad del instrumento.
      *
      * @param int $edadInstrumento Parámetro recibido (no se utiliza).
+     * @return void No devuelve nada
      */
     public function envejecer(int $edadInstrumento): void
     {
@@ -143,11 +152,12 @@ abstract class InstrumentoBase
     // - Cuando se muestre en un echo aparecerá “instrumento con descripción XXXXX, instancia
     // 9999 de un total de 999. Tiene 999 años. La clase es XXXX”. La clase debe ser obtenida
     // mediante get_class. (999 representa un numero, XXX representa una cadena)
+
     /**
      * Devuelve el instrumento como texto: descripción, número de instancia,
      * total de instrumentos creados, edad y nombre de la clase (get_class).
      *
-     * @return string
+     * @return string Devuelve la información del instrumento
      */
     public function __toString(): string
     {
@@ -163,6 +173,7 @@ abstract class InstrumentoBase
     // sobre propiedades inaccesibles. Es llamado de forma automática cuando se actualiza el
     // valor de una propiedad que no es visible.
     // Métodos mágicos para control de la sobrecarga
+
     /**
      * Se ejecuta al escribir en una propiedad inaccesible o inexistente.
      * Lanza una excepción para evitar la sobrecarga de propiedades.
@@ -170,6 +181,7 @@ abstract class InstrumentoBase
      * @param string $name  Nombre de la propiedad.
      * @param mixed  $value Valor que se intentaba asignar.
      * @throws \Exception Siempre.
+     * @return void No devuelve nada
      */
     public function __set(string $name, mixed $value): void
     {
@@ -186,6 +198,7 @@ abstract class InstrumentoBase
      * @param string $name Nombre de la propiedad.
      * @return mixed
      * @throws \Exception Siempre.
+     * @return mixed No devuelve nada
      */
     public function __get(string $name): mixed
     {
@@ -194,12 +207,13 @@ abstract class InstrumentoBase
 
     // - Public function __isset(string $nombre):bool Se lanza al llamar a isset() o a empty()
     // sobre propiedades inaccesibles.
+
     /**
      * Se ejecuta al usar isset() o empty() sobre una propiedad inaccesible.
      * Siempre devuelve false porque no hay propiedades dinámicas.
      *
      * @param string $name Nombre de la propiedad.
-     * @return bool
+     * @return bool Siempre devolverá falso
      */
     public function __isset(string $name): bool
     {
@@ -209,11 +223,13 @@ abstract class InstrumentoBase
 
     // - public function __unset(string $nombre):void Se invoca cuando se usa unset() sobre
     // propiedades inaccesibles.
+
     /**
      * Se ejecuta al usar unset() sobre una propiedad inaccesible.
      * No hace nada.
      *
      * @param string $name Nombre de la propiedad.
+     * @return void No devuelve nada
      */
     public function __unset(string $name): void
     {

@@ -6,7 +6,7 @@
  */
 class Persona
 {
-    // propiedades nombre (string), fecha_nacimiento (string), domicilio (string), localidad (string)
+    // Propiedades nombre (string), fecha_nacimiento (string), domicilio (string), localidad (string)
     // y estado (EstadoCivil). Todas las propiedades son privadas.
 
     /**
@@ -37,6 +37,7 @@ class Persona
     // - Constructor privado al que no se indica ningún parámetro y que rellena las propiedades con
     // valores nombre “prueba”, fecha_nacimiento “01/01/2000”, domicilio “carrera 12”, localidad
     // “antequera” y estado “soltero”.
+
     /**
      * Constructor privado: rellena las propiedades con valores por defecto.
      */
@@ -55,7 +56,7 @@ class Persona
     /**
      * Devuelve el nombre de la persona.
      *
-     * @return string
+     * @return string Devuelve el nombre de la persona.
      */
     public function getNombre(): string
     {
@@ -67,6 +68,7 @@ class Persona
      * Cambia el nombre de la persona.
      *
      * @param string $nuevoNombre Nuevo nombre.
+     * @return void No devuelve nada
      */
     public function setNombre(string $nuevoNombre): void
     {
@@ -74,10 +76,11 @@ class Persona
     }
 
     // Fecha nacimiento
+
     /**
      * Devuelve la fecha de nacimiento.
      *
-     * @return string
+     * @return string Devuelve la fecha de nacimiento
      */
     public function getFechaNacimiento(): string
     {
@@ -89,6 +92,7 @@ class Persona
      * Cambia la fecha de nacimiento.
      *
      * @param string $nuevaFechaNacimiento Nueva fecha de nacimiento.
+     * @return void No devuelve nada
      */
     public function setFechaNacimiento(string $nuevaFechaNacimiento): void
     {
@@ -96,10 +100,11 @@ class Persona
     }
 
     // Domicilio
+
     /**
      * Devuelve el domicilio.
      *
-     * @return string
+     * @return string Devuelve el domicilio
      */
     public function getDomicilio(): string
     {
@@ -111,6 +116,7 @@ class Persona
      * Cambia el domicilio.
      *
      * @param string $nuevoDomicilio Nuevo domicilio.
+     * @return void No devuelve nada
      */
     public function setDomicilio(string $nuevoDomicilio): void
     {
@@ -118,10 +124,11 @@ class Persona
     }
 
     // Localidad
+
     /**
      * Devuelve la localidad.
      *
-     * @return string
+     * @return string Devuelve la localidad
      */
     public function getLocalidad(): string
     {
@@ -133,6 +140,7 @@ class Persona
      * Cambia la localidad.
      *
      * @param string $nuevaLocalidad Nueva localidad.
+     * @return void No devuelve nada
      */
     public function setLocalidad(string $nuevaLocalidad): void
     {
@@ -140,10 +148,11 @@ class Persona
     }
 
     // Estado Civil
+
     /**
      * Devuelve el estado civil.
      *
-     * @return EstadoCivil
+     * @return EstadoCivil Devuelve el estado civil
      */
     public function getEstadoCivil(): EstadoCivil
     {
@@ -155,6 +164,7 @@ class Persona
      * Cambia el estado civil.
      *
      * @param EstadoCivil $nuevoEstadoCivil Nuevo estado civil.
+     * @return void No devuelve nada
      */
     public function setEstadoCivil(EstadoCivil $nuevoEstadoCivil): void
     {
@@ -162,16 +172,17 @@ class Persona
     }
 
     // - Constructor estático registrarPersona, que recibe parámetros para todas las propiedades
+
     /**
      * Constructor estático: crea una persona con los valores indicados
      * para todas las propiedades.
      *
-     * @param string      $nombre           Nombre.
-     * @param string      $fecha_nacimiento Fecha de nacimiento.
-     * @param string      $domicilio        Domicilio.
-     * @param string      $localidad        Localidad.
-     * @param EstadoCivil $estadoCivil      Estado civil.
-     * @return static Nueva instancia de Persona.
+     * @param string      $nombre           Nombre
+     * @param string      $fecha_nacimiento Fecha de nacimiento
+     * @param string      $domicilio        Domicilio
+     * @param string      $localidad        Localidad
+     * @param EstadoCivil $estadoCivil      Estado civil
+     * @return static Nueva instancia de Persona
      */
     public static function registrarPersona(string $nombre, string $fecha_nacimiento, string $domicilio, string $localidad, EstadoCivil $estadoCivil): static
     {
@@ -181,17 +192,19 @@ class Persona
         $obj->setDomicilio($domicilio);
         $obj->setLocalidad($localidad);
         $obj->setEstadoCivil($estadoCivil);
+
         // Devuelve la persona ya rellenada
         return $obj;
     }
 
-    // - Método toString que devuelve la cadena “Nombre es una persona estado nacida en
-    // fecha_nacimiento y que vive en localidad”
+    // - Método toString que devuelve la cadena "Nombre es una persona estado nacida en
+    // fecha_nacimiento y que vive en localidad"
+
     /**
      * Devuelve la persona como texto: nombre, estado civil, fecha de
      * nacimiento y localidad.
      *
-     * @return string
+     * @return string Devuelve la persona como texto: nombre, estado civil, fecha de nacimiento y localidad
      */
     public function __toString()
     {

@@ -9,20 +9,22 @@
 interface IFabricable
 {
     // - metodoFabricacion: Devuelve los pasos para fabricar el elemento
+
     /**
      * Devuelve los pasos para fabricar el elemento.
      *
-     * @return string
+     * @return string Devuelve los pasos para fabricar el elemento.
      */
     public function metodoFabricacion(): string;
 
     // - metodoReciclado: Devuelve el método de reciclado que se debe aplicar al elemento según
     // su fabricación.
+
     /**
      * Devuelve el método de reciclado que se debe aplicar al elemento
      * según cómo se ha fabricado.
      *
-     * @return string
+     * @return string Devuelve el método de reciclado
      */
     public function metodoReciclado(): string;
 }

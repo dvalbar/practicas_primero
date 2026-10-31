@@ -1,5 +1,4 @@
 <?php
-
 // 4.- Definir la clase Flauta que es un instrumento de viento que es fabricable y de la que no se puede
 // heredar ninguna otra subclase.
 
@@ -20,6 +19,7 @@ final class Flauta extends InstrumentoViento implements IFabricable
     ];
 
     // - El constructor se hará privado
+
     /**
      * Constructor privado: llama al constructor de InstrumentoViento
      * con la edad y el material indicados.
@@ -30,16 +30,14 @@ final class Flauta extends InstrumentoViento implements IFabricable
     private function __construct(string $material, int $edad)
     {
         parent::__construct($edad, $material);
-
-        // $this->_material = self::$_miArray["material"];
-        // $this->_edad = self::$_miArray["edad"];
     }
 
     // Métodos de la interfaz IFabricable
+
     /**
      * Devuelve los pasos para fabricar la flauta.
      *
-     * @return string
+     * @return string Devuelve los pasos para fabricar la flauta
      */
     public function metodoFabricacion(): string
     {
@@ -50,7 +48,7 @@ final class Flauta extends InstrumentoViento implements IFabricable
     /**
      * Devuelve el método de reciclado según cómo se ha fabricado la flauta.
      *
-     * @return string
+     * @return string Devuelve el método de reciclado según cómo se ha fabricado la flauta
      */
     public function metodoReciclado(): string
     {
@@ -62,6 +60,7 @@ final class Flauta extends InstrumentoViento implements IFabricable
     // con posiciones asociativas “material” y “edad” (pueden no aparecer por lo que se tienen en
     // cuenta valores por defecto) y que devuelve una instancia de Flauta con los valores
     // indicados.
+
     /**
      * Constructor estático: crea una flauta a partir de un array con las
      * posiciones "material" y "edad". Si no aparecen ambas, usa los
@@ -86,11 +85,13 @@ final class Flauta extends InstrumentoViento implements IFabricable
     // - Definir el método de clonación para la clase flauta de forma que el nuevo objeto tenga los
     // mismos valores, salvo la edad que será 0 y el número de instancia (propiedad) /número de
     // instancias (propiedad de clase), ya que realmente he creado una nueva instancia.
+
     /**
      * Se ejecuta al clonar la flauta: el clon tiene edad 0 y se le asigna
      * un nuevo número de orden, incrementando el contador de instancias.
+     * @return void No devuelve nada
      */
-    public function __clone()
+    public function __clone(): void
     {
         $this->_edad = 0;
         self::$_elementosCreados++;

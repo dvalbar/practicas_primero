@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Serie de Fibonacci iterable: se puede recorrer con foreach hasta
  * un límite de posiciones. También incluye una versión con generador.
@@ -38,8 +37,10 @@ class SerieFibonacci implements Iterator
     }
 
     // Pone el puntero al valor inicial
+
     /**
      * Reinicia la serie: posición 0 y valores iniciales.
+     * @return void No devuelve nada
      */
     public function rewind(): void
     {
@@ -50,8 +51,10 @@ class SerieFibonacci implements Iterator
     }
 
     // Mueve el puntero a la siguiente posicion
+
     /**
      * Calcula el siguiente valor de la serie y avanza una posición.
+     * @return void No devuelve nada
      */
     public function next(): void
     {
@@ -63,10 +66,11 @@ class SerieFibonacci implements Iterator
     }
 
     // Devuelve el contenido correspondiente a la posición actual
+
     /**
      * Devuelve el valor de Fibonacci de la posición actual.
      *
-     * @return mixed
+     * @return mixed Devuelve el valor de Fibonacci de la posición actual
      */
     public function current(): mixed
     {
@@ -75,10 +79,11 @@ class SerieFibonacci implements Iterator
     }
 
     // Devuelve la clave correspondiente a la posicion actual
+
     /**
      * Devuelve la posición actual de la serie.
      *
-     * @return mixed
+     * @return mixed Devuelve la posición actual de la serie
      */
     public function key(): mixed
     {
@@ -87,10 +92,11 @@ class SerieFibonacci implements Iterator
     }
 
     // Comprueba si la posición actual es valida
+
     /**
      * Comprueba si la posición actual no supera el límite.
      *
-     * @return bool
+     * @return bool Devuelve true si puede seguir recorriendo, false si no puede
      */
     public function valid(): bool
     {
@@ -104,6 +110,7 @@ class SerieFibonacci implements Iterator
 
     // Crear la función fFibonacci($ultimo) como función estática dentro de la clase
     // SerieFibonacci, que debe implementar la serie de Fibonacci usando para ello un generador.
+
     /**
      * Generador estático de la serie de Fibonacci: va devolviendo (yield)
      * cada valor desde la posición 0 hasta la posición indicada.

@@ -12,10 +12,11 @@ enum EstadoCivil: int
     case Viudo = 40;
 
     // - Método descripcion que devuelve el nombre del caso concreto.
+
     /**
      * Devuelve el nombre del caso concreto (por ejemplo "Soltero").
      *
-     * @return string
+     * @return string Devuelve el nombre del caso concreto (por ejemplo "Soltero").
      */
     function descripcion(): string
     {
@@ -24,10 +25,11 @@ enum EstadoCivil: int
     }
 
     // - Método valor que devuelve el valor del caso concreto.
+
     /**
      * Devuelve el valor numérico del caso concreto (por ejemplo 10).
      *
-     * @return int
+     * @return int Devuelve el valor numérico del caso concreto (por ejemplo 10).
      */
     function valor(): int
     {
@@ -36,10 +38,11 @@ enum EstadoCivil: int
     }
 
     // - Método estático casos que devuelve un array con todos los casos.
+
     /**
      * Devuelve un array con todos los casos del enumerado.
      *
-     * @return array
+     * @return array Devuelve un array con todos los casos del enumerado.
      */
     static function casos(): array
     {

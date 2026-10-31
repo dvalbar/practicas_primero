@@ -1,5 +1,4 @@
 <?php
-
 // 3.- Definir la clase InstrumentoViento que hereda de InstrumentoBase con el siguiente
 // comportamiento:
 
@@ -12,6 +11,8 @@ class InstrumentoViento extends InstrumentoBase
 {
     // - Tiene el atributo material con valor por defecto madera. Este atributo no es accesible
     // directamente desde el exterior aunque si desde las clases derivadas. No se tienen métodos
+    // set/get para esta propiedad.
+
     /**
      * Material del instrumento (por defecto "madera").
      * Accesible desde las clases derivadas.
@@ -20,7 +21,7 @@ class InstrumentoViento extends InstrumentoBase
 
     // - La descripción es “instrumento de viento”.
     // - Al constructor se le pasa como parámetro el material y la edad (valor por defecto 15).
-    // #[Override]
+
     /**
      * Constructor: llama al constructor de la clase base con la descripción
      * "instrumento de viento" y la edad, y asigna el material.
@@ -35,10 +36,11 @@ class InstrumentoViento extends InstrumentoBase
     }
 
     // set/get para esta propiedad.
+
     /**
      * Devuelve el material del instrumento.
      *
-     * @return string
+     * @return string Devuelve el material del instrumento.
      */
     public function getMaterial(): string
     {
@@ -50,6 +52,7 @@ class InstrumentoViento extends InstrumentoBase
      * Cambia el material del instrumento.
      *
      * @param string $nuevoMaterial Nuevo material.
+     * @return void No devuelve nada
      */
     public function setMaterial(string $nuevoMaterial): void
     {
@@ -57,11 +60,12 @@ class InstrumentoViento extends InstrumentoBase
     }
 
     // - El método afinar no debe ser redefinible en las clases derivadas de esta.
+
     /**
      * Devuelve los pasos para afinar un instrumento de viento.
      * Es final: las clases derivadas no pueden redefinirlo.
      *
-     * @return string
+     * @return string Devuelve los pasos para afinar un instrumento de viento
      */
     #[Override]
     public final function afinar(): string
@@ -69,16 +73,16 @@ class InstrumentoViento extends InstrumentoBase
         // Devuelve los pasos de afinado en formato HTML
         return
             "1. Calienta: Toca 5 minutos.<br>
-        2. Sopla: Toca normal frente al afinador.<br>
-        3. Ajusta:<br>
-	        &nbsp;&nbsp;&nbsp;• Si está alto / agudo: Saca la boquilla o bomba (alarga).<br>
-	        &nbsp;&nbsp;&nbsp;• Si está bajo / grave: Mete la boquilla o bomba (acorta).";
+            2. Sopla: Toca normal frente al afinador.<br>
+            3. Ajusta:<br>
+	            &nbsp;&nbsp;&nbsp;• Si está alto / agudo: Saca la boquilla o bomba (alarga).<br>
+	            &nbsp;&nbsp;&nbsp;• Si está bajo / grave: Mete la boquilla o bomba (acorta).";
     }
 
     /**
      * Devuelve la frase que representa el sonido del instrumento de viento.
      *
-     * @return string
+     * @return string Devuelve la frase que representa el sonido del instrumento de viento
      */
     #[Override]
     public function sonido(): string
@@ -89,10 +93,11 @@ class InstrumentoViento extends InstrumentoBase
 
     // - Cuando se muestre en un echo aparecerá, junto a todo lo indicado por la clase base, el texto
     // “Instrumento de material XXXX”.
+
     /**
      * Devuelve el texto de la clase base y le añade el material.
      *
-     * @return string
+     * @return string Devuelve el texto de la clase base y le añade el material
      */
     #[Override]
     public function __toString(): string

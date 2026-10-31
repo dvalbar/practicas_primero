@@ -1,5 +1,4 @@
 <?php
-
 // 7.- Crear la clase ClaseMisPropiedades.
 
 /**
@@ -10,6 +9,7 @@
 class ClaseMisPropiedades implements Iterator
 {
     // En esta clase se define una propiedad privada llamada $_propiedades.
+
     /**
      * Array asociativo donde se guardan las propiedades dinámicas.
      */
@@ -29,6 +29,7 @@ class ClaseMisPropiedades implements Iterator
     // Además tenemos las propiedades de instancia
     // $propPublica (publica, mixed) y 
     // $_propPrivada (privada, mixed, inicializada a 25).
+
     /**
      * Propiedad pública de la clase.
      */
@@ -41,13 +42,14 @@ class ClaseMisPropiedades implements Iterator
 
     // Se debe permitir añadir en tiempo de ejecución cualquier nueva propiedad
     // (propiedades dinámicas) a una instancia.
+
     /**
      * Se ejecuta al leer una propiedad inaccesible o inexistente.
      * Devuelve el valor de la propiedad dinámica o lanza una excepción
      * si no existe.
      *
      * @param string $nombre Nombre de la propiedad.
-     * @return mixed
+     * @return mixed Devuelve el valor de la propiedad dinámica o lanza una excepción si no existe
      * @throws Exception Si la propiedad no existe.
      */
     public function __get(string $nombre)
@@ -82,6 +84,7 @@ class ClaseMisPropiedades implements Iterator
     }
 
     // Se llamará automáticamente al ejecutar isset o empty
+
     /**
      * Se ejecuta al usar isset() o empty() sobre una propiedad inaccesible.
      *
@@ -96,6 +99,7 @@ class ClaseMisPropiedades implements Iterator
 
 
     // Se llamará automáticamente al ejecutar unset
+
     /**
      * Se ejecuta al usar unset() sobre una propiedad inaccesible.
      * Elimina la propiedad dinámica.
@@ -112,6 +116,7 @@ class ClaseMisPropiedades implements Iterator
     // ===================
 
     // Pone el puntero al valor inicial
+
     /**
      * Reinicia el recorrido: posición 0 y construye la lista de nombres
      * (dinámicas + propPublica + _propPrivada).
@@ -125,6 +130,7 @@ class ClaseMisPropiedades implements Iterator
     }
 
     // Mueve el puntero a la siguiente posicion
+
     /**
      * Avanza el puntero a la siguiente posición.
      */
@@ -134,6 +140,7 @@ class ClaseMisPropiedades implements Iterator
     }
 
     // Devuelve el contenido correspondiente a la posición actual
+
     /**
      * Devuelve el valor de la propiedad de la posición actual.
      *
@@ -153,11 +160,12 @@ class ClaseMisPropiedades implements Iterator
     }
 
     // Devuelve la clave correspondiente a la posicion actual
+
     /**
      * Devuelve la clave de la posición actual: el nombre de la propiedad
      * con el prefijo "oi_".
      *
-     * @return mixed
+     * @return mixed Devuelve la clave de la posición actual: el nombre de la propiedad con el prefijo "oi_".
      */
     public function key(): mixed
     {
@@ -166,10 +174,11 @@ class ClaseMisPropiedades implements Iterator
     }
 
     // Comprueba si la posición actual es valida
+
     /**
      * Comprueba si la posición actual existe en la lista de nombres.
      *
-     * @return bool
+     * @return bool Devuelve true si puede seguir recorriendo, false si no puede
      */
     public function valid(): bool
     {
