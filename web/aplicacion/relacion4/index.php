@@ -21,7 +21,6 @@ $miInstrumentoViento1 = new InstrumentoViento();
 $miInstrumentoViento2 = new InstrumentoViento(4, "latón");
 
 // Clase Flauta
-
 $miArray = [
     "material" => "plástico",
     "edad" => 6
@@ -59,7 +58,12 @@ $miPersona1 = Persona::registrarPersona("David", "03/04/2006", "Mi calle", "Cuev
 $miFibo = new SerieFibonacci(10);
 
 // ClaseMisPropiedades
+$Objeto = new ClaseMisPropiedades();
 
+$Objeto->propPublica = "publica";
+// $Objeto->_propPrivada="privada"; //no es valida al ser privada
+$Objeto->propiedad1 = 25;
+$Objeto->propiedad2 = "cadena de texto";
 
 $misObjetos = [
     // "miInstrumento1" => $miInstrumento1,
@@ -71,7 +75,8 @@ $misObjetos = [
     "miFlauta3" => $miFlauta3,
     "flautaClonada" => $flautaClonada,
     "miPersona1" => $miPersona1,
-    "miFibo" => $miFibo
+    "miFibo" => $miFibo,
+    "Objeto" => $Objeto
 ];
 
 //dibuja la plantilla de la vista
@@ -155,13 +160,20 @@ function cuerpo($misObjetos) // Añadir aqui las variables
     // Generaria 10 valores
     // 0 1 1 2 3 5 8 13 21 34 55
 
-    echo "<br>";
+    echo "<br>" . PHP_EOL;
 
     foreach (SerieFibonacci::fFibonacci(10) as $valor) {
         echo "$valor&nbsp;";
     }
 
     echo "<h4>Clase ClaseMisPropiedades</h4>" . PHP_EOL;
+
+    echo "la propiedad 1 vale " . $misObjetos["Objeto"]->propiedad1 . "<br><br>" . PHP_EOL;
+    // echo $Objeto->propiedad3; // Esto debería dar un error al no haber asignado previamente la propiedad
+
+    foreach ($misObjetos["Objeto"] as $key => $value) {
+        echo "[$key] => $value<br>";
+    }
 }
 
 // Aqui escribiremos las funciones
