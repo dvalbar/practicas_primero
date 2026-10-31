@@ -42,10 +42,24 @@ $flautaClonada = clone $miFlauta3;
 // EstadoCivil
 $arrayEstadosCiviles = EstadoCivil::casos();
 
-$estadoAleatorio = mt_rand(0,count($arrayEstadosCiviles)-1);
+// $estadoAleatorio = mt_rand(0,count($arrayEstadosCiviles)-1);
+$estadoAleatorio = mt_rand(1, 4) * 10;
+
+foreach ($arrayEstadosCiviles as $key => $value) {
+    if ($value->valor() == $estadoAleatorio) {
+        $miEstadoCivil = $value;
+    }
+}
 
 // Persona
-$miPersona1 = Persona::registrarPersona("David","03/04/2006","Mi calle","Cuevas de San Marcos",$arrayEstadosCiviles[$estadoAleatorio]);
+// $miPersona1 = Persona::registrarPersona("David","03/04/2006","Mi calle","Cuevas de San Marcos",$arrayEstadosCiviles[$estadoAleatorio]); // Otra forma de hacerlo
+$miPersona1 = Persona::registrarPersona("David", "03/04/2006", "Mi calle", "Cuevas de San Marcos", $miEstadoCivil);
+
+// Fibonacci
+$miFibo = new SerieFibonacci(10);
+
+// ClaseMisPropiedades
+
 
 $misObjetos = [
     // "miInstrumento1" => $miInstrumento1,
@@ -57,6 +71,7 @@ $misObjetos = [
     "miFlauta3" => $miFlauta3,
     "flautaClonada" => $flautaClonada,
     "miPersona1" => $miPersona1,
+    "miFibo" => $miFibo
 ];
 
 //dibuja la plantilla de la vista
@@ -130,9 +145,21 @@ function cuerpo($misObjetos) // Añadir aqui las variables
 
     echo "<h4>Clase Persona</h4>" . PHP_EOL;
 
-    echo $misObjetos["miPersona1"] . "<br><br>" . PHP_EOL;
+    echo $misObjetos["miPersona1"] . "<br>" . PHP_EOL;
 
     echo "<h4>Clase SerieFibonacci</h4>" . PHP_EOL;
+
+    foreach ($misObjetos["miFibo"] as $valor) {
+        echo "$valor&nbsp;";
+    }
+    // Generaria 10 valores
+    // 0 1 1 2 3 5 8 13 21 34 55
+
+    echo "<br>";
+
+    foreach (SerieFibonacci::fFibonacci(10) as $valor) {
+        echo "$valor&nbsp;";
+    }
 
     echo "<h4>Clase ClaseMisPropiedades</h4>" . PHP_EOL;
 }
