@@ -53,6 +53,7 @@ class Persona
     // - Un conjunto de sentencias get/set para devolver/poner su valor.
 
     // Nombre
+    
     /**
      * Devuelve el nombre de la persona.
      *
