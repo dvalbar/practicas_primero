@@ -19,7 +19,7 @@ class ClaseMisPropiedades implements Iterator
      * Lista con los nombres de las propiedades en el orden del recorrido
      * (dinámicas primero, luego propPublica y _propPrivada).
      */
-    private array $_claves = array();
+    private array $_claves = array(); // Para almacenar las propiedades dinamicas
 
     /**
      * Posición actual del recorrido del foreach.
@@ -151,9 +151,14 @@ class ClaseMisPropiedades implements Iterator
         $nombre = $this->_claves[$this->_posicion];
 
         // Devuelve el valor de propPublica
-        if ($nombre === "propPublica") return $this->propPublica;
+        if ($nombre === "propPublica") {
+            return $this->propPublica;
+        }
+        
         // Devuelve el valor de _propPrivada
-        if ($nombre === "_propPrivada") return $this->_propPrivada;
+        if ($nombre === "_propPrivada") {
+            return $this->_propPrivada;
+        }
 
         // Devuelve el valor de la propiedad dinámica
         return $this->_propiedades[$nombre];
