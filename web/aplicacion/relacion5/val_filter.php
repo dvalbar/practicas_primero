@@ -1,1 +1,59 @@
 <?php
+namespace VALFILTER;
+
+// - function validaEntero(int &$var, int $min, int $max, int $defecto):bool
+// Esta función comprueba que $var contiene un entero cuyo valor está entre $min y $max. En $var se
+// devuelve el entero saneado (en caso de no cumplir las condiciones asigna a $var el valor
+// $defecto). La función devuelve true si es correcto y false en caso contrario.
+
+function validaEntero(int &$var, int $min, int $max, int $defecto): bool {}
+
+// - function validaReal(float &$var, float $min, float $max, float $defecto):bool
+// Esta función comprueba que $var contiene un real cuyo valor está entre $min y $max. En $var se devuelve
+// el real saneado (en caso de no cumplir las condiciones asigna a $var el valor $defecto). La
+// función devuelve true si es correcto y false en caso contrario.
+
+function validaReal(float &$var, float $min, float $max, float $defecto): bool {}
+
+// - function validaFecha(string &$var, string $defecto):bool
+// Esta función comprueba que $var contiene una fecha correcta en el formato dd/mm/aaaa. En $var se devuelve la fecha saneada
+// (2 cifras para dia y mes y cuatro para año- ej fecha 1/2/2023 es válida aunque se sanea y se
+// convierte en 01/02/2023). En caso de no cumplir las condiciones devuelve $defecto en
+// $var. La función devuelve true si es correcta y false en caso contrario.
+
+function validaFecha(string &$var, string $defecto): bool {}
+
+// - function validaHora(string &$var, string $defecto):bool
+// Esta función comprueba que $var contiene una hora correcta en el formato hh:mm:ss . En $var
+// se devuelve la hora saneada (2 cifras para hora, min, segundos - Ej 0:5:1, hora valida aunque
+// se sanea y se convierte a 00:05:01). En caso de no cumplir las condiciones devuelve $defecto
+// en $var. La función devuelve true si es correcta y false en caso contrario.
+
+function validaHora(string &$var, string $defecto): bool {}
+
+// - function validaEmail(string &$var, string $defecto):bool
+// Esta función comprueba que $var contiene un email correcto en el formato aaaaa@bbbb.ccc.
+// En $var se devuelve el email saneado (en caso de no cumplir las condiciones devuelve $defecto).
+// La función devuelve true si es correcto y false en caso contrario.
+
+function validaEmail(string &$var, string $defecto): bool {}
+
+// - function validaCadena(string &$var, int $longitud, string $defecto):bool
+// Esta función comprueba que $var contiene una cadena de longitud máxima $longitud. En caso de no
+// cumplir las condiciones se asigna a $var el valor $defecto. La función devuelve true si es
+// correcto y false en caso contrario.
+
+function validaCadena(string &$var, int $longitud, string $defecto): bool {}
+
+// - function validaExpresion(string &$var, string $expresion, string $defecto):bool
+// Esta función comprueba que $var cumple con la expresión regular $expresion. En caso de no cumplir las
+// condiciones se asigna a $var el valor por $defecto. La función devuelve true si es correcto y
+// false en caso contrario.
+
+function validaExpresion(string &$var, string $expresion, string $defecto): bool {}
+
+// - function validaRango(mixed $var, array $posibles, int $tipo=1):bool
+// Esta función comprueba que $var sea igual a uno de los elementos del array $posibles ($tipo=1) o a una de las claves
+// del array $posibles ($tipo=2). La función devuelve true si es correcta y false en caso contrario.
+
+function validaRango(mixed $var, array $posibles, int $tipo = 1): bool {}
