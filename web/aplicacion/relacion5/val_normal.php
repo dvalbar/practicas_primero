@@ -1,4 +1,5 @@
 <?php
+
 namespace VALNORMAL;
 
 // - function validaEntero(int &$var, int $min, int $max, int $defecto):bool
@@ -7,7 +8,7 @@ namespace VALNORMAL;
 // $defecto). La función devuelve true si es correcto y false en caso contrario.
 
 /**
- * Función validaEntero que comprueba que $var sea un número entero entre un valor $min y $max.
+ * Función validaEntero() que comprueba que $var sea un número entero entre un valor $min y $max.
  *
  * @param integer $var Número entero a comprobar
  * @param integer $min Valor minimo
@@ -32,7 +33,18 @@ function validaEntero(int &$var, int $min, int $max, int $defecto): bool
 // el real saneado (en caso de no cumplir las condiciones asigna a $var el valor $defecto). La
 // función devuelve true si es correcto y false en caso contrario.
 
-function validaReal (float &$var, float $min, float $max, float $defecto): bool {
+/**
+ * Función validaReal() que comprueba que $var sea un número real entre un valor $min y $max.
+ *
+ * @param integer $var Número real a comprobar
+ * @param integer $min Valor minimo
+ * @param integer $max Valor máximo
+ * @param integer $defecto Valor por defecto en caso de que no cumpla las condiciones
+ * 
+ * @return boolean Devuelve true si es correcto y false en caso contrario
+ */
+function validaReal(float &$var, float $min, float $max, float $defecto): bool
+{
     if ($var >= $min && $var <= $max) {
         $resultado = true;
     } else {
@@ -43,13 +55,46 @@ function validaReal (float &$var, float $min, float $max, float $defecto): bool 
 }
 
 // - function validaFecha(string &$var, string $defecto):bool
-// Esta función comprueba que $var contiene una fecha correcta en el formato dd/mm/aaaa. En $var se devuelve la fecha saneada
-// (2 cifras para dia y mes y cuatro para año- ej fecha 1/2/2023 es válida aunque se sanea y se
+// Esta función comprueba que $var contiene una fecha correcta en el formato dd/mm/aaaa. En $var se devuelve
+// la fecha saneada (2 cifras para dia y mes y cuatro para año- ej fecha 1/2/2023 es válida aunque se sanea y se
 // convierte en 01/02/2023). En caso de no cumplir las condiciones devuelve $defecto en
 // $var. La función devuelve true si es correcta y false en caso contrario.
 
-function validaFecha (string &$var, string $defecto): bool {
+/**
+ * Función validaFecha() que comprueba que $var, que es una fecha, sea correcta.
+ *
+ * @param string $var Fecha a comprobar
+ * @param string $defecto Fecha por defecto
+ * 
+ * @return boolean Devuelve true si es correcta y false en caso contrario
+ */
+function validaFecha(string &$var, string $defecto): bool
+{
+    $arrayExp = [];
+    $expFecha = '/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/';
+    if (preg_match($expFecha, $var, $arrayExp)) {
 
+        $dia = intval($arrayExp[1]);
+        $mes = intval($arrayExp[2]);
+        $anio = intval($arrayExp[3]);
+
+        $esFechaValida = checkdate($mes, $dia, $anio);
+        if (!$esFechaValida) {
+            $var = $defecto;
+            $resultado = false;
+        } else {
+            // Sanear fecha
+            $diaSaneado = str_pad($dia, 2, "0", STR_PAD_LEFT);
+            $mesSaneado = str_pad($mes, 2, "0", STR_PAD_LEFT);
+
+            $var = $diaSaneado . "/" . $mesSaneado . "/" . $anio;
+            $resultado = true;
+        }
+    } else {
+        $var = $defecto;
+        $resultado = false;
+    }
+    return $resultado;
 }
 
 // - function validaHora(string &$var, string $defecto):bool
@@ -58,8 +103,41 @@ function validaFecha (string &$var, string $defecto): bool {
 // se sanea y se convierte a 00:05:01). En caso de no cumplir las condiciones devuelve $defecto
 // en $var. La función devuelve true si es correcta y false en caso contrario.
 
-function validaHora (string &$var, string $defecto): bool {
+/**
+ * Función validaHora() que comprueba que $var, que es una hora en concreto, sea correcta.
+ *
+ * @param string $var Hora a comprobar
+ * @param string $defecto Hora por defecto
+ * 
+ * @return boolean Devuelve true si es correcta y false en caso contrario
+ */
+function validaHora(string &$var, string $defecto): bool
+{
+    $arrayExp = [];
+    $expHora = '/^(\d{1,2}):(\d{1,2}):(\d{1,2})$/';
+    if (preg_match($expHora, $var, $arrayExp)) {
 
+        $horas = intval($arrayExp[1]);
+        $minutos = intval($arrayExp[2]);
+        $segundos = intval($arrayExp[3]);
+
+        if ($horas > 23 || $minutos > 59 || $segundos > 59) {
+            $var = $defecto;
+            $resultado = false;
+        } else {
+            // Sanear hora
+            $horasSaneadas = str_pad($horas, 2, "0", STR_PAD_LEFT);
+            $minutosSaneados = str_pad($minutos, 2, "0", STR_PAD_LEFT);
+            $segundosSaneados = str_pad($segundos, 2, "0", STR_PAD_LEFT);
+
+            $var = $horasSaneadas . ":" . $minutosSaneados . ":" . $segundosSaneados;
+            $resultado = true;
+        }
+    } else {
+        $var = $defecto;
+        $resultado = false;
+    }
+    return $resultado;
 }
 
 // - function validaEmail(string &$var, string $defecto):bool
@@ -67,8 +145,18 @@ function validaHora (string &$var, string $defecto): bool {
 // En $var se devuelve el email saneado (en caso de no cumplir las condiciones devuelve $defecto).
 // La función devuelve true si es correcto y false en caso contrario.
 
-function validaEmail (string &$var, string $defecto): bool {
+function validaEmail(string &$var, string $defecto): bool 
+{
+    $arrayExp = [];
+    $expEmail = '/^(\d{1,2})@(\d{1,2}).(\d{1,2})$/'; // <-- Caracteres (hay que cambiarlo)
+    if (preg_match($expEmail, $var, $arrayExp)) {
 
+    }
+    else {
+        $var = $defecto;
+        $resultado = false;
+    }
+    return $resultado;
 }
 
 // - function validaCadena(string &$var, int $longitud, string $defecto):bool
@@ -76,8 +164,24 @@ function validaEmail (string &$var, string $defecto): bool {
 // cumplir las condiciones se asigna a $var el valor $defecto. La función devuelve true si es
 // correcto y false en caso contrario.
 
-function validaCadena(string &$var, int $longitud, string $defecto): bool {
-
+/**
+ * Función validaCadena() que comprueba que la longitud de la cadena $var sea menor que la $longitud indicada
+ *
+ * @param string $var Cadena que se va a validar
+ * @param integer $longitud Longitud máxima que puede alcanzar la cadena
+ * @param string $defecto Cadena por defecto
+ * 
+ * @return boolean Devuelve true si es correcta y false en caso contrario
+ */
+function validaCadena(string &$var, int $longitud, string $defecto): bool
+{
+    if (mb_strlen($var) <= $longitud) {
+        $resultado = true;
+    } else {
+        $var = $defecto;
+        $resultado = false;
+    }
+    return $resultado;
 }
 
 // - function validaExpresion(string &$var, string $expresion, string $defecto):bool
@@ -85,14 +189,10 @@ function validaCadena(string &$var, int $longitud, string $defecto): bool {
 // condiciones se asigna a $var el valor por $defecto. La función devuelve true si es correcto y
 // false en caso contrario.
 
-function validaExpresion(string &$var, string $expresion, string $defecto): bool {
-
-}
+function validaExpresion(string &$var, string $expresion, string $defecto): bool {}
 
 // - function validaRango(mixed $var, array $posibles, int $tipo=1):bool
 // Esta función comprueba que $var sea igual a uno de los elementos del array $posibles ($tipo=1) o a una de las claves
 // del array $posibles ($tipo=2). La función devuelve true si es correcta y false en caso contrario.
 
-function validaRango(mixed $var, array $posibles, int $tipo = 1): bool {
-    
-}
+function validaRango(mixed $var, array $posibles, int $tipo = 1): bool {}
