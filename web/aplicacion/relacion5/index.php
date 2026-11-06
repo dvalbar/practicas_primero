@@ -597,6 +597,10 @@ function cuerpo() // Añadir aqui las variables
         <label for="password">Contraseña: </label>
         <input type="password" id="password" name="password">
         <br>
+        <!-- Repetir Contraseña -->
+        <label for="password">Repetir Contraseña: </label>
+        <input type="password" id="password" name="password">
+        <br>
         <!-- Fecha Nacimiento -->
         <label for="fecha_nac">Fecha de nacimiento: </label>
         <input type="text" id="fecha_nac" name="fecha_nac">

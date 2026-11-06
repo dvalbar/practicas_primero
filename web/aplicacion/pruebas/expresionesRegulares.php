@@ -56,6 +56,19 @@ preg_match($expresion, $cadena, $resultado, PREG_OFFSET_CAPTURE);
 $cadena="/* primer comentario */ no comentario /* segundo comentario */";
 $expresion="/[/]\*.*?\*[\]/"; // preguntar a vicente
 
+// Busqueda
+$nuevaCadena = "primera ; segunda tercera; cuarta quinta";
+$exp = '/\w+(?=;)/';
+preg_match($exp, $nuevaCadena, $resultado, PREG_OFFSET_CAPTURE);
+
+$nuevaCadena = "primera segunda tercera; cuarta quinta";
+$exp = '/\w+(?=.*;)/';
+preg_match($exp, $nuevaCadena, $resultado, PREG_OFFSET_CAPTURE);
+
+$nuevaCadena = "12345678";
+$exp = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@!%*?&\-_+])[A-Za-z\d$@!%*?&\-_+]{8,15}$/';
+preg_match($exp, $nuevaCadena, $resultado, PREG_OFFSET_CAPTURE);
+
 //dibuja la plantilla de la vista
 inicioCabecera("Prueba expresiones regulares");
 cabecera();
