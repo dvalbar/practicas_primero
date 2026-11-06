@@ -17,6 +17,42 @@ $barraUbi =
         ]
     ];
 
+// FORMULARIO
+
+$arrayErrores = [];
+
+if (isset($_POST["enviar"])) {
+    if (isset($_POST["nombre"])) {
+        $nombre = mb_strtoupper($_POST["nombre"]);
+        if (validaCadena($nombre,25,"Nombre")) {
+            if (mb_strlen($nombre) === 0) {
+                $arrayErrores["nombre"][] = "El nombre no puede estar vacio";    
+            }
+            else if (explode("",$nombre)[0] === "H") {
+                $arrayErrores["nombre"][] = "El nombre no puede empezar por 'H'";
+            }
+        }
+        else {
+            $arrayErrores["nombre"][] = "El nombre es mayor de 25 letras";
+        }
+    }
+
+    if (isset($_POST["password"])) {
+        $password = $_POST["password"];
+        if (validaCadena($password, 15, "Nombre")) {
+            if (mb_strlen($password) < 8) {
+                $arrayErrores["password"][] = "La contraseña debe tener minimo 8 caracteres";    
+            }
+            else if (validaExpresion($password, '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@!%*?&\-_+])[A-Za-z\d$@!%*?&\-_+]{8,15}$/',"usuario@2026")) {
+                $arrayErrores["password"][] = "La contraseña debe "; // TO-DO
+            }
+        }
+        else {
+            $arrayErrores["password"][] = "La contraseña es mayor de 15 caracteres";
+        }
+    }
+}
+
 //dibuja la plantilla de la vista
 inicioCabecera("RELACIÓN 5");
 cabecera();
@@ -625,13 +661,13 @@ function cuerpo() // Añadir aqui las variables
         <br><br>
         <!-- Estudios -->
         <label>Estudios: </label>
-        <br><input type="checkbox" name="estudios[]" value="0"> 0 - Sin estudios
-        <br><input type="checkbox" name="estudios[]" value="1"> 1 - Primaria
-        <br><input type="checkbox" name="estudios[]" value="2"> 2 - Secundaria
-        <br><input type="checkbox" name="estudios[]" value="3"> 3 - Bachillerato
-        <br><input type="checkbox" name="estudios[]" value="4"> 4 - Ciclo formativo
-        <br><input type="checkbox" name="estudios[]" value="5"> 5 - Universitarios
-        <br><input type="checkbox" name="estudios[]" value="6"> 6 - Incorrecta
+        <br><input type="checkbox" name="estudios" value="0"> 0 - Sin estudios
+        <br><input type="checkbox" name="estudios" value="1"> 1 - Primaria
+        <br><input type="checkbox" name="estudios" value="2"> 2 - Secundaria
+        <br><input type="checkbox" name="estudios" value="3"> 3 - Bachillerato
+        <br><input type="checkbox" name="estudios" value="4"> 4 - Ciclo formativo
+        <br><input type="checkbox" name="estudios" value="5"> 5 - Universitarios
+        <br><input type="checkbox" name="estudios" value="6"> 6 - Incorrecta
         <br><br>
         <!-- Hermanos -->
         <label for="hermanos">Hermanos: </label>
@@ -641,10 +677,11 @@ function cuerpo() // Añadir aqui las variables
         <label for="sueldo">Sueldo: </label>
         <input type="number" id="sueldo" name="sueldo" value="1100">
         <br>
-        <button type="submit">Enviar</button>
+        <button type="submit" name="enviar">Enviar</button>
     </form>
 
 <?php
+
 }
 
 // Aqui escribiremos las funciones
