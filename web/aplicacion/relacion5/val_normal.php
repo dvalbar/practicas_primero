@@ -145,14 +145,21 @@ function validaHora(string &$var, string $defecto): bool
 // En $var se devuelve el email saneado (en caso de no cumplir las condiciones devuelve $defecto).
 // La función devuelve true si es correcto y false en caso contrario.
 
-function validaEmail(string &$var, string $defecto): bool 
+/**
+ * Función que comprueba que $var, que es un Email, sea correcto
+ *
+ * @param string $var Email a comprobar
+ * @param string $defecto Email por defecto
+ * 
+ * @return boolean Devuelve true si es correcto y false en caso contrario
+ */
+function validaEmail(string &$var, string $defecto): bool
 {
     $arrayExp = [];
-    $expEmail = '/^(\d{1,2})@(\d{1,2}).(\d{1,2})$/'; // <-- Caracteres (hay que cambiarlo)
+    $expEmail = '/^([\w.-]+)@([\w-]+(\.[\w-]+)*)\.([\w]{2,})$/';
     if (preg_match($expEmail, $var, $arrayExp)) {
-
-    }
-    else {
+        $resultado = true;
+    } else {
         $var = $defecto;
         $resultado = false;
     }
@@ -189,10 +196,66 @@ function validaCadena(string &$var, int $longitud, string $defecto): bool
 // condiciones se asigna a $var el valor por $defecto. La función devuelve true si es correcto y
 // false en caso contrario.
 
-function validaExpresion(string &$var, string $expresion, string $defecto): bool {}
+/**
+ * Función que comprueba que $var cumple con la expresión regular $expresion
+ *
+ * @param string $var Cadena a comprobar
+ * @param string $expresion Expresión regular con la que se comprueba el primer parámetro
+ * @param string $defecto Cadena por defecto
+ * 
+ * @return boolean Devuelve true si es correcto y false en caso contrario
+ */
+function validaExpresion(string &$var, string $expresion, string $defecto): bool
+{
+    $arrayExp = [];
+    if (preg_match($expresion, $var, $arrayExp)) {
+        $resultado = true;
+    } else {
+        $var = $defecto;
+        $resultado = false;
+    }
+    return $resultado;
+}
 
 // - function validaRango(mixed $var, array $posibles, int $tipo=1):bool
-// Esta función comprueba que $var sea igual a uno de los elementos del array $posibles ($tipo=1) o a una de las claves
-// del array $posibles ($tipo=2). La función devuelve true si es correcta y false en caso contrario.
+// Esta función comprueba que $var sea igual a uno de los elementos del array $posibles ($tipo=1) o a una
+// de las claves del array $posibles ($tipo=2).
+// La función devuelve true si es correcta y false en caso contrario.
 
-function validaRango(mixed $var, array $posibles, int $tipo = 1): bool {}
+/**
+ * Funcion validaRango() que comprueba que $var sea igual a uno de los elementos del array $posibles ($tipo = 1)
+ * o una de las claves del array $posibles ($tipo = 2)
+ *
+ * @param mixed $var Cadena, número o indice a buscar
+ * @param array $posibles Array donde se buscara
+ * @param integer $tipo 1 para buscar valores, 2 para buscar indices
+ * 
+ * @return boolean Devuelve true si es correcta y false en caso contrario
+ */
+function validaRango(mixed $var, array $posibles, int $tipo = 1): bool
+{
+    if (is_string($var)) {
+        $var = mb_strtolower($var);
+    }
+
+    switch ($tipo) {
+        case 1: // Buscamos el valor
+            if (in_array($var, $posibles)) { // Si encontramos el valor en el array
+                $resultado = true; // Encontrada
+            } else {
+                $resultado = false; // No encontrada
+            }
+            break;
+        case 2: // Buscamos la clave
+            if (array_key_exists($var, $posibles)) { // Si encontramos la clave en el array
+                $resultado = true; // Encontrada
+            } else {
+                $resultado = false; // No encontrada
+            }
+            break;
+        default:
+            $resultado = false;
+            break;
+    }
+    return $resultado;
+}

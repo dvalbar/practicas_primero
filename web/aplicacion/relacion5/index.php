@@ -183,25 +183,135 @@ function cuerpo() // Añadir aqui las variables
     // =============================================================================================
 
     /**
+     * Función validaEmail()
+     */
+    echo "Función validaEmail()<br>";
+
+    $varEmail = "davidvalverdebarea2006@gmail.com";
+
+    // True
+    echo \VALNORMAL\validaEmail($varEmail, "correo@pordefecto.es") ? "Válida" : "No es válida";
+    echo "<br>Correo: " . $varEmail;
+
+    echo "<br><br>";
+
+    $varEmail = "dvalbar0304@g.educaand.es";
+
+    // True
+    echo \VALNORMAL\validaEmail($varEmail, "correo@pordefecto.es") ? "Válida" : "No es válida";
+    echo "<br>Correo: " . $varEmail;
+
+    echo "<br><br>";
+
+    $varEmail = "contacto@empresa..com";
+
+    // False
+    echo \VALNORMAL\validaEmail($varEmail, "correo@pordefecto.es") ? "Válida" : "No es válida";
+    echo "<br>Correo: " . $varEmail;
+
+    echo "<br><br><hr>";
+
+    // =============================================================================================
+
+    /**
      * Función validaCadena()
      */
     echo "Función validaCadena()<br>";
 
-    static $var4 = "David Valverde Barea";
+    $varCadena = "David Valverde Barea";
 
     // True
-    echo \VALNORMAL\validaCadena($var4, 50, "Nombre Apellido1 Apellido2") ? "Válida" : "No es válida";
-    echo "<br>Nombre: " . $var4;
+    echo \VALNORMAL\validaCadena($varCadena, 50, "Nombre Apellido1 Apellido2") ? "Válida" : "No es válida";
+    echo "<br>Nombre: " . $varCadena;
 
     echo "<br><br>";
 
-    $var4 = "David Valverde Barea";
+    $varCadena = "David Valverde Barea";
 
     // False
-    echo \VALNORMAL\validaCadena($var4, 10, "David") ? "Válida" : "No es válida";
-    echo "<br>Nombre: " . $var4;
+    echo \VALNORMAL\validaCadena($varCadena, 10, "David") ? "Válida" : "No es válida";
+    echo "<br>Nombre: " . $varCadena;
 
     echo "<br><br><hr>";
+
+    // =============================================================================================
+
+    /**
+     * Función validaExpresion()
+     */
+    echo "Función validaExpresion()<br>";
+
+    $varExpCadena = "davidvalverdebarea2006@gmail.com";
+
+    // True
+    echo \VALNORMAL\validaExpresion($varExpCadena, '/^([\w.-]+)@([\w-]+(\.[\w-]+)*)\.([\w]{2,})$/', "defecto") ? "Válida" : "No es válida";
+    echo "<br>Expresión regular: " . $varExpCadena;
+
+    echo "<br><br>";
+
+    $varExpCadena = "9:54:00";
+
+    // True
+    echo \VALNORMAL\validaExpresion($varExpCadena, '/^(\d{1,2}):(\d{1,2}):(\d{1,2})$/', "00:00:00") ? "Válida" : "No es válida";
+    echo "<br>Expresión regular: " . $varExpCadena;
+
+    echo "<br><br>";
+
+    $varExpCadena = "100:20:00";
+
+    // False
+    echo \VALNORMAL\validaExpresion($varExpCadena, '/^(\d{1,2}):(\d{1,2}):(\d{1,2})$/', "00:00:00") ? "Válida" : "No es válida";
+    echo "<br>Expresión regular: " . $varExpCadena;
+
+    echo "<br><br><hr>";
+
+    // =============================================================================================
+
+    /**
+     * Función validaRango()
+     */
+    echo "Función validaRango()<br>";
+
+    $varPalabraBuscar = "Lunes";
+    $arrayDondeBuscar = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+
+    // True
+    echo \VALNORMAL\validaRango($varPalabraBuscar, $arrayDondeBuscar) ? "Encontrada" : "No encontrada";
+
+    echo "<br><br>";
+
+    $varPalabraBuscar = 10;
+    $arrayDondeBuscar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    // True
+    echo \VALNORMAL\validaRango($varPalabraBuscar, $arrayDondeBuscar, 1) ? "Encontrada" : "No encontrada";
+
+    echo "<br><br>";
+
+    $varPalabraBuscar = "Lunes"; // Indice que no existe
+    $arrayDondeBuscar = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+
+    // False
+    echo \VALNORMAL\validaRango($varPalabraBuscar, $arrayDondeBuscar, 2) ? "Encontrada" : "No encontrada";
+
+    echo "<br><br>";
+
+    $varPalabraBuscar = 0; // Indice en este caso
+    $arrayDondeBuscar = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+
+    // True
+    echo \VALNORMAL\validaRango($varPalabraBuscar, $arrayDondeBuscar, 2) ? "Encontrada" : "No encontrada";
+
+    echo "<br><br><hr><br>";
+
+    // ========================================================================================================
+    // ========================================================================================================
+    // ========================================================================================================
+
+    // =======================
+    // LIBRERIA VAL_FILTER.PHP
+    // =======================
+    echo "<h4>VAL_FILTER</h4>";
 }
 
 // Aqui escribiremos las funciones
