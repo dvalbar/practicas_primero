@@ -19,10 +19,10 @@ $barraUbi =
 $resultado = filter_var(12, FILTER_VALIDATE_INT);
 
 $o = [
-    "options"=>[
-        "min_range"=>100,
-        "max_range"=>200,
-        "default"=>100 
+    "options" => [
+        "min_range" => 100,
+        "max_range" => 200,
+        "default" => 100
     ]
 ];
 
@@ -35,7 +35,7 @@ $o = [
         "max_range" => 200,
         "default" => 100
     ],
-    "flags"=>FILTER_FLAG_ALLOW_HEX
+    "flags" => FILTER_FLAG_ALLOW_HEX
 ];
 
 $resultado = filter_var('0x81', FILTER_VALIDATE_INT, $o);
