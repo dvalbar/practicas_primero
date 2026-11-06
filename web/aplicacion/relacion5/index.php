@@ -4,6 +4,8 @@ include_once(dirname(__FILE__) . "/../../cabecera.php");
 include_once("val_normal.php"); // Importar val_normal.php
 include_once("val_filter.php"); // Importar val_filter.php
 
+include_once("../../scripts/librerias/validacion.php"); // Importar validacion.php
+
 //controlador
 $barraUbi =
     [
@@ -35,7 +37,7 @@ function cuerpo() // Añadir aqui las variables
 ?>
     <br>
     <h3>Librerías de la relación 5.</h3>
-<?php
+    <?php
 
     // =======================
     // LIBRERIA VAL_NORMAL.PHP
@@ -579,7 +581,16 @@ function cuerpo() // Añadir aqui las variables
     // ========================================================================================================
     // ========================================================================================================
 
+    // ==========
+    // FORMULARIO
+    // ==========
+    echo "<h4>FORMULARIO</h4>";
 
+    ?>
+
+    <!-- Crear aqui formulario -->
+     
+<?php
 }
 
 // Aqui escribiremos las funciones
