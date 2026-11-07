@@ -21,6 +21,7 @@ $barraUbi =
 // FORMULARIO
 // ==========
 
+// Datos del formulario
 $arrayDatos = [
     "nombre" => "",
     "password" => "",
@@ -36,7 +37,10 @@ $arrayDatos = [
     "hermanos" => 0,
     "sueldo" => 1100
 ];
+
+// Errores del formulario
 $arrayErrores = [];
+
 
 if (isset($_POST["enviar"])) {
 
@@ -69,7 +73,7 @@ if (isset($_POST["enviar"])) {
         }
     }
 
-    // Repetir Password
+    // Repetir Password (Lo dijo Vicente en clase)
     if (isset($_POST["repetir_password"])) {
         $repetir_password = $_POST["repetir_password"];
         if ($_POST["password"] !== $_POST["repetir_password"]) {
@@ -200,6 +204,7 @@ if (isset($_POST["enviar"])) {
     }
 }
 
+// Si no hay errores, $correcto será true
 $correcto = isset($_POST["enviar"]) && empty($arrayErrores);
 
 //dibuja la plantilla de la vista
@@ -768,11 +773,11 @@ function cuerpo($arrayDatos, $arrayErrores, $correcto) // Añadir aqui las varia
     // ==========
     // FORMULARIO
     // ==========
-    echo "<h4>FORMULARIO</h4>" . PHP_EOL;
+    echo "<h3>Formulario de la relación 5.</h3>" . PHP_EOL;
 
-    if ($correcto) {
+    if ($correcto) { // Si no hay errores muestra el resumen
         resumen($arrayDatos);
-    } else {
+    } else { // Si hay errores, vuelve a mostrar el formulario con los datos actualizados
         formulario($arrayDatos, $arrayErrores);
     }
 }
@@ -781,6 +786,14 @@ function cuerpo($arrayDatos, $arrayErrores, $correcto) // Añadir aqui las varia
 
 // FUNCIONES
 
+/**
+ * Función que muestra el formulario por pantalla
+ *
+ * @param array $datos Array con todos los datos del formulario
+ * @param array $errores Array con los mensajes de error del formulario
+ * 
+ * @return void No devuelve nada
+ */
 function formulario(array $datos, array $errores): void
 {
     if ($errores) { //mostrar los errores
@@ -792,6 +805,7 @@ function formulario(array $datos, array $errores): void
         echo "</div>";
     }
     ?>
+
     <form action="" method="POST">
         <!-- Nombre -->
         <label for="nombre">Nombre: </label>
@@ -850,6 +864,13 @@ function formulario(array $datos, array $errores): void
 <?php
 }
 
+/**
+ * Función que recorre el array de datos del formulario y muestra los datos finales por pantalla
+ *
+ * @param array $datos Array con los datos finales del formulario
+ * 
+ * @return void No devuelve nada
+ */
 function resumen(array $datos): void
 {
     $nombresEstudios = [
