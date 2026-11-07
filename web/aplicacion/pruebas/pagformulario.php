@@ -16,7 +16,31 @@ $barraUbi =
         ]
     ];
 
-header("refresh: 3, url=https:/www.iespedroespinosa.es"); // A los 3 segundos te lleva a la página del pedro espinosa
+$resultado = filter_var(12, FILTER_VALIDATE_INT);
+
+$o = [
+    "options" => [
+        "min_range" => 100,
+        "max_range" => 200,
+        "default" => 100
+    ]
+];
+
+$resultado = filter_var('123', FILTER_VALIDATE_INT, $o);
+
+
+$o = [
+    "options" => [
+        "min_range" => 100,
+        "max_range" => 200,
+        "default" => 100
+    ],
+    "flags" => FILTER_FLAG_ALLOW_HEX
+];
+
+$resultado = filter_var('0x81', FILTER_VALIDATE_INT, $o);
+
+// header("refresh: 3, url=https:/www.iespedroespinosa.es"); // A los 3 segundos te lleva a la página del pedro espinosa
 
 //inicializaciones
 $datos = [
