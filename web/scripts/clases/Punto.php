@@ -37,7 +37,7 @@ class Punto
 
     // En el constructor se pasan parámetros para todas las propiedades. Si no se cumple
     // alguna restricción se lanza una excepción.
-    public function __construct($coordX, $coordY, $color, $grosor)
+    public function __construct(int $coordX, int $coordY, string $color, int $grosor)
     {
         if (!$this->setCoordX($coordX)) throw new \Exception('Coordenada X no válida');
         if (!$this->setCoordY($coordY)) throw new \Exception('Coordenada Y no válida');
@@ -71,7 +71,7 @@ class Punto
     public function setCoordX(int $nuevaCoordX): bool
     {
         if (validaEntero($nuevaCoordX, 0, 20000, 0)) {
-            $this->_edad = $nuevaCoordX;
+            $this->_coordX = $nuevaCoordX;
             $resultado = true;
         } else {
             $resultado = false;
@@ -98,7 +98,7 @@ class Punto
     public function setCoordY(int $nuevaCoordY): bool
     {
         if (validaEntero($nuevaCoordY, 0, 20000, 0)) {
-            $this->_edad = $nuevaCoordY;
+            $this->_coordY = $nuevaCoordY;
             $resultado = true;
         } else {
             $resultado = false;
@@ -119,12 +119,18 @@ class Punto
     /**
      * Cambia el color.
      *
-     * @param string $nuevoColor Nuevo color
+     * @param string $nuevoColor Nuevo color (se pasa en inglés)
      * @return bool Devuelve true si las condiciones son válidas
      */
     public function setColor(string $nuevoColor): bool
     {
-        // TO-DO
+        if (array_key_exists($nuevoColor, self::COLORES)) {
+            $this->_color = $nuevoColor;
+            $resultado = true;
+        } else {
+            $resultado = false;
+        }
+        return $resultado;
     }
 
     /**
@@ -145,7 +151,13 @@ class Punto
      */
     public function setGrosor(int $nuevoGrosor): bool
     {
-        // TO-DO
+        if (array_key_exists($nuevoGrosor, self::GROSORES)) {
+            $this->_grosor = $nuevoGrosor;
+            $resultado = true;
+        } else {
+            $resultado = false;
+        }
+        return $resultado;
     }
 
     // =========================================
