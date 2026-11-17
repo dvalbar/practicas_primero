@@ -1,7 +1,6 @@
 <?php
 
 include_once(dirname(__FILE__) . "/../../cabecera.php");
-include_once("../../scripts/librerias/validacion.php"); // Importar validacion.php
 
 //controlador
 $barraUbi =
@@ -39,11 +38,9 @@ if (isset($_POST["guardar"])) {
         $coordX = trim($_POST["x"]);
         if ($coordX === "") {
             $arrayErrores["x"][] = "La coordenada X no puede estar vacía";
-        }
-        else if (filter_var($coordX, FILTER_VALIDATE_INT) === false) {
+        } else if (filter_var($coordX, FILTER_VALIDATE_INT) === false) {
             $arrayErrores["x"][] = "La coordenada debe ser un número entero";
-        }
-        else if (!validaEntero($coordX, 0, 500, 0)) {
+        } else if (!validaEntero($coordX, 0, 500, 0)) {
             $arrayErrores["x"][] = "La coordenada debe estar entre 0 y 500";
         }
         $arrayDatos["x"] = $coordX;
@@ -54,11 +51,9 @@ if (isset($_POST["guardar"])) {
         $coordY = trim($_POST["y"]);
         if ($coordY === "") {
             $arrayErrores["y"][] = "La coordenada Y no puede estar vacía";
-        }
-        else if (filter_var($coordY, FILTER_VALIDATE_INT) === false) {
+        } else if (filter_var($coordY, FILTER_VALIDATE_INT) === false) {
             $arrayErrores["y"][] = "La coordenada debe ser un número entero";
-        }
-        else if (!validaEntero($coordY, 0, 500, 0)) {
+        } else if (!validaEntero($coordY, 0, 500, 0)) {
             $arrayErrores["y"][] = "La coordenada debe estar entre 0 y 500";
         }
         $arrayDatos["y"] = $coordY;
@@ -81,8 +76,7 @@ if (isset($_POST["guardar"])) {
             $arrayErrores["grosor"][] = "El grosor debe ser un entero entre 1 y 3";
         }
         $arrayDatos["grosor"] = $grosor;
-    }
-    else {
+    } else {
         // Si no existe color es que no se ha seleccionado
         $arrayErrores["grosor"][] = "No se ha seleccionado ningún grosor";
     }
@@ -91,7 +85,7 @@ if (isset($_POST["guardar"])) {
 $correcto = isset($_POST["guardar"]) && empty($arrayErrores);
 
 // Si no hay errores en el formulario se crea un Punto
-if ($correcto) { 
+if ($correcto) {
     $arrayPuntos[] = new Punto($arrayDatos["x"], $arrayDatos["y"], $arrayDatos["color"], $arrayDatos["grosor"]);
 }
 
@@ -101,7 +95,7 @@ inicioCabecera("RELACIÓN 7");
 cabecera();
 finCabecera();
 inicioCuerpo("RELACIÓN 7", $barraUbi);
-cuerpo($arrayDatos, $arrayErrores);  //llamo a la vista
+cuerpo($arrayDatos, $arrayErrores, $arrayPuntos);  //llamo a la vista
 finCuerpo();
 // **********************************************************
 
@@ -110,15 +104,27 @@ finCuerpo();
 function cabecera() {}
 
 //vista
-function cuerpo($arrayDatos, $arrayErrores) // Añadir aqui las variables
+function cuerpo($arrayDatos, $arrayErrores, $arrayPuntos) // Añadir aqui las variables
 {
 ?>
     <br>
     <h3>Formulario de la relación 7.</h3>
-<?php
+    <?php
 
     formulario($arrayDatos, $arrayErrores);
 
+    // 2. Se mostrará una caja de tipo textarea en la que aparecerán todos los puntos que tenemos
+    // almacenados, una línea por punto, y un img con la imagen generada.
+
+    ?>
+    <br>
+    <h3>Puntos almacenados</h3>
+    <textarea name="puntos" rows="10" cols="40" readonly><?php
+        foreach ($arrayPuntos as $punto) {
+            echo $punto->getCoordX() . " ; " . $punto->getCoordY() . " ; " . $punto->getColor() . " ; " . $punto->getGrosor() . PHP_EOL;
+        }
+    ?></textarea>
+<?php
 }
 
 // Aqui escribiremos las funciones
@@ -209,3 +215,16 @@ function formulario(array $datos, array $errores): void
     </form>
 <?php
 }
+
+/**
+ * Función para sacar desde que navegador web se ha entrado a la página web
+ *
+ * @return string Cadena con el nombre del navegador web
+ */
+function obtenerNavegador(): string {
+    $navegador = $_SERVER["HTTP_USER_AGENT"];
+
+    return $navegador;
+}
+
+echo obtenerNavegador();
