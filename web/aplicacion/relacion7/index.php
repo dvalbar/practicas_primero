@@ -295,6 +295,7 @@ function formulario(array $datos, array $errores, array $puntos): void
         <br><br>
         <button type="submit" name="guardar">Guardar</button>
         <button type="submit" name="borrar">Borrar</button>
+        <button type="submit" name="descargar" formaction="imagen.php">Descargar</button>
     </form>
 <?php
 }
