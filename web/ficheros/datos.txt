@@ -1,0 +1,2 @@
+nombre,David,20,
+noemi,Ordenador,1234,12,

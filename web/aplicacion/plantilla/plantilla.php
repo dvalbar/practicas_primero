@@ -1,6 +1,6 @@
 <?php
 
-function paginaError($mensaje, $barraUbi)
+function paginaError($mensaje)
 {
     header("HTTP/1.0 404 $mensaje");
     inicioCabecera("PRACTICA");
