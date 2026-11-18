@@ -28,6 +28,21 @@ $arrayErrores = [];
 // Ruta donde se guardará la imagen
 $rutaImagen = RUTABASE . "/imagenes/puntos/imagen_" . obtenerIp() . "_" . obtenerNavegador() . ".jpg";
 
+// Ruta donde se guardará el fichero de puntos
+$miFicheroPuntos = "puntos_" . obtenerIp() . "_" . obtenerNavegador() . ".dat";
+
+// 3. Se trabajará con el fichero puntos_dirip_navegador.dat (dirip es la dirección IP del cliente y
+// navegador es una cadena que indica tipo de navegador). Como veis este fichero será distinto
+// dependiendo del cliente y el ordenador con el que se hace el acceso a la página web.
+// Este fichero contiene una línea por cada punto disponible. El formato de la línea será “x ; y ;
+// color ; grosor “.
+// Lo primero que se hará cuando se accede a una página, será cargar los puntos de este fichero al
+// array Puntos. Así lo tendremos disponible en todos los ficheros php (index.php, imagen.php,
+// etc)
+
+// Leer el fichero y cargar los puntos al arrayPuntos
+leerDeFichero($miFicheroPuntos, $arrayPuntos);
+
 // Al pulsar el botón de guardar se debe llamar al fichero index.php indicándole todos los valores
 // anteriores. Se comprobará si las coordenadas están entre 0 y 500, se ha indicado un color y se
 // ha seleccionado un grosor. En caso de que no se cumpla lo anterior se mostrará en el elemento
@@ -88,13 +103,20 @@ if (isset($_POST["guardar"])) {
 // Si no hay errores, $correcto será true
 $correcto = isset($_POST["guardar"]) && empty($arrayErrores);
 
-// Si no hay errores en el formulario se crea un Punto y se recreará la imagen
+// Si no hay errores en el formulario, se crea un punto, se guarda en el array de puntos, se escribe ese punto en el fichero
+// y se recrea la imagen
 if ($correcto) {
+    // Crear punto y añadirlo al array
     $arrayPuntos[] = new Punto($arrayDatos["x"], $arrayDatos["y"], $arrayDatos["color"], $arrayDatos["grosor"]);
+
+    // Escribir en el fichero
+    escribirFichero($miFicheroPuntos, $arrayPuntos);
+
+    // Y recrear imagen
     crearImg($rutaImagen, $arrayPuntos);
 }
 
-// Si la imagen no existe ya se crea
+// Si la imagen no existe, se crea
 if (!file_exists($rutaImagen)) {
     crearImg($rutaImagen, $arrayPuntos);
 }
@@ -130,7 +152,7 @@ function cuerpo(array $arrayDatos, array $arrayErrores, array $arrayPuntos) // A
     <h3>Puntos almacenados</h3>
     <textarea name="puntos" rows="10" cols="40" readonly><?php
                                                             foreach ($arrayPuntos as $punto) {
-                                                                echo $punto->getCoordX() . " ; " . $punto->getCoordY() . " ; " . $punto->getColor() . " ; " . $punto->getGrosor() . PHP_EOL;
+                                                                echo $punto->getCoordX() . ";" . $punto->getCoordY() . ";" . $punto->getColor() . ";" . $punto->getGrosor() . PHP_EOL;
                                                             }
                                                             ?></textarea>
     <br>
@@ -159,7 +181,7 @@ function formulario(array $datos, array $errores): void
     aparecerán tres cajas radio para seleccionar el grosor (fino, medio, gordo). Aparecerá también
     un botón de guardar. -->
 
-    <form action="" method="POST">
+    <form action="/aplicacion/relacion7/index.php" method="POST"> <!-- Redirecciona a la misma página -->
         <!-- Coordenada X -->
         <label for="x">Coordenada X: </label>
         <input type="text" id="x" name="x" value="<?php echo $datos["x"]; ?>">
@@ -295,4 +317,106 @@ function crearImg(string $ruta, array $arrayPuntos): void
         }
     }
     imagejpeg($img, $ruta); // Crea la imagen en la ruta especificada
+}
+
+/**
+ * Función para escribir en un fichero
+ * 
+ * @param string $nombre Nombre del fichero
+ * @param mixed $datos Valores
+ * @return bool Devuelve true si ejecuta correctamente o false si hay algún error
+ */
+function escribirFichero(string $nombre, array $datos): bool
+{
+    // Ruta en la que se guardará el fichero
+    $ruta = RUTABASE . "/ficheros";
+
+    // Si no existe la ruta se crea
+    if (!file_exists($ruta))
+        mkdir($ruta);
+
+    $ruta .= "/$nombre";
+
+    // Provocar error para ir a página de error
+    // if (!isset($datos)) {
+    //     return false;
+    // }
+
+    // Se abre el fichero para escritura
+
+    // Si existe se borra el contenido
+    $fic = fopen($ruta, "w");
+    if (!$fic) {
+        return false;
+    }
+
+    // Se recorre el array con los datos
+    foreach ($datos as $punto) {
+        $linea = $punto->getCoordX() . ";" . $punto->getCoordY() . ";" . $punto->getColor() . ";" . $punto->getGrosor();
+
+        // Se escribe
+        fputs($fic, $linea . PHP_EOL);
+    }
+
+    // Se cierra el fichero
+    fclose($fic);
+    return true;
+}
+
+/**
+ * Función para leer de un fichero
+ * @param string $nombre Nombre del fichero
+ * @param mixed $datos Valores
+ * @return bool Devuelve true si ejecuta correctamente o false si hay algún error
+ */
+function leerDeFichero(string $nombre, array &$datos): bool
+{
+    // Ruta en la que se guardará el fichero
+    $ruta = RUTABASE . "/ficheros";
+
+    // Si no existe la ruta se crea
+    if (!file_exists($ruta))
+        mkdir($ruta);
+
+    $ruta .= "/$nombre";
+
+    if (!file_exists($ruta)) {
+        return false;
+    }
+
+    // Se abre el fichero para lectura
+    // Debe existir
+    $fic = fopen($ruta, "r");
+    if (!$fic) {
+        return false;
+    }
+
+    // Borro el contenido del array
+    foreach ($datos as $pos => $valor) {
+        unset($datos[$pos]);
+    }
+
+    // Leo el fichero linea a linea
+    while ($linea = fgets($fic)) {
+        $linea = str_replace("\r", "", $linea);
+        $linea = str_replace("\n", "", $linea);
+
+        if ($linea != "") {
+            // Separo por ; y quito los espacios de cada trozo
+            $trozos = array_map("trim", explode(";", $linea));
+
+            // Solo si la línea tiene los 4 datos
+            if (count($trozos) === 4) {
+                try {
+                    $datos[] = new Punto($trozos[0], $trozos[1], $trozos[2], $trozos[3]);
+                } catch (Throwable $e) {
+                    // Línea no válida: se salta y se sigue con la siguiente
+                }
+            }
+        }
+    }
+
+    // Se cierra el fichero
+    fclose($fic);
+    return true;
 }
