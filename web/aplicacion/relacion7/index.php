@@ -25,6 +25,9 @@ $arrayDatos = [
 // Array con los errores del formulario
 $arrayErrores = [];
 
+// Ruta donde se guardará la imagen
+$rutaImagen = RUTABASE . "/imagenes/puntos/imagen_" . obtenerIp() . "_" . obtenerNavegador() . ".jpg";
+
 // Al pulsar el botón de guardar se debe llamar al fichero index.php indicándole todos los valores
 // anteriores. Se comprobará si las coordenadas están entre 0 y 500, se ha indicado un color y se
 // ha seleccionado un grosor. En caso de que no se cumpla lo anterior se mostrará en el elemento
@@ -81,20 +84,19 @@ if (isset($_POST["guardar"])) {
         $arrayErrores["grosor"][] = "No se ha seleccionado ningún grosor";
     }
 }
+
 // Si no hay errores, $correcto será true
 $correcto = isset($_POST["guardar"]) && empty($arrayErrores);
 
-// Si no hay errores en el formulario se crea un Punto
+// Si no hay errores en el formulario se crea un Punto y se recreará la imagen
 if ($correcto) {
     $arrayPuntos[] = new Punto($arrayDatos["x"], $arrayDatos["y"], $arrayDatos["color"], $arrayDatos["grosor"]);
+    crearImg($rutaImagen, $arrayPuntos);
 }
-
-// Ruta de la imagen (depende del navegador desde donde se accede)
-$rutaImagen = RUTABASE . "/imagenes/puntos/imagen_" . obtenerIp() . "_" . obtenerNavegador() . ".jpg";
 
 // Si la imagen no existe ya se crea
 if (!file_exists($rutaImagen)) {
-    crearImg($rutaImagen, $arrayPuntos); // Crear imagen al cargar la página (Si no hay puntos guardados se crea en blanco)
+    crearImg($rutaImagen, $arrayPuntos);
 }
 
 //dibuja la plantilla de la vista
@@ -132,7 +134,7 @@ function cuerpo(array $arrayDatos, array $arrayErrores, array $arrayPuntos) // A
                                                             }
                                                             ?></textarea>
     <br>
-    <img src="/imagenes/puntos/imagen_<?php echo obtenerIp() . "_" . obtenerNavegador(); ?>.jpg" alt="Imagen de los puntos">;
+    <img src="/imagenes/puntos/imagen_<?php echo obtenerIp() . "_" . obtenerNavegador(); ?>.jpg" alt="Imagen de los puntos">
 <?php
 }
 
@@ -264,19 +266,33 @@ function obtenerIp(): string
 // un marco) cuando se conecte un usuario y se recreará solo cuando se añada/borre un punto (no
 // estar recreándolo siempre). 
 
+/**
+ * Crea la imagen jpg con los puntos y la guarda en la ruta indicada
+ *
+ * @param string $ruta Ruta del fichero de imagen
+ * @param array $arrayPuntos Array de objetos Punto a dibujar
+ *
+ * @return void No devuelve nada
+ */
 function crearImg(string $ruta, array $arrayPuntos): void
 {
+    $img = imagecreatetruecolor(500, 500); // Crear imagen 500 x 500
+
+    $blanco = imagecolorallocate($img, 255, 255, 255); // Color blanco
+    $negro = imagecolorallocate($img, 0, 0, 0); // Color negro
+
+    imagefill($img, 0, 0, $blanco); // Rellenar el fondo de la imagen de color blanco
+
+    imagerectangle($img, 0, 0, 499, 499, $negro); // Rectangulo negro (borde) que se coloca al borde de la imagen
+
     // Si el array de puntos tiene puntos se muestran en la imagen
     if (!empty($arrayPuntos)) {
-        foreach ($arrayPuntos as $key => $value) {
+        foreach ($arrayPuntos as $miPunto) { // Recorro mis puntos
+            $miRgb = Punto::COLORES[$miPunto->getColor()]["rgb"];
+            $grosorPunto = $miPunto->getGrosor() * 10;
+            $punto = imagecolorallocate($img, $miRgb[0], $miRgb[1], $miRgb[2]);
+            imagefilledellipse($img, $miPunto->getCoordX(), $miPunto->getCoordY(), $grosorPunto, $grosorPunto, $punto);
         }
-    } else { // Si el array esta vacio solo se mostrara la imagen en blanco
-        $img = imagecreatetruecolor(500, 500);
-        $blanco = imagecolorallocate($img, 255, 255, 255);
-        $negro = imagecolorallocate($img, 0, 0, 0);
-        imagefill($img, 0, 0, $blanco);
-        imagerectangle($img, 0, 0, 499, 499, $negro);
-        imagejpeg($img, $ruta);
-        imagedestroy($img);
     }
+    imagejpeg($img, $ruta); // Crea la imagen en la ruta especificada
 }

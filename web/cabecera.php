@@ -32,7 +32,7 @@ include_once(RUTABASE . "/scripts/librerias/validacion.php");
 
 // Array de objetos Punto, aquí se guardaran todos nuestros puntos
 $arrayPuntos = [
-    new Punto(10,30,"red",2),
+    new Punto(10, 30, "red", 2),
     new Punto(300, 50, "blue", 1),
     new Punto(90, 450, "green", 3),
 ];
