@@ -100,6 +100,32 @@ if (isset($_POST["guardar"])) {
     }
 }
 
+// 4. Se tendrá un formulario que muestre un combo con una entrada por cada punto existente y un
+// botón borrar que al pulsarse recarga la página index.php y se encarga de borrar de la lista el
+// punto indicado. Debe actualizarse el fichero de puntos y la imagen para que refleje el borrado.
+// Posteriormente se recargará la página index.php.
+
+if (isset($_POST["borrar"])) {
+
+    // Si existe y se ha seleccionado una opción válida
+    if (isset($_POST["puntoBorrar"]) && $_POST["puntoBorrar"] !== "") {
+        $posicion = intval($_POST["puntoBorrar"]);
+
+        if (isset($arrayPuntos[$posicion])) {
+            unset($arrayPuntos[$posicion]); // Borrar punto
+
+            // Reindexamos el array para que no queden huecos en las posiciones
+            $arrayPuntos = array_values($arrayPuntos);
+
+            // Actualizamos el fichero y regeneramos la imagen
+            escribirFichero($miFicheroPuntos, $arrayPuntos);
+            crearImg($rutaImagen, $arrayPuntos);
+        }
+    } else {
+        $arrayErrores["borrar"][] = "Debes seleccionar un punto para borrar";
+    }
+}
+
 // Si no hay errores, $correcto será true
 $correcto = isset($_POST["guardar"]) && empty($arrayErrores);
 
@@ -142,7 +168,7 @@ function cuerpo(array $arrayDatos, array $arrayErrores, array $arrayPuntos) // A
     <h3>Formulario de la relación 7.</h3>
     <?php
 
-    formulario($arrayDatos, $arrayErrores);
+    formulario($arrayDatos, $arrayErrores, $arrayPuntos); // Mostrar formulario
 
     // 2. Se mostrará una caja de tipo textarea en la que aparecerán todos los puntos que tenemos
     // almacenados, una línea por punto, y un img con la imagen generada.
@@ -169,10 +195,11 @@ function cuerpo(array $arrayDatos, array $arrayErrores, array $arrayPuntos) // A
  *
  * @param array $datos Array con todos los datos del formulario
  * @param array $errores Array con los mensajes de error del formulario
+ * @param array $errores Array con los puntos de la página
  * 
  * @return void No devuelve nada
  */
-function formulario(array $datos, array $errores): void
+function formulario(array $datos, array $errores, array $puntos): void
 {
 ?>
 
@@ -243,8 +270,31 @@ function formulario(array $datos, array $errores): void
         <br><input type="radio" name="grosor" value="1" <?php if (intval($datos["grosor"]) === 1) echo "checked"; ?>> Fino
         <br><input type="radio" name="grosor" value="2" <?php if (intval($datos["grosor"]) === 2) echo "checked"; ?>> Medio
         <br><input type="radio" name="grosor" value="3" <?php if (intval($datos["grosor"]) === 3) echo "checked"; ?>> Grueso
-        <br>
+        <br><br>
+        <!-- Borrar puntos -->
+        <label>Borrar punto: </label>
+        <select name="puntoBorrar" id="puntoBorrar">
+            <option value="">Selecciona un punto</option>
+            <?php
+            foreach ($puntos as $key => $punto) {
+                // Texto que muestra cada opción
+                $textoPunto = "Punto " . ($key + 1) . ": " . $punto->getCoordX() . "; " . $punto->getCoordY() . "; " . $punto->getColor() . "; " . $punto->getGrosor();
+
+                echo "<option value='$key'>$textoPunto</option>" . PHP_EOL;
+            }
+            ?>
+        </select>
+        <?php
+        // Mostrar error en el campo Borrar punto
+        if (isset($errores["borrar"])) {
+            foreach ($errores["borrar"] as $error) {
+                echo " <span class='error'>$error</span>";
+            }
+        }
+        ?>
+        <br><br>
         <button type="submit" name="guardar">Guardar</button>
+        <button type="submit" name="borrar">Borrar</button>
     </form>
 <?php
 }
@@ -289,7 +339,7 @@ function obtenerIp(): string
 // estar recreándolo siempre). 
 
 /**
- * Crea la imagen jpg con los puntos y la guarda en la ruta indicada
+ * Crea la imagen .jpg con los puntos y la guarda en la ruta indicada
  *
  * @param string $ruta Ruta del fichero de imagen
  * @param array $arrayPuntos Array de objetos Punto a dibujar
@@ -324,6 +374,7 @@ function crearImg(string $ruta, array $arrayPuntos): void
  * 
  * @param string $nombre Nombre del fichero
  * @param mixed $datos Valores
+ * 
  * @return bool Devuelve true si ejecuta correctamente o false si hay algún error
  */
 function escribirFichero(string $nombre, array $datos): bool
@@ -336,11 +387,6 @@ function escribirFichero(string $nombre, array $datos): bool
         mkdir($ruta);
 
     $ruta .= "/$nombre";
-
-    // Provocar error para ir a página de error
-    // if (!isset($datos)) {
-    //     return false;
-    // }
 
     // Se abre el fichero para escritura
 
@@ -367,6 +413,7 @@ function escribirFichero(string $nombre, array $datos): bool
  * Función para leer de un fichero
  * @param string $nombre Nombre del fichero
  * @param mixed $datos Valores
+ * 
  * @return bool Devuelve true si ejecuta correctamente o false si hay algún error
  */
 function leerDeFichero(string $nombre, array &$datos): bool
