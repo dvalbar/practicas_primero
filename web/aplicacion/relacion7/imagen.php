@@ -24,7 +24,7 @@ $rutaImagen = RUTABASE . "/imagenes/puntos/imagen_" . obtenerIp() . "_" . obtene
 
 echo file_get_contents($rutaImagen);
 
-exit; // exit; para que no descargue tambien lo de abajo
+exit; // exit; Para que no descargue tambien lo de abajo
 
 
 // Aqui escribiremos las funciones
