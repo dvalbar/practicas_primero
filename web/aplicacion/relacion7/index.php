@@ -126,11 +126,83 @@ if (isset($_POST["borrar"])) {
     }
 }
 
-// Si no hay errores, $correcto será true
+// 6. Aparecerá un formulario que nos permitirá subir un fichero .txt de puntos en el mismo formato
+// del indicado en el apartado 3. Al subirlo se procederá a añadir los puntos correctos (que
+// cumplen las condiciones) a los que ya tenemos y actualizará el fichero puntos_
+// dirip_navegador.dat. También se actualizará la imagen.
+
+if (isset($_POST['subir'])) {
+    $erroresFichero = false;
+
+    // Si no subo ningun fichero da error
+    if (!isset($_FILES['archivo'])) {
+        $arrayErrores['archivo'][] = 'No se ha indicado fichero';
+        $erroresFichero = true; // Errores a true
+    } else {
+        // Compruebo que se ha subido un archivo correctamente
+        if ($_FILES['archivo']['error'] != 0) {
+            $arrayErrores['archivo'][] = 'El fichero indicado no es correcto';
+            $erroresFichero = true;
+        }
+    }
+
+    // Si no hay errores
+    if (!$erroresFichero) {
+        $extension = strtolower(pathinfo($_FILES['archivo']['name'], PATHINFO_EXTENSION)); // Extensión .txt
+
+        // Si la extensión del fichero no es .txt da error
+        if ($extension !== 'txt') {
+            $arrayErrores['archivo'][] = 'Solo se permiten archivos .txt';
+            $erroresFichero = true;
+        }
+    }
+
+    // Ahora si no hay ni un solo error si que subimos el fichero y hacemos las comprobaciones
+    if (!$erroresFichero && empty($arrayErrores)) {
+
+        $nombreFichero = basename($_FILES['archivo']['name']); // Nombre del fichero subido
+
+        $carpeta = RUTABASE . '/ficheros'; // Ruta donde se guardará este fichero
+
+        if (!file_exists($carpeta)) { // Si la ruta no existe se crea
+            mkdir($carpeta);
+        }
+
+        // Comprobamos si se puede subir el fichero
+        if (!move_uploaded_file($_FILES['archivo']['tmp_name'], "$carpeta/$nombreFichero")) {
+            // Si no se puede subir da error
+            $arrayErrores['archivo'][] = 'El archivo no se ha podido subir';
+        } else {
+            // Si se sube hacemos comprobaciones
+
+            $puntosAntes = count($arrayPuntos); // Puntos que hay antes de agregar los nuevos
+
+            // false = No borra los puntos anteriores (nos sirve para agregar nuevos puntos sin perder los anteriores)
+            leerDeFichero($nombreFichero, $arrayPuntos, false);
+
+            // Si hay más puntos que antes se escribe en el fichero de puntos y se vuelve a crear la imagen
+            if (count($arrayPuntos) > $puntosAntes) {
+                escribirFichero($miFicheroPuntos, $arrayPuntos);
+                crearImg($rutaImagen, $arrayPuntos);
+            } else {
+                // Si no es capaz de meter puntos dará error porque el formato de los puntos está mal
+                $arrayErrores['archivo'][] = 'No se han encontrado puntos válidos en el fichero';
+            }
+        }
+    }
+}
+
+
+// ===================
+// GUARDAR UN PUNTO
+// ===================
+
+// Si no hay errores al guardar un punto, $correcto será true
 $correcto = isset($_POST["guardar"]) && empty($arrayErrores);
 
-// Si no hay errores en el formulario, se crea un punto, se guarda en el array de puntos, se escribe ese punto en el fichero
-// y se recrea la imagen
+// Si no hay errores en el formulario, se crea un punto,  se guarda en el array de puntos, 
+// se escribe ese punto en el fichero y se recrea la imagen
+
 if ($correcto) {
     // Crear punto y añadirlo al array
     $arrayPuntos[] = new Punto($arrayDatos["x"], $arrayDatos["y"], $arrayDatos["color"], $arrayDatos["grosor"]);
@@ -142,7 +214,8 @@ if ($correcto) {
     crearImg($rutaImagen, $arrayPuntos);
 }
 
-// Si la imagen no existe, se crea
+// Si la imagen no existe, se crea la imagen en blanco (esto se ejecuta en caso de no encontrar una 
+// imagen con puntos, por ejemplo si entras desde un navegador diferente)
 if (!file_exists($rutaImagen)) {
     crearImg($rutaImagen, $arrayPuntos);
 }
@@ -174,6 +247,26 @@ function cuerpo(array $arrayDatos, array $arrayErrores, array $arrayPuntos) // A
     // almacenados, una línea por punto, y un img con la imagen generada.
 
     ?>
+    <br>
+    <h3>Subir archivo .txt de puntos</h3>
+    <!-- El tipo de codificación de datos, enctype, se DEBE especificar como a continuación-->
+    <form enctype="multipart/form-data" action="" method="POST">
+        <!--MAX_FILE_SIZE debe preceder al campo de entrada de archivo-->
+        <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+        <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+        Subir fichero:
+        <input name="archivo" type="file" /><br>
+        <br>
+        <input type="submit" value="Subir fichero" name="subir" />
+        <?php
+        // Mostrar error en subir fichero
+        if (isset($arrayErrores["archivo"])) {
+            foreach ($arrayErrores["archivo"] as $error) {
+                echo " <span class='error'>$error</span>";
+            }
+        }
+        ?>
+    </form>
     <br>
     <h3>Puntos almacenados</h3>
     <textarea name="puntos" rows="10" cols="40" readonly><?php
@@ -307,7 +400,11 @@ function formulario(array $datos, array $errores, array $puntos): void
  */
 function obtenerNavegador(): string
 {
-    $navegador = $_SERVER["HTTP_USER_AGENT"];
+    $navegador = $_SERVER["HTTP_USER_AGENT"] ?? "";
+
+    if (stripos($navegador, "Edg") !== false) {
+        return "edge";
+    }
     if (stripos($navegador, "Firefox") !== false) {
         return "firefox";
     }
@@ -414,10 +511,11 @@ function escribirFichero(string $nombre, array $datos): bool
  * Función para leer de un fichero
  * @param string $nombre Nombre del fichero
  * @param mixed $datos Valores
+ * @param bool $vaciar true si queremos vaciar nuestros puntos, false si queremos mantenerlos (para añadir a los actuales)
  * 
  * @return bool Devuelve true si ejecuta correctamente o false si hay algún error
  */
-function leerDeFichero(string $nombre, array &$datos): bool
+function leerDeFichero(string $nombre, array &$datos, bool $vaciar = true): bool
 {
     // Ruta en la que se guardará el fichero
     $ruta = RUTABASE . "/ficheros";
@@ -426,22 +524,26 @@ function leerDeFichero(string $nombre, array &$datos): bool
     if (!file_exists($ruta))
         mkdir($ruta);
 
-    $ruta .= "/$nombre";
+    $ruta .= "/$nombre"; // Se añade a la ruta el nombre del fichero (con su extensión)
 
+    // Si hubiera algun problema con la ruta devuelve false
     if (!file_exists($ruta)) {
         return false;
     }
 
     // Se abre el fichero para lectura
-    // Debe existir
+    // Debe existir el fichero
     $fic = fopen($ruta, "r");
     if (!$fic) {
+        // Si no existe el fichero devuelve falso
         return false;
     }
 
-    // Borro el contenido del array
-    foreach ($datos as $pos => $valor) {
-        unset($datos[$pos]);
+    // Por defecto $vaciar es true, y los puntos se borrarian para leer puntos nuevos
+    // Si se indica false, no entra aquí, no borra los puntos anteriores y nos permite
+    // añadir más puntos a los actuales
+    if ($vaciar) {
+        $datos = [];
     }
 
     // Leo el fichero linea a linea
@@ -449,16 +551,22 @@ function leerDeFichero(string $nombre, array &$datos): bool
         $linea = str_replace("\r", "", $linea);
         $linea = str_replace("\n", "", $linea);
 
+        // Si la linea no está vacía
         if ($linea != "") {
             // Separo por ; y quito los espacios de cada trozo
             $trozos = array_map("trim", explode(";", $linea));
 
-            // Solo si la línea tiene los 4 datos
+            // Solo si la línea tiene los 4 datos (coordX, coordY, color, grosor)
             if (count($trozos) === 4) {
                 try {
+                    // Añadimos el nuevo punto a nuestro array de puntos
                     $datos[] = new Punto($trozos[0], $trozos[1], $trozos[2], $trozos[3]);
                 } catch (Throwable $e) {
+                    // Si no se pudiera crear un punto entra aquí
+
                     // Línea no válida: se salta y se sigue con la siguiente
+
+                    // Si la siguiente si es buena si que se añade un punto
                 }
             }
         }

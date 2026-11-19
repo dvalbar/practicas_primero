@@ -38,7 +38,11 @@ exit; // exit; para que no descargue tambien lo de abajo
  */
 function obtenerNavegador(): string
 {
-    $navegador = $_SERVER["HTTP_USER_AGENT"];
+    $navegador = $_SERVER["HTTP_USER_AGENT"] ?? "";
+
+    if (stripos($navegador, "Edg") !== false) {
+        return "edge";
+    }
     if (stripos($navegador, "Firefox") !== false) {
         return "firefox";
     }
