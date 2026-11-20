@@ -39,5 +39,9 @@ function cuerpo()
     <a href="./index_funciones.php">Prueba funciones</a><br>
     <a href="./clases.php">Prueba clases</a><br>
     <a href="./pagformulario.php">Prueba formularios</a><br>
+    <a href="./cargapagina.php">Ejemplo de como cargar otra página</a><br>
+    <a href="./otrapagina.php">La otra página</a><br>
+    <a href="./pruebaFicheros.php">Prueba ficheros</a><br>
+    <a href="./pruebaImagen.php">Prueba imagen</a><br>
 <?php
 }

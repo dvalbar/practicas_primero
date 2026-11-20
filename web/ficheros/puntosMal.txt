@@ -1,0 +1,4 @@
+Punto1 = coordX -> 20, coordY -> 40, color -> "pink", grosor -> 2
+Punto2 = coordX -> 2000, coordY -> 4000, color -> "red", grosor -> 7
+Punto3 = coordX -> 300, coordY -> 120, color -> "green", grosor -> 1
+Punto4 = coordX -> 50, coordY -> 230, color -> "purple", grosor -> 10

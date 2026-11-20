@@ -26,4 +26,9 @@ spl_autoload_register(function ($clase) {
 
 include(RUTABASE . "/aplicacion/plantilla/plantilla.php");
 
-//creo todos los objetos que necesita mi aplicación
+// Creo todos los objetos que necesita mi aplicación
+
+include_once(RUTABASE . "/scripts/librerias/validacion.php");
+
+// Array de objetos Punto, aquí se guardaran todos nuestros puntos
+$arrayPuntos = [];
