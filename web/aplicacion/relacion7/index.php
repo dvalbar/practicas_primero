@@ -464,6 +464,9 @@ function crearImg(string $ruta, array $arrayPuntos): void
             imagefilledellipse($img, $miPunto->getCoordX(), $miPunto->getCoordY(), $grosorPunto, $grosorPunto, $punto);
         }
     }
+
+    imagestring($img, 3, 250, 480, "David Valverde Barea", $negro);
+
     imagejpeg($img, $ruta); // Crea la imagen en la ruta especificada
 }
 
