@@ -32,3 +32,12 @@ include_once(RUTABASE . "/scripts/librerias/validacion.php");
 
 // Array de objetos Punto, aquí se guardaran todos nuestros puntos
 $arrayPuntos = [];
+
+// Para consultar los colores posibles se crearán dos constantes (COLORESTEXTO y
+// COLORESFONDO) en cabecera.php. Cada constante contendrá un array de los colores posibles para
+// el texto y el fondo. Con cada color guardaremos una cadena que representa su valor en CSS (nombre
+// en inglés o para la función RGB). 
+
+const COLORESTEXTO = [];
+
+const COLORESFONDO = [];
