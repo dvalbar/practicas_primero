@@ -32,26 +32,3 @@ include_once(RUTABASE . "/scripts/librerias/validacion.php");
 
 // Array de objetos Punto, aquí se guardaran todos nuestros puntos
 $arrayPuntos = [];
-
-// Para consultar los colores posibles se crearán dos constantes (COLORESTEXTO y
-// COLORESFONDO) en cabecera.php. Cada constante contendrá un array de los colores posibles para
-// el texto y el fondo. Con cada color guardaremos una cadena que representa su valor en CSS (nombre
-// en inglés o para la función RGB). 
-
-// Constantes para los colores de fondo y de texto de la Relación 8
-
-const COLORESTEXTO = [
-    "black" => ["nombre" => "negro",  "rgb" => [0, 0, 0]],
-    "white" => ["nombre" => "blanco",  "rgb" => [255, 255, 255]],
-    "red"   => ["nombre" => "rojo",   "rgb" => [255, 0, 0]],
-    "green" => ["nombre" => "verde", "rgb" => [0, 255, 0]],
-    "blue"  => ["nombre" => "azul",   "rgb" => [0, 0, 255]],
-];
-
-const COLORESFONDO = [
-    "white" => ["nombre" => "blanco",  "rgb" => [255, 255, 255]],
-    "black" => ["nombre" => "negro",  "rgb" => [0, 0, 0]],
-    "red"   => ["nombre" => "rojo",   "rgb" => [255, 0, 0]],
-    "green" => ["nombre" => "verde", "rgb" => [0, 255, 0]],
-    "blue"  => ["nombre" => "azul",   "rgb" => [0, 0, 255]],
-];
