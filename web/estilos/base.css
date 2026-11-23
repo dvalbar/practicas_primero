@@ -9,8 +9,7 @@
 }
 
 body {
-    background-color: rgb(255, 255, 204);
-    /* Amarillo claro seguro (#FFFFCC) */
+    background-color: rgb(255, 255, 204); /* Amarillo claro seguro (#FFFFCC) */
     font-size: 16px;
     color: #333333;
     line-height: 1.6;
@@ -19,18 +18,16 @@ body {
 #documento {
     margin: 40px auto;
     padding: 24px;
-    background-color: rgb(153, 204, 255);
-    /* Azul claro seguro (#99CCFF) */
+    background-color: rgb(153, 204, 255); /* Azul claro seguro (#99CCFF) */
     width: 100%;
-    max-width: 1000px;
+    max-width: 1100px; /* Aumentar tamaño para la barra ubicación */
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* Cabecera (NUEVO COLOR SEGURO: Azul Marino Profundo) */
 header {
-    background-color: rgb(0, 51, 102);
-    /* Azul marino seguro (#003366) */
+    background-color: rgb(0, 51, 102); /* Azul marino seguro (#003366) */
     padding: 15px 20px;
     border-radius: 8px;
     display: flex;
@@ -39,20 +36,13 @@ header {
 }
 
 header .logo {
-    height: 90px;
-    /* Aumentado de 50px a 90px para que destaque */
-    width: auto;
-    /* Mantiene la proporción original sin deformar */
-    max-width: 200px;
-    /* Margen seguro por si el logo es muy horizontal */
-    object-fit: contain;
-    /* Garantiza que el logo se vea completo */
-    border-radius: 8px;
-    /* Mantiene el diseño circular */
-    background-color: rgba(255, 255, 255, 0.15);
-    /* Un sutil fondo blanco translúcido por si el logo es oscuro */
-    padding: 4px;
-    /* Pequeño espacio interno para que el logo respire dentro del círculo */
+    height: 90px; /* Aumentado de 50px a 90px para que destaque */
+    width: auto; /* Mantiene la proporción original sin deformar */
+    max-width: 200px; /* Margen seguro por si el logo es muy horizontal */
+    object-fit: contain; /* Garantiza que el logo se vea completo */
+    border-radius: 8px; /* Mantiene el diseño circular */
+    background-color: rgba(255, 255, 255, 0.15); /* Un sutil fondo blanco translúcido por si el logo es oscuro */
+    padding: 4px; /* Pequeño espacio interno para que el logo respire dentro del círculo */
     transition: transform 0.2s ease;
 }
 
@@ -63,8 +53,7 @@ header .logo:hover {
 header #titulo {
     font-size: 1.6em;
     font-weight: bold;
-    color: rgb(255, 255, 255);
-    /* Texto blanco seguro (#FFFFFF) para contrastar con el azul marino */
+    color: rgb(255, 255, 255); /* Texto blanco seguro (#FFFFFF) para contrastar con el azul marino */
 }
 
 /* Barra de Login */
@@ -91,8 +80,7 @@ header #titulo {
 
 #barraMenu a {
     text-decoration: none;
-    color: rgb(0, 51, 102);
-    /* Texto azul marino seguro */
+    color: rgb(0, 51, 102); /* Texto azul marino seguro */
     padding: 8px 16px;
     border-radius: 8px;
     font-weight: bold;
@@ -100,10 +88,8 @@ header #titulo {
 }
 
 #barraMenu a:hover {
-    background-color: rgb(255, 255, 255);
-    /* Fondo blanco seguro al pasar el ratón */
-    color: rgb(0, 102, 204);
-    /* Texto azul brillante seguro (#0066CC) */
+    background-color: rgb(255, 255, 255); /* Fondo blanco seguro al pasar el ratón */
+    color: rgb(0, 102, 204); /* Texto azul brillante seguro (#0066CC) */
 }
 
 /* Título de Ubicación */
@@ -127,23 +113,20 @@ header #titulo {
 
 #barraUbi a {
     text-decoration: none;
-    color: rgb(0, 51, 153);
-    /* Azul clásico seguro (#003399) */
+    color: rgb(0, 51, 153); /* Azul clásico seguro (#003399) */
     font-weight: bold;
     transition: color 0.2s ease;
 }
 
 #barraUbi a:hover {
-    color: rgb(0, 0, 102);
-    /* Azul oscuro seguro (#000066) */
+    color: rgb(0, 0, 102); /* Azul oscuro seguro (#000066) */
     text-decoration: underline;
 }
 
 /* Botones genéricos (Optimizados con los nuevos tonos azules) */
 .boton {
     display: inline-block;
-    background-color: rgb(0, 51, 153);
-    /* Azul seguro (#003399) */
+    background-color: rgb(0, 51, 153); /* Azul seguro (#003399) */
     border: none;
     border-radius: 8px;
     transition: background-color 0.2s ease, color 0.2s ease;
@@ -155,15 +138,13 @@ header #titulo {
     display: inline-block;
     padding: 8px 16px;
     text-decoration: none;
-    color: rgb(255, 255, 255);
-    /* Blanco seguro */
+    color: rgb(255, 255, 255); /* Blanco seguro */
     font-weight: bold;
 }
 
 .boton:hover,
 .boton a:hover {
-    background-color: rgb(0, 153, 255);
-    /* Azul cielo brillante seguro (#0099FF) */
+    background-color: rgb(0, 153, 255); /* Azul cielo brillante seguro (#0099FF) */
     color: rgb(255, 255, 255);
 }
 
@@ -178,8 +159,7 @@ header #titulo {
 }
 
 .tabla th {
-    background-color: rgb(0, 102, 153);
-    /* Azul verdoso seguro (#006699) */
+    background-color: rgb(0, 102, 153); /* Azul verdoso seguro (#006699) */
     color: white;
     padding: 12px;
     text-align: left;
@@ -191,8 +171,7 @@ header #titulo {
 }
 
 .tabla tr.par {
-    background-color: rgb(51, 51, 51);
-    /* Gris oscuro seguro (#333333) en lugar de negro puro */
+    background-color: rgb(51, 51, 51); /* Gris oscuro seguro (#333333) en lugar de negro puro */
     color: white;
 }
 

@@ -43,5 +43,6 @@ function cuerpo()
     <a href="./otrapagina.php">La otra página</a><br>
     <a href="./pruebaFicheros.php">Prueba ficheros</a><br>
     <a href="./pruebaImagen.php">Prueba imagen</a><br>
+    <a href="./pruebaCookies.php">Prueba cookies</a><br>
 <?php
 }
