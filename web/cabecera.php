@@ -38,6 +38,20 @@ $arrayPuntos = [];
 // el texto y el fondo. Con cada color guardaremos una cadena que representa su valor en CSS (nombre
 // en inglés o para la función RGB). 
 
-const COLORESTEXTO = [];
+// Constantes para los colores de fondo y de texto de la Relación 8
 
-const COLORESFONDO = [];
+const COLORESTEXTO = [
+    "black" => ["nombre" => "negro",  "rgb" => [0, 0, 0]],
+    "white" => ["nombre" => "blanco",  "rgb" => [255, 255, 255]],
+    "red"   => ["nombre" => "rojo",   "rgb" => [255, 0, 0]],
+    "green" => ["nombre" => "verde", "rgb" => [0, 255, 0]],
+    "blue"  => ["nombre" => "azul",   "rgb" => [0, 0, 255]],
+];
+
+const COLORESFONDO = [
+    "white" => ["nombre" => "blanco",  "rgb" => [255, 255, 255]],
+    "black" => ["nombre" => "negro",  "rgb" => [0, 0, 0]],
+    "red"   => ["nombre" => "rojo",   "rgb" => [255, 0, 0]],
+    "green" => ["nombre" => "verde", "rgb" => [0, 255, 0]],
+    "blue"  => ["nombre" => "azul",   "rgb" => [0, 0, 255]],
+];
