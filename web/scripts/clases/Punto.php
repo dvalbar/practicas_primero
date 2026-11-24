@@ -15,6 +15,7 @@ class Punto
         "green" => ["nombre" => "verde", "rgb" => [0, 255, 0]],
         "red"   => ["nombre" => "rojo",   "rgb" => [255, 0, 0]],
         "blue"  => ["nombre" => "azul",   "rgb" => [0, 0, 255]],
+        "yellow"  => ["nombre" => "amarillo",   "rgb" => [255, 255, 0]],
     ];
 
     // Constante pública de clase GROSORES con los grosores posibles ([1 =>”fino”, 2 =>
@@ -24,6 +25,7 @@ class Punto
         1 => "fino",
         2 => "medio",
         3 => "grueso",
+        4 => "muy grueso",
     ];
 
     // Propiedades x (entero, entre 0 y 20000), y (entero, entre 0 y 20000), color (cadena, valor

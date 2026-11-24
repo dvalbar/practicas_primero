@@ -363,6 +363,7 @@ function formulario(array $datos, array $errores, array $puntos): void
         <br><input type="radio" name="grosor" value="1" <?php if (intval($datos["grosor"]) === 1) echo "checked"; ?>> Fino
         <br><input type="radio" name="grosor" value="2" <?php if (intval($datos["grosor"]) === 2) echo "checked"; ?>> Medio
         <br><input type="radio" name="grosor" value="3" <?php if (intval($datos["grosor"]) === 3) echo "checked"; ?>> Grueso
+        <br><input type="radio" name="grosor" value="4" <?php if (intval($datos["grosor"]) === 4) echo "checked"; ?>> Muy grueso
         <br><br>
         <!-- Borrar puntos -->
         <label>Borrar punto: </label>
